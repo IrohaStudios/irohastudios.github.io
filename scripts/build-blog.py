@@ -124,12 +124,23 @@ def research_mos(body):
     return str(soup)
 
 
+def release_actions(markup):
+    anchors = BeautifulSoup(markup, 'html.parser').select('a')
+    hf, demos = anchors[:2]
+    arrow = '<span class="resource-arrow" aria-hidden="true">↗</span>'
+    bars = f'<a class="resource-bar resource-hf" href="{esc(hf["href"])}"><span class="resource-icon"><img src="/assets/huggingface-logo.svg" width="44" height="44" alt=""/></span><span class="resource-label"><strong>Hugging Face</strong><small>Iroha-TTS-V1</small></span>{arrow}</a>'
+    bars += f'<a class="resource-bar resource-listen" href="{esc(demos["href"])}"><img class="listening-mascot" src="/assets/listening-chibi-v1.png" width="88" height="88" alt=""/><span class="resource-label"><strong>{esc(demos.get_text())}</strong></span><span class="resource-play" aria-hidden="true">▶</span></a>'
+    secondary = ' · '.join(str(a) for a in anchors[2:])
+    return f'<div class="release-resources">{bars}</div><p class="release-secondary-links">{secondary}</p>'
+
+
 def build_release(lang):
     u = UI[lang]
     md = (ROOT / f'blog/content/iroha-tts-v1-{lang}.md').read_text()
     soup = BeautifulSoup(MarkdownIt('commonmark', {'html': True}).enable('table').render(md), 'html.parser')
     title = soup.h1.get_text(); soup.h1.decompose()
     lead, byline, links = [str(soup.p.extract()) for _ in range(3)]
+    links = release_actions(links)
     if soup.hr: soup.hr.decompose()
     headings = soup.find_all('h2')
     if len(headings) != len(SECTION_IDS): raise ValueError(f'Unexpected section count for {lang}')

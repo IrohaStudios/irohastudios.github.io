@@ -66,3 +66,8 @@
 视频均为 1920×1080 H.264 / 双声道 AAC，保留原片日语配音和中日字幕。ASMR 使用用户标出的双耳 3D 版本，位置和距离来自后期处理，不是 TTS 模型直接输出的空间音频。归档说明记载，ASMR 及功能介绍的空间处理使用 TH Köln KU100 近场 HRIR 数据（CC BY-SA 3.0）；页面中保留数据来源及许可链接。
 
 按用户后续要求，已从本站移除春物短篇、封面和相关署名；保留原归档。当前展示作品的素材来源见各自归档 README。
+
+### 发布页入口素材
+
+- `huggingface-logo.svg`：Hugging Face [官方品牌素材](https://huggingface.co/brand)，原始文件来自 https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg ，未修改图形。
+- `listening-chibi-v1.png`：使用内置 image_gen，以本站 `emotion-joy-chibi-v2.webp` 为角色参考，生成戴耳机聆听的透明 Q 版贴纸。完整提示词及修订记录见 `listening-chibi-v1.prompt.json`。用于发布页完整试听入口。
