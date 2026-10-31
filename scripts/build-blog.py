@@ -167,7 +167,7 @@ def build_release(lang):
     while node is not None:
         following = node.next_sibling
         mos.append(node.extract())
-        if following is not None and following.name == 'h3': break
+        if following is not None and following.name in ('h2', 'h3', 'hr'): break
         node = following
     toc = f'<a href="#demos">{esc(SITE_COPY[lang]["demo.title"])}</a>' + ''.join(f'<a href="#{h["id"]}">{esc(h.get_text())}</a>' for h in headings)
     toc = toc.replace('<a href="#evaluation">', f'<a href="#listen">{u["listen"]}</a><a href="#evaluation">')
