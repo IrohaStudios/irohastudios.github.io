@@ -4,7 +4,7 @@
 
 Iroha Studios ｜ 2026 年 10 月 31 日
 
-[演示视频](#demos) · [试听示例](#listen) · [模型仓库](https://huggingface.co/IrohaStudio/Iroha-TTS) · [完整技术笔记](/blog/research/zh/)
+[HF 主页](https://huggingface.co/IrohaStudio/Iroha-TTS) · [完整试听](https://claude.ai/artifact/EnAFVuqrC4E6QA7BSVY7dg) · [演示视频](#demos) · [试听示例](#listen) · [完整技术笔记](/blog/research/zh/)
 
 ---
 
