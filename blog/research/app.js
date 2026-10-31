@@ -142,7 +142,7 @@ const emotions = {
 };
 const events = {
   sigh:{name:'叹气',id:'iroha-v1--sigh-m3-first',text:'[sigh] なかなか厄介な盤面ですね。',zh:'真是个棘手的局面啊。',note:'发布评测 · 56 / 60 条命中（93.33%）'},
-  laugh:{name:'笑声',id:'iroha-v1--laugh-f3-first',text:'旅人のバカ、[laugh] パイモンのバカ。',zh:'旅行者大笨蛋，派蒙大笨蛋。',note:'发布评测 · 本地 26 / 60；外部 44 / 59，判定口径有差异'},
+  laugh:{name:'笑声',id:'iroha-v1--laugh-m2',text:'主も早柚のように、[laugh] きちんと眠るのだぞ。',zh:'你也要像早柚一样，好好睡觉哦。',note:'发布评测 · 本地 26 / 60；外部 44 / 59，判定口径有差异'},
   cry:{name:'哭声',id:'iroha-v1--cry-f1-first',text:'[cry] うう、また宇宙を漂う「美少女氷」に戻るなんてヤだよ……',zh:'呜呜，我才不要又变回漂在宇宙里的「美少女冰块」……',note:'发布评测 · 16 / 60 条命中（26.67%），仍是弱项'}
 };
 async function initPlayers() {

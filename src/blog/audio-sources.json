@@ -1,7 +1,7 @@
 {
   "artifact": "https://claude.ai/artifact/EnAFVuqrC4E6QA7BSVY7dg",
   "source_html_sha256": "a5026cffd3803c99b2fa3fc5e1a85037d9f77f174a9def872496accbd51c3dcd",
-  "selection": "First displayed example for each feature; untagged first voice for cloning; first reading is the OmniVoice preview.",
+  "selection": "First displayed example for each feature; untagged first voice for cloning; first reading is the OmniVoice preview. Laughter replaced with the user-selected Male 2 example on 2026-11-01.",
   "samples": {
     "stock--emo-joy": {
       "bundle": "sent-0",
@@ -87,13 +87,6 @@
       "sha256": "3e2fc859dc0f18bba646ef450e3faf19b57ee26339f70f0efe56db488a56b8e2",
       "duration": 5.448
     },
-    "iroha-v1--laugh-f3-first": {
-      "bundle": "v9-laugh",
-      "key": "4206f62cf2237646",
-      "archive": "emotion-tts-report-1014",
-      "sha256": "05034e8c0f0f0876f0f120cafb4c8dff3ffdbd79244649c021f84b989e949458",
-      "duration": 3.864
-    },
     "iroha-v1--sigh-m3-first": {
       "bundle": "v9-sigh",
       "key": "a9da45d8c9fffcb0",
@@ -142,6 +135,14 @@
       "archive": "emotion-tts-report-1014",
       "sha256": "e494ba372a325fc500c5094fa526b5daf134d57e705ce16771d454751ea3ab47",
       "duration": 4.416
+    },
+    "iroha-v1--laugh-m2": {
+      "bundle": "v9-laugh",
+      "key": "e1b4409903895d07",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "ad80afa707396e9174b09d2aad9b88b2cb3847815be92c2713b901ace3b19a48",
+      "duration": 4.896,
+      "selection": "User-selected Male 2 laughter example, with [laugh], 2026-11-01"
     }
   }
 }
