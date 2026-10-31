@@ -17,7 +17,7 @@
     document.getElementById('sample-panel').setAttribute('aria-labelledby', button.id);
     players.forEach(player => {
       player.pause();
-      const url = `/blog/research/assets/audio/${player.dataset.model}--emo-${emotion}.mp3`;
+      const url = ui.audio[player.dataset.model][emotion];
       player.src = url;
       player.setAttribute('aria-label', `${player.previousElementSibling.textContent} · ${ui.emotions[tabs.indexOf(button)]}`);
       player.nextElementSibling.href = url;

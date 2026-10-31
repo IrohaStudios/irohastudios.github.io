@@ -19,7 +19,7 @@
     const sample = playing() ? activePlayer.dataset.sample : '';
     const tag = sample.match(/--emo-(joy|anger|sadness|surprise)$/);
     if(tag)return tag[1];
-    if(sample.includes('--int-'))return 'anger';
+    if(sample.includes('--int-'))return 'joy';
     if(sample.includes('--laugh-'))return 'joy';
     if(sample.includes('--cry-')||sample.includes('--sigh-'))return 'sadness';
     return selectedEmotion;
@@ -112,7 +112,7 @@
   for(const event of ['seeking','seeked','ratechange'])audio.addEventListener(event,()=>{snapMouth=true;refresh();});
   document.addEventListener('visibilitychange',()=>{lastFrame=performance.now();refresh();});
   window.irohaAvatar={refresh,cueAt,get model(){return rig;},get tracks(){return tracks;},get failed(){return failed;}};
-  fetch('/blog/research/assets/lipsync.json').then(r=>{if(!r.ok)throw new Error('Missing viseme tracks');return r.json();}).then(data=>{tracks=data.samples;}).catch(error=>console.warn('Viseme tracks unavailable; amplitude fallback:',error.message));
+  fetch('/blog/research/assets/lipsync.json', {cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error('Missing viseme tracks');return r.json();}).then(data=>{tracks=data.samples;}).catch(error=>console.warn('Viseme tracks unavailable; amplitude fallback:',error.message));
   DafeiyuLive2D.load('/blog/research/assets/dafeiyu/c_0120.model3.json').then(async model=>{await model.attach(canvas);rig=model;refresh();requestAnimationFrame(animate);}).catch(error=>{failed=true;rig=undefined;dock.hidden=true;document.body.classList.remove('has-avatar-rail');console.error('Live2D failed:',error.message);});
   refresh();
 })();

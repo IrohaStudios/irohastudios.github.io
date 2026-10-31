@@ -1,0 +1,147 @@
+{
+  "artifact": "https://claude.ai/artifact/EnAFVuqrC4E6QA7BSVY7dg",
+  "source_html_sha256": "a5026cffd3803c99b2fa3fc5e1a85037d9f77f174a9def872496accbd51c3dcd",
+  "selection": "First displayed example for each feature; untagged first voice for cloning; first reading is the OmniVoice preview.",
+  "samples": {
+    "stock--emo-joy": {
+      "bundle": "sent-0",
+      "key": "0858bb3c887b9d76",
+      "archive": "expressive-ja-tts-public",
+      "sha256": "47f4721d4432291e5d8fd47f623e86c5ee973519f37127a44bdff6007b546399",
+      "duration": 3.483
+    },
+    "stock--emo-anger": {
+      "bundle": "sent-0",
+      "key": "c710046f3ffcd140",
+      "archive": "expressive-ja-tts-public",
+      "sha256": "e13c4d6e759cebe3bf1f756cdcf805442c810107adb2502a44d1d87df0821fcf",
+      "duration": 3.715
+    },
+    "stock--emo-sadness": {
+      "bundle": "sent-0",
+      "key": "dc4b22628e2fcfd3",
+      "archive": "expressive-ja-tts-public",
+      "sha256": "059886eb2df15c4cfcf7ed665baf7869e0e7c3b31cc9f27645ee5f8c36493872",
+      "duration": 3.529
+    },
+    "stock--emo-surprise": {
+      "bundle": "sent-0",
+      "key": "3c1954b2fd121bdc",
+      "archive": "expressive-ja-tts-public",
+      "sha256": "cc82d683e207db52cd7ec256b44da75ece50646d2116f08345efc536cc177c52",
+      "duration": 3.715
+    },
+    "iroha-v1--emo-joy": {
+      "bundle": "v9-sent-0",
+      "key": "6f3698cd704aa14f",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "3988fac3ed9092ab1ab10c5db1e56f0834fd2fb75da765278c510bd958b843d0",
+      "duration": 3.816
+    },
+    "iroha-v1--emo-anger": {
+      "bundle": "v9-sent-0",
+      "key": "7147e0bdab847a18",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "c8c3767bd8d673942ea77f7317fd4d88f40d8d6457414840d2ed2f748becf23c",
+      "duration": 3.864
+    },
+    "iroha-v1--emo-sadness": {
+      "bundle": "v9-sent-0",
+      "key": "4426ac65c6e453f2",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "4892877bf0fa4c02fa7a97a79a5fd2321ccc6210148be30723c706298b4a6934",
+      "duration": 3.864
+    },
+    "iroha-v1--emo-surprise": {
+      "bundle": "v9-sent-0",
+      "key": "c82cb3c353e23c83",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "40d08778d367c65e19d4eb1c6290d73a5b32348e97cf225250a1e9db0c78107a",
+      "duration": 3.768
+    },
+    "iroha-v1--int-weakest": {
+      "bundle": "vec",
+      "key": "0e57d30ee845ac07",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "a6083c58bcda525f3b2cbef8a2b6a65864600022c740f5c610f2cd0ece9a9e64",
+      "duration": 5.064
+    },
+    "iroha-v1--int-weak": {
+      "bundle": "vec",
+      "key": "9ac88a23ff52966a",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "5a3a6617f00efff1007824cfbd4dd016f77a9743cb8cb92bac800211e021f790",
+      "duration": 4.992
+    },
+    "iroha-v1--int-default": {
+      "bundle": "vec",
+      "key": "992fe3ccac7307e2",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "76adb1c95f98213ae6b544344941ccd2b2fb00a71b38dc5b465bd130ab35c992",
+      "duration": 5.4
+    },
+    "iroha-v1--int-strong": {
+      "bundle": "vec",
+      "key": "284d5fdfe666285e",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "3e2fc859dc0f18bba646ef450e3faf19b57ee26339f70f0efe56db488a56b8e2",
+      "duration": 5.448
+    },
+    "iroha-v1--laugh-f3-first": {
+      "bundle": "v9-laugh",
+      "key": "4206f62cf2237646",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "05034e8c0f0f0876f0f120cafb4c8dff3ffdbd79244649c021f84b989e949458",
+      "duration": 3.864
+    },
+    "iroha-v1--sigh-m3-first": {
+      "bundle": "v9-sigh",
+      "key": "a9da45d8c9fffcb0",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "43ea73c17952f973e84ddc2bf4eb219b28a7d09442e6f2d6264ccc16619fad61",
+      "duration": 3.672
+    },
+    "iroha-v1--cry-f1-first": {
+      "bundle": "v9-cry",
+      "key": "3c1de33fad19e321",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "8cbfa628e4f61133a22cf9da62fb8e85837a95654b07a5935369264f27ba0784",
+      "duration": 9.768
+    },
+    "iroha-v1--trn-T1": {
+      "bundle": "trn-0",
+      "key": "9f81221154e61056",
+      "archive": "expressive-ja-tts-public",
+      "sha256": "b17044272221f6c689c49dfd9478e47c47f0a3ce0fd9a34b996a628399c24aec",
+      "duration": 8.173
+    },
+    "reference-m1": {
+      "bundle": "sent-0",
+      "key": "cdaacae3927eaaea",
+      "archive": "expressive-ja-tts-public",
+      "sha256": "1becb6ffb4e9c240bd5058258c5574e61618848184f2109ee004962cb3cb37b4",
+      "duration": 5.072
+    },
+    "iroha-v1--clone-m1": {
+      "bundle": "v9-sent-0",
+      "key": "dce557245222f1d9",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "040b494e022bc9ae75ace2b65e9264306e5ff19533acc87e6bf7977a9807efd6",
+      "duration": 3.312
+    },
+    "artifact-whisper": {
+      "bundle": "whisper",
+      "key": "b4147c3b784d7394",
+      "archive": "expressive-ja-tts-public",
+      "sha256": "b4147c3b784d73942768d154d098db0f325e919752c60460a933b4f3ad11ed3c",
+      "duration": 3.111
+    },
+    "artifact-reading": {
+      "bundle": "ruby",
+      "key": "154cd57a8c831be6",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "e494ba372a325fc500c5094fa526b5daf134d57e705ce16771d454751ea3ab47",
+      "duration": 4.416
+    }
+  }
+}
