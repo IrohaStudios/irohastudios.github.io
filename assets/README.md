@@ -14,6 +14,19 @@
 迁移后的研究博客：https://irohastudios.github.io/blog/research/
 原站来源：https://iroha-research.liuyun5620472.chatgpt.site/
 
+## 技术笔记目录角色
+
+2026-10-31 使用内置 `image_gen`，以本站 `sky-observatory.png` 的银白发角色为参考，生成三个 Q 版全身动作，替换技术笔记目录的抽象插图。控制与失败动作继续参考首张学习版，保持同一角色的外观与画风。
+
+- `guide-training-chibi-v1.webp`：拿着本子和笔学习，对应训练方法。
+- `guide-controls-chibi-v1.webp`：调节音频控制板，对应控制功能。
+- `guide-lessons-chibi-v1.webp`：电脑冒出小烟团后挠头，对应失败经验。
+- `guide-characters-prompts.json`：本次三张插画的完整生成提示词。
+
+网页素材为 512 × 512 透明 WebP，由生成的 PNG 缩放编码，保留 alpha；没有裁切角色或重新绘制。三张共 231 KiB。生成原图另存于持久工作区的 `iroha-guide-characters-20261031/originals/`，保留最初生成文件。
+
+验证：中日英在 320、390、768、1024、1440px 共 15 组 Chromium 布局中，角色完整显示、文字不重叠、页面不横向溢出；三个章节跳转、语言切换和无 JavaScript 显示通过。已核对透明通道，并查看桌面、手机实际页面截图。
+
 主视觉和 UI 未复制参考游戏官网的原始美术。素材的本站使用不等同于向第三方授予独立素材许可。
 
 ## 用户指定的 Demo 视频
