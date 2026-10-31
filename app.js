@@ -3,19 +3,66 @@
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => [...document.querySelectorAll(selector)];
   const root = document.documentElement;
+  const messages = JSON.parse($("#ui-messages").textContent);
+  const t = (key, values = {}) =>
+    messages[key].replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
+  const languageSelect = $("#language-select");
+  const languagePaths = { zh: "/", ja: "/ja/", en: "/en/" };
+  const pageLanguage = root.dataset.locale;
+  window.addEventListener("pageshow", () => {
+    languageSelect.value = pageLanguage;
+  });
+  const requestedLanguage = new URL(location.href).searchParams.get("lang");
+  const validLanguage = (value) => Object.hasOwn(languagePaths, value);
+  let savedLanguage;
+  try {
+    savedLanguage = localStorage.getItem("iroha-language");
+  } catch (_) {
+    /* Language links work even when storage is unavailable. */
+  }
+  const preferredLanguage = validLanguage(requestedLanguage)
+    ? requestedLanguage
+    : pageLanguage === "zh" && validLanguage(savedLanguage)
+      ? savedLanguage
+      : pageLanguage;
+  function languageUrl(language) {
+    const url = new URL(location.href);
+    url.pathname = languagePaths[language];
+    url.searchParams.set("lang", language);
+    return url.href;
+  }
+  if (preferredLanguage !== pageLanguage) {
+    location.replace(languageUrl(preferredLanguage));
+    return;
+  }
+  try {
+    localStorage.setItem("iroha-language", pageLanguage);
+  } catch (_) {
+    /* Storage is optional. */
+  }
+  languageSelect.addEventListener("change", () => {
+    const language = languageSelect.value;
+    if (!validLanguage(language)) return;
+    try {
+      localStorage.setItem("iroha-language", language);
+    } catch (_) {
+      /* The explicit URL still preserves the selected language. */
+    }
+    location.assign(languageUrl(language));
+  });
   const menu = $(".menu-toggle");
   const nav = $("#navigation");
   const header = $("#header");
   function closeMenu(restoreFocus = false) {
     menu.setAttribute("aria-expanded", "false");
-    menu.setAttribute("aria-label", "打开菜单");
+    menu.setAttribute("aria-label", t("menu.open"));
     nav.classList.remove("is-open");
     if (restoreFocus) menu.focus();
   }
   menu.addEventListener("click", () => {
     const open = menu.getAttribute("aria-expanded") !== "true";
     menu.setAttribute("aria-expanded", String(open));
-    menu.setAttribute("aria-label", open ? "关闭菜单" : "打开菜单");
+    menu.setAttribute("aria-label", t(open ? "menu.close" : "menu.open"));
     nav.classList.toggle("is-open", open);
   });
   nav.addEventListener("click", (event) => {
@@ -183,14 +230,14 @@
     motionButton.setAttribute("aria-pressed", String(motionEnabled));
     motionButton.setAttribute(
       "aria-label",
-      motionEnabled ? "关闭页面动效" : "开启页面动效",
+      t(motionEnabled ? "motion.disable" : "motion.enable"),
     );
     motionButton.disabled = reduce.matches;
     $("#motion-label").textContent = reduce.matches
-      ? "系统减弱动效"
+      ? t("motion.reduced")
       : motionEnabled
-        ? "动效 ON"
-        : "动效 OFF";
+        ? t("motion.on")
+        : t("motion.off");
     if (motionEnabled && window.gsap && window.ScrollTrigger) {
       gsap.registerPlugin(ScrollTrigger);
       animationContext = gsap.context(() => {
@@ -250,7 +297,7 @@
     "resize",
     () => {
       sizeCanvas();
-      if (window.innerWidth > 600) closeMenu();
+      if (window.innerWidth > 1100) closeMenu();
     },
     { passive: true },
   );
@@ -263,12 +310,12 @@
   const playButton = $("#play-sample");
   const seek = $("#audio-seek");
   const status = $("#audio-status");
-  const emotionLabels = {
-    joy: "开心",
-    anger: "生气",
-    sadness: "悲伤",
-    surprise: "惊讶",
-  };
+  const emotionLabels = Object.fromEntries(
+    ["joy", "anger", "sadness", "surprise"].map((emotion) => [
+      emotion,
+      t("emotion." + emotion),
+    ]),
+  );
   const emotionTags = {
     joy: "happy",
     anger: "angry",
@@ -291,20 +338,25 @@
     playButton.setAttribute("aria-pressed", String(playing));
     playButton.setAttribute(
       "aria-label",
-      (playing ? "暂停" : "播放") + emotionLabels[selected] + "语音",
+      t(playing ? "audio.pauseLabel" : "audio.playLabel", {
+        emotion: emotionLabels[selected],
+      }),
     );
     playButton
       .querySelector("path")
       .setAttribute("d", playing ? pausePath : playPath);
     playButton.querySelector("span").textContent = playing
-      ? "正在播放"
-      : "试听这句话";
+      ? t("audio.playing")
+      : t("audio.listen");
     $("#playback-time").textContent =
       `${fmt(audio.currentTime)} / ${fmt(duration)}`;
     seek.value = position;
     seek.setAttribute(
       "aria-valuetext",
-      `${fmt(audio.currentTime)} / ${fmt(duration)}`,
+      t("audio.time", {
+        elapsed: fmt(audio.currentTime),
+        duration: fmt(duration),
+      }),
     );
     $$("#waveform i").forEach((bar, index, bars) =>
       bar.classList.toggle("played", (index / bars.length) * 100 < position),
@@ -315,7 +367,7 @@
     playRequest++;
     audio.pause();
     status.textContent = "";
-    audio.src = samples[emotion].url;
+    audio.src = new URL("/" + samples[emotion].url, location.origin).href;
     audio.load();
     $$(".emotion-options button").forEach((button) =>
       button.setAttribute(
@@ -337,7 +389,7 @@
   audioButtons.forEach((button) => {
     button.disabled = true;
   });
-  fetch("assets/samples.json")
+  fetch("/assets/samples.json")
     .then((response) => {
       if (!response.ok) throw new Error("Sample manifest unavailable");
       return response.json();
@@ -359,8 +411,7 @@
       });
     })
     .catch(() => {
-      status.textContent =
-        "试听暂时不可用，可通过下方「完整试听」进入研究博客。";
+      status.textContent = t("audio.unavailable");
     });
   $$(".emotion-options button").forEach((button) =>
     button.addEventListener("click", () =>
@@ -373,7 +424,7 @@
       return;
     }
     const request = ++playRequest;
-    status.textContent = "正在加载音频…";
+    status.textContent = t("audio.loading");
     if (audio.error) audio.load();
     if (audio.ended) audio.currentTime = 0;
     try {
@@ -381,7 +432,7 @@
       if (request === playRequest) status.textContent = "";
     } catch (error) {
       if (request === playRequest && error.name !== "AbortError")
-        status.textContent = "未能播放，点击可重试，或打开下方完整试听。";
+        status.textContent = t("audio.playError");
     }
     syncAudio();
   });
@@ -389,7 +440,7 @@
     audio.addEventListener(name, syncAudio),
   );
   audio.addEventListener("error", () => {
-    status.textContent = "音频加载失败，点击可重试，或打开下方完整试听。";
+    status.textContent = t("audio.loadError");
   });
   seek.addEventListener("input", () => {
     if (Number.isFinite(audio.duration))
