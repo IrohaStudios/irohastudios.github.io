@@ -12,6 +12,14 @@ html{font-synthesis:none}body{background:var(--paper);font-weight:500}h1,h2,h3,h
 @media(max-width:760px){.guide-item{grid-template-columns:112px minmax(0,1fr);gap:18px}}
 @media(max-width:360px){.guide-item{grid-template-columns:96px minmax(0,1fr);gap:16px}}
 
+/* Expressions stay visible while translated labels and tab state change. */
+.emotion-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.emotion-tabs button{display:flex;align-items:center;justify-content:center;gap:10px;min-width:0;padding:10px 12px}
+.emotion-tabs .emotion-icon{display:block;flex:0 0 52px;width:52px;height:52px;object-fit:contain}
+.emotion-tabs .emotion-label{display:block;margin:0;font:inherit;color:inherit}
+@media(min-width:761px) and (max-width:1050px){.emotion-tabs button{gap:6px;padding-inline:8px}.emotion-tabs .emotion-icon{flex-basis:44px;width:44px;height:44px}}
+@media(max-width:760px){.emotion-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.emotion-tabs button{flex-direction:column;gap:4px;padding:10px 8px}.emotion-tabs .emotion-icon{flex-basis:48px;width:48px;height:48px}}
+
 /* Evaluation data from the archived report, with horizontally scrollable metrics. */
 .evaluation-overview h3,.mos-results>h3{font-size:22px;line-height:1.6;margin-bottom:20px}
 .evaluation-intro{max-width:1050px;font-size:16px;line-height:1.85}
