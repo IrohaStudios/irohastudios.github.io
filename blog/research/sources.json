@@ -1,0 +1,143 @@
+{
+  "sourceSite": "https://iroha-research.liuyun5620472.chatgpt.site/",
+  "sourceCommit": "b06f078057097df77ab73c8f5afbce885ec5db72",
+  "migrated": "2026-10-31",
+  "assets": [
+    {
+      "path": "assets/audio/hf-reading.mp3",
+      "sha256": "f770212405d3713516de7910d7d52281d85511bfba52419103870984dfca30df"
+    },
+    {
+      "path": "assets/audio/hf-whisper.mp3",
+      "sha256": "8537394bf8fc1002c9bcdbbc8c008b7a05447386420ffff42a438f464646edea"
+    },
+    {
+      "path": "assets/audio/iroha-v1--clone-f2.mp3",
+      "sha256": "0a5e370e8b9b93af40f42edfc933ded0ad49ab62bae100566490f6ea85c9cb1c"
+    },
+    {
+      "path": "assets/audio/iroha-v1--cry-m2-5.mp3",
+      "sha256": "533de470c8395b9d1b60a1cedff6e5e23caa63a66fefdd919a800b1dbbd45461"
+    },
+    {
+      "path": "assets/audio/iroha-v1--emo-anger.mp3",
+      "sha256": "b135ef8ea7e45f9a4c5fc3c6ea98226aedff1b49ec3b131ffbf7c0b72fe605ac"
+    },
+    {
+      "path": "assets/audio/iroha-v1--emo-joy.mp3",
+      "sha256": "fcd79cf14ed697c27455cd9d0d575899a8a81c6b8f4d2b9e562c728fdc648fc3"
+    },
+    {
+      "path": "assets/audio/iroha-v1--emo-sadness.mp3",
+      "sha256": "062742d4fc4e799ff7aa40e0f15bef86bce9b168fc2dbba147e9fa4a69ca2453"
+    },
+    {
+      "path": "assets/audio/iroha-v1--emo-surprise.mp3",
+      "sha256": "b04c472400c0b9cbcbc17e0a53c2f5261e8322f194029855871f170ade67d61d"
+    },
+    {
+      "path": "assets/audio/iroha-v1--int-default.mp3",
+      "sha256": "63453756645cb9032b9d5b79cc7e4d22cd703aa54935ea19e0dc2a2edfa16542"
+    },
+    {
+      "path": "assets/audio/iroha-v1--int-strong.mp3",
+      "sha256": "f8e9e9fc7ab74fbd2acff345257cac5597f0b4eb9f6973b0cb9b4ca5df6c8550"
+    },
+    {
+      "path": "assets/audio/iroha-v1--int-weak.mp3",
+      "sha256": "f27d798b66ac59d6a9c248a71cd1c76452bbbc18b4e4bd2518678b7932f72050"
+    },
+    {
+      "path": "assets/audio/iroha-v1--int-weakest.mp3",
+      "sha256": "d10610abde2858e67fa0f2e8c5c199ef6bcf4cfecd26837414c227d5090b23f9"
+    },
+    {
+      "path": "assets/audio/iroha-v1--laugh-f2-3.mp3",
+      "sha256": "0d12c02103b472bc8e67f78bfbc83aca6c8543e09228459e693b53e30f9451b3"
+    },
+    {
+      "path": "assets/audio/iroha-v1--sigh-m3-1.mp3",
+      "sha256": "6cb5dcb2c1e8f0802ecab80809e92ce18155c0793c6af9fbf3f9f0af1413bbc4"
+    },
+    {
+      "path": "assets/audio/iroha-v1--trn-T1.mp3",
+      "sha256": "84e3efbb1c620ea846fe24d5e1ef9a098ba77f014f62cc4d72ea7e48e8ce29bf"
+    },
+    {
+      "path": "assets/audio/reference-f2.mp3",
+      "sha256": "7f562f52e220c455e05f8cd133b162e80bdfa5474bcd7764cb1cc1005dbf343a"
+    },
+    {
+      "path": "assets/audio/stock--emo-anger.mp3",
+      "sha256": "f2c0bc90125b2b8b6eeaf0082c0245045634904317b92a96f77d3d028292c5a6"
+    },
+    {
+      "path": "assets/audio/stock--emo-joy.mp3",
+      "sha256": "0db0b2fd4118b2b18132d40fa214466cb5269c619661d3eb5691cb51d5093641"
+    },
+    {
+      "path": "assets/audio/stock--emo-sadness.mp3",
+      "sha256": "46852c7cebfc74bf590af41c43671c93b6c88b3ae727d23e0c7c6ca623f68f48"
+    },
+    {
+      "path": "assets/audio/stock--emo-surprise.mp3",
+      "sha256": "3ac6d67e95226eac5afcadce7fed18c8b50325eb9ca37b0fe3b0a73dddba859b"
+    },
+    {
+      "path": "assets/fonts/OFL.txt",
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+    },
+    {
+      "path": "assets/fonts/bold.woff2",
+      "sha256": "975fd646ec995f01ed382e8bebf17f214cd78f6d71d77f6593c05c2c0d5c3aa1"
+    },
+    {
+      "path": "assets/fonts/regular.woff2",
+      "sha256": "ca6a831e4a9b429caac243fb672d993e183bdc2c0b5589cd4fbe292fa6e30990"
+    },
+    {
+      "path": "assets/iroha-icon-v2.png",
+      "sha256": "a5e5097e177d012271f1e2cc9e4666f07d0c886fae9ead8badb9ab3644398a0c"
+    },
+    {
+      "path": "assets/iroha-logo-v2.png",
+      "sha256": "70ec7b994fa2b25cca6ed065f0116baf915cb7f08a4461ec4402fe91df453532"
+    },
+    {
+      "path": "assets/iroha-mascot-white-v3.png",
+      "sha256": "02200d2b728848b334e49e43ae4dd26dcd3d0b31cd2a3e2ff5b3ba337e42de29"
+    },
+    {
+      "path": "assets/iroha-vtuber-modelcard-atlas-v1.png",
+      "sha256": "2ecbbb99de9af69c06fd430ac579f8b362ea445e86fb4a24d062ac1dd489a4f0"
+    },
+    {
+      "path": "assets/iroha-wordmark-brush-v1.png",
+      "sha256": "51031474a347450a14cc17b60b2a655974d5546fdb4c8b0fe337f67880506c16"
+    },
+    {
+      "path": "assets/lipsync.json",
+      "sha256": "1867837cb9f2bbec278c97f61d05a08a663df71dc7a80b7f64318dd747e8c2e9"
+    },
+    {
+      "path": "assets/live2d/iroha-parts-v1.png",
+      "sha256": "42b23092e58a7ec32946bd26e749885486202058eb2ccfc365c2b18a8bd329fb"
+    },
+    {
+      "path": "assets/live2d/iroha.moc3",
+      "sha256": "0aaf5cb1ec0a883e6ef90d69ac0c5a883292824f26f76e5c03a04e7bf58dd75b"
+    },
+    {
+      "path": "assets/live2d/iroha.model3.json",
+      "sha256": "4370b071fc4cc80a61edeac0b9f47da4257e8a4833d4986d52d434a93002bc81"
+    },
+    {
+      "path": "vendor/NOTICE.txt",
+      "sha256": "a8ed2e2f580f8084e2389e8e65c4727c0ef882b74e1ca0b4e042588702bfca62"
+    },
+    {
+      "path": "vendor/live2dcubismcore.min.js",
+      "sha256": "25ae938cb4fe282ce189b357bcc97e603d1e1f7ec78bf04150d401c23cdc792f"
+    }
+  ]
+}

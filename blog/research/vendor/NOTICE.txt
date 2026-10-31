@@ -1,0 +1,8 @@
+Live2D Cubism Core
+Copyright (C) 2019 Live2D Inc. All rights reserved.
+The unmodified live2dcubismcore.min.js is Redistributable Code under:
+https://www.live2d.com/eula/live2d-proprietary-software-license-agreement_en.html
+Live2D and Cubism are trademarks of Live2D Inc.
+
+Iroha character artwork and rig are project assets, generated and assembled
+for this website. This website is not affiliated with or endorsed by Live2D Inc.

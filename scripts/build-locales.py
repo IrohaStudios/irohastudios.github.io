@@ -22,6 +22,7 @@ def build():
         values = {key: html.escape(value, quote=True).replace('\n', '<br />') for key, value in messages.items()}
         values.update({'locale.tag': tag, 'locale.code': locale, 'locale.url': ORIGIN + path})
         values.update({f'selected.{code}': 'selected' if code == locale else '' for code in LOCALES})
+        values['hash.preview'] = hashlib.sha256((ROOT / 'assets/research-preview.png').read_bytes()).hexdigest()[:12]
         for ext in ['css', 'js']:
             name = 'style.css' if ext == 'css' else 'app.js'
             values[f'hash.{ext}'] = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()[:12]

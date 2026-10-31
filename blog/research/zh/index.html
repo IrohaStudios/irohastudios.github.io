@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html data-locale="zh" lang="zh-CN">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#ffffff" name="theme-color"/>
+<meta content="Iroha 的七项语音控制：试听样本、数据与训练方法、评测结果和失败经验。" name="description"/>
+<title>怎么做出 Iroha 的七种控制 · Iroha Blog</title>
+<link href="/assets/iroha-logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="/blog/research/style.css?v=ff717ecf96eb" rel="stylesheet"/>
+<link href="/blog/research/journal.css?v=7e9fffba6c08" rel="stylesheet"/>
+<link href="/blog/research/typography.css?v=0ec1a9dc5f0b" rel="stylesheet"/>
+<link href="/blog/research/vtuber.css?v=a5f49bec35df" rel="stylesheet"/>
+<script defer="" src="/blog/research/locales.js?v=5a02895c5ab0"></script><script defer="" src="/blog/research/i18n.js?v=86cd9c98e67d"></script><script defer="" src="/blog/research/glossary.js?v=286288d29944"></script>
+<script defer="" src="/blog/research/vendor/live2dcubismcore.min.js?v=25ae938cb4fe"></script>
+<script defer="" src="/blog/research/iroha-model.js?v=c2df50f90f63"></script>
+<script defer="" src="/blog/research/app.js?v=ba3c70309c17"></script>
+<script defer="" src="/blog/research/vtuber.js?v=cd3097e2fa99"></script>
+<link href="https://irohastudios.github.io/blog/research/zh/" rel="canonical"/><link href="https://irohastudios.github.io/blog/research/ja/" hreflang="ja" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/en/" hreflang="en" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/zh/" hreflang="zh" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/" hreflang="x-default" rel="alternate"/><link href="/blog/research-theme.css?v=f3e9a7bfef69" rel="stylesheet"/></head>
+<body>
+<a class="skip-link" data-i18n="label.0" href="#main">跳到正文</a>
+<div aria-hidden="true" class="reading-progress"></div>
+<header class="masthead">
+<a aria-label="返回 Iroha Studios 主页" class="brand" data-home-link="" data-i18n-aria-label="attr.0" href="/ja/"><span class="logo-crop"><img alt="" class="generated-logo" height="52" src="/assets/iroha-logo.svg" width="52"/></span><span class="brand-wordmark"><img alt="Iroha" height="887" src="/blog/research/assets/iroha-wordmark-brush-v1.png" width="1774"/></span><span class="brand-edition">Studios</span></a>
+<nav aria-label="主导航" data-i18n-aria-label="attr.1"><a data-i18n="label.1" href="#listen">声音演示</a><a data-i18n="label.2" href="#method">工程实现</a><a data-i18n="label.3" href="#results">实验结果</a><a data-i18n="label.4" href="#lessons">失败经验</a></nav>
+<a class="header-cta" data-i18n="label.5" data-release-link="" href="/blog/zh/">发布文章 ↗</a>
+<div class="language-control"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c5 5 5 13 0 18C7 16 7 8 12 3z"></path></svg><label class="sr-only" data-i18n="ui.language" for="language-select">语言</label><select id="language-select"><option lang="zh-CN" selected="" value="zh">中文</option><option lang="ja" value="ja">日本語</option><option lang="en" value="en">English</option></select></div><noscript><nav aria-label="语言" class="research-language-fallback"><a href="/blog/research/ja/" hreflang="ja" lang="ja">日本語</a><a href="/blog/research/en/" hreflang="en" lang="en">English</a><a aria-current="page" href="/blog/research/zh/" hreflang="zh" lang="zh">中文</a></nav><style>.language-control,.vtuber-stage{display:none}</style></noscript></header>
+<main id="main">
+<section aria-labelledby="hero-title" class="hero section-shell">
+<div class="hero-grid">
+<div class="lead-story">
+<div aria-label="Iroha 虚拟角色语音演示" class="hero-art vtuber-stage" data-i18n-aria-label="attr.2">
+<div aria-hidden="true" class="art-grid"></div>
+<div class="vtuber-copy">
+<img alt="Iroha" class="vtuber-wordmark" height="887" src="/blog/research/assets/iroha-wordmark-brush-v1.png" width="1774"/>
+<div aria-label="角色试听情感" class="avatar-emotions" data-i18n-aria-label="attr.3" role="group">
+<button aria-pressed="true" data-avatar-emotion="joy" data-i18n="label.6" type="button">开心</button>
+<button aria-pressed="false" data-avatar-emotion="anger" data-i18n="label.7" type="button">生气</button>
+<button aria-pressed="false" data-avatar-emotion="sadness" data-i18n="label.8" type="button">难过</button>
+<button aria-pressed="false" data-avatar-emotion="surprise" data-i18n="label.9" type="button">惊讶</button>
+</div>
+<button aria-pressed="false" class="avatar-play" data-dynamic-copy="true" disabled="" id="avatar-play" type="button">加载音频…</button>
+</div>
+</div>
+<div class="hero-copy"><h1 data-i18n="label.11" id="hero-title">怎么做出<br/>Iroha 的七种控制</h1>
+<div class="byline"><span class="avatar-mark"><img alt="" height="30" src="/assets/iroha-logo.svg" width="30"/></span><div>Iroha Studios</div><span class="byline-rule"></span><span class="read-time" data-i18n="label.12">2026 年 10 月</span></div>
+<div class="hero-actions"><a class="button solid" data-i18n="label.13" href="#listen">试听样本 <span aria-hidden="true">↓</span></a><a class="text-link" data-i18n="label.14" href="#method">查看实现 <span aria-hidden="true">↗</span></a></div>
+<p class="research-snapshot" data-en="Technical notes from October 29, 2026, with the October 30 listening-study snapshot added." data-ja="2026年10月29日の技術ノート。聴取評価は10月30日の集計に更新しました。" data-zh="技术笔记基于 2026-10-29 的报告；人工听测已补充 10-30 的快照。">技术笔记基于 2026-10-29 的报告；人工听测已补充 10-30 的快照。</p></div>
+</div>
+<aside aria-label="目录" class="story-guide" data-i18n-aria-label="attr.4"><div class="guide-heading" data-i18n="label.15">目录</div>
+<a class="guide-item" href="#method"><span aria-hidden="true" class="guide-art guide-training"><i></i><i></i><i></i><b>→</b></span><div><h2 data-i18n="label.16">训练方法</h2></div></a>
+<a class="guide-item" href="#controls"><span aria-hidden="true" class="guide-art guide-controls"><i></i><i></i><i></i><b>7</b></span><div><h2 data-i18n="label.17">控制功能</h2></div></a>
+<a class="guide-item" href="#lessons"><span aria-hidden="true" class="guide-art guide-lessons"><i></i><i></i><b>↗</b></span><div><h2 data-i18n="label.4">失败经验</h2></div></a>
+</aside>
+</div>
+</section>
+<section aria-labelledby="listen-title" class="listen-section section-shell" id="listen">
+<div class="section-heading reveal"><div><h2 data-i18n="label.18" id="listen-title">情感试听</h2></div><button aria-label="试听样本说明" class="term info-button" data-i18n-aria-label="attr.5" data-term="sample-context" type="button"><span aria-hidden="true">i</span></button></div>
+<div class="listening-desk reveal">
+<div aria-label="选择试听情感" class="emotion-tabs" data-i18n-aria-label="attr.6" role="tablist">
+<button aria-controls="emotion-panel" aria-selected="true" data-emotion="joy" data-i18n="label.19" id="emotion-joy" role="tab"><span aria-hidden="true">✳</span>开心 </button>
+<button aria-controls="emotion-panel" aria-selected="false" data-emotion="anger" data-i18n="label.20" id="emotion-anger" role="tab" tabindex="-1"><span aria-hidden="true">↯</span>生气 </button>
+<button aria-controls="emotion-panel" aria-selected="false" data-emotion="sadness" data-i18n="label.21" id="emotion-sadness" role="tab" tabindex="-1"><span aria-hidden="true">☂</span>难过 </button>
+<button aria-controls="emotion-panel" aria-selected="false" data-emotion="surprise" data-i18n="label.22" id="emotion-surprise" role="tab" tabindex="-1"><span aria-hidden="true">✧</span>惊讶 </button>
+</div>
+<div aria-labelledby="emotion-joy" id="emotion-panel" role="tabpanel">
+<div class="sample-script"><span class="prompt-tag" id="emotion-tag">[happy]</span><p lang="ja">どうですか、冤罪だと言ったでしょう？</p><span class="translation-copy" data-i18n="label.23">怎么样，我说过是冤枉的吧？</span></div>
+<div class="compare-players"><div class="comparison-item"><div class="model-heading"><span>Fish S2-Pro</span></div><div id="stock-player"></div></div><div class="comparison-item featured"><div class="model-heading"><span>Iroha-TTS V1 </span></div><div id="iroha-player"></div></div></div>
+</div>
+</div>
+<article class="feature-how emotion-how reveal" data-feature="whole-emotion" id="whole-emotion"><div class="how-title"><h3 data-i18n="label.24">整句情感</h3></div><div class="how-body"><div class="how-steps"><div><h4 data-i18n="label.25">数据</h4><p data-i18n="copy.p01">固定同一句台词与同一段<button class="term" data-term="reference">参考音频</button>，让<button class="term" data-term="teacher">教师模型</button>分别生成开心、生气、难过和惊讶的版本。保留情感对得上、文字没读错、音色与质量合格的候选。</p></div><div><h4 data-i18n="label.26">训练</h4><p data-i18n="copy.p02">把“带标签的文字 + 参考声音”作为输入，把筛选后的语音作为答案做<button class="term" data-term="sft">SFT</button>。内容与音色保持不变，模型更容易学到标签对应的语气变化，而不是靠台词内容猜情绪。</p></div><div><h4 data-i18n="label.27">推理</h4><p data-i18n="copy.p03">接口把 <code>joy</code> 转成 <code>[happy]</code>，其余情感也映射成对应标签，再交给同一个生成模型。设为 <code>none</code> 或 <code>neutral</code> 时不加标签；句首标签会覆盖整句设置。</p></div></div><p class="how-boundary" data-i18n="copy.p04">四种情感的命中率不同；发布评测中，开心为 <strong>76.67%</strong>，低于另外三类。</p></div></article>
+<noscript><div class="fallback-samples"><details><summary>stock--emo-joy</summary><audio aria-label="stock--emo-joy" controls="" preload="none" src="/blog/research/assets/audio/stock--emo-joy.mp3"></audio></details><details><summary>stock--emo-anger</summary><audio aria-label="stock--emo-anger" controls="" preload="none" src="/blog/research/assets/audio/stock--emo-anger.mp3"></audio></details><details><summary>stock--emo-sadness</summary><audio aria-label="stock--emo-sadness" controls="" preload="none" src="/blog/research/assets/audio/stock--emo-sadness.mp3"></audio></details><details><summary>stock--emo-surprise</summary><audio aria-label="stock--emo-surprise" controls="" preload="none" src="/blog/research/assets/audio/stock--emo-surprise.mp3"></audio></details><details><summary>iroha-v1--emo-joy</summary><audio aria-label="iroha-v1--emo-joy" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--emo-joy.mp3"></audio></details><details><summary>iroha-v1--emo-anger</summary><audio aria-label="iroha-v1--emo-anger" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--emo-anger.mp3"></audio></details><details><summary>iroha-v1--emo-sadness</summary><audio aria-label="iroha-v1--emo-sadness" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--emo-sadness.mp3"></audio></details><details><summary>iroha-v1--emo-surprise</summary><audio aria-label="iroha-v1--emo-surprise" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--emo-surprise.mp3"></audio></details><details><summary>iroha-v1--int-weakest</summary><audio aria-label="iroha-v1--int-weakest" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--int-weakest.mp3"></audio></details><details><summary>iroha-v1--int-weak</summary><audio aria-label="iroha-v1--int-weak" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--int-weak.mp3"></audio></details><details><summary>iroha-v1--int-default</summary><audio aria-label="iroha-v1--int-default" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--int-default.mp3"></audio></details><details><summary>iroha-v1--int-strong</summary><audio aria-label="iroha-v1--int-strong" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--int-strong.mp3"></audio></details><details><summary>iroha-v1--sigh-m3-1</summary><audio aria-label="iroha-v1--sigh-m3-1" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--sigh-m3-1.mp3"></audio></details><details><summary>iroha-v1--laugh-f2-3</summary><audio aria-label="iroha-v1--laugh-f2-3" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--laugh-f2-3.mp3"></audio></details><details><summary>iroha-v1--cry-m2-5</summary><audio aria-label="iroha-v1--cry-m2-5" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--cry-m2-5.mp3"></audio></details><details><summary>iroha-v1--trn-T1</summary><audio aria-label="iroha-v1--trn-T1" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--trn-T1.mp3"></audio></details><details><summary>iroha-v1--clone-f2</summary><audio aria-label="iroha-v1--clone-f2" controls="" preload="none" src="/blog/research/assets/audio/iroha-v1--clone-f2.mp3"></audio></details><details><summary>reference-f2</summary><audio aria-label="reference-f2" controls="" preload="none" src="/blog/research/assets/audio/reference-f2.mp3"></audio></details><details><summary>hf-whisper</summary><audio aria-label="hf-whisper" controls="" preload="none" src="/blog/research/assets/audio/hf-whisper.mp3"></audio></details><details><summary>hf-reading</summary><audio aria-label="hf-reading" controls="" preload="none" src="/blog/research/assets/audio/hf-reading.mp3"></audio></details></div></noscript></section>
+<section aria-labelledby="method-title" class="method-section section-shell" id="method">
+<div class="section-heading reveal"><div><h2 data-i18n="label.16" id="method-title">训练方法</h2></div></div>
+<p class="method-intro reveal" data-i18n="copy.p05">Iroha 基于 Fish S2-Pro。Slow model 和 fast model 依次预测<button class="term" data-term="audio-tokens">离散语音码</button>，由解码器还原音频。训练改动集中在配对数据、LoRA 微调和策略优化。</p>
+<div class="pipeline reveal"><div class="pipeline-top"><span data-i18n="label.28">输出：44.1 kHz</span></div><div class="pipeline-track"><div><span class="pipe-icon">Aa</span><strong data-i18n="label.29">文字 + 参考声音</strong><small data-i18n="label.30">指定内容与音色</small></div><span class="pipe-arrow">→</span><div><span class="pipe-icon orange">≈</span><strong><button class="term" data-term="slow">Slow model</button></strong><small data-i18n="label.31">先预测一帧的语义码</small></div><span class="pipe-arrow">→</span><div><span class="pipe-icon">≋</span><strong><button class="term" data-term="fast">Fast model</button></strong><small data-i18n="label.32">补齐 9 个残差码</small></div><span class="pipe-arrow">→</span><div><span class="pipe-icon waves-icon">▂▅▇▃▆</span><strong data-i18n="label.33">语音解码器</strong><small data-i18n="label.34">把离散码还原成声波</small></div></div></div>
+<div class="method-columns reveal">
+<article><span class="step-no">01</span><h3 data-i18n="label.35">配对数据</h3><p data-i18n="copy.p06">“开心地说”必须对应一段真的开心的录音；<code>[sigh]</code> 必须对应实际的叹气。先构造、筛选这些示范，才有明确的学习信号。换标签却复用同一段录音，教不会模型新的表达。</p></article>
+<article><span class="step-no">02</span><h3 data-i18n="label.36">监督微调</h3><p data-i18n="copy.p07"><button class="term" data-term="sft">监督微调</button>要求模型从输入预测目标语音。我们用<button class="term" data-term="lora">LoRA</button>更新两个 transformer 中的一小部分新增参数，再将它们合并进模型。情感、事件、耳语各自有不同的示范构造。</p></article>
+<article><span class="step-no">03</span><h3 data-i18n="label.37">策略优化</h3><p data-i18n="copy.p08"><button class="term" data-term="grpo">策略优化</button>让同一请求生成 8 个候选，用情感、文字正确性、音色与质量一起打分。训练提高相对较好候选的生成概率，同时用<button class="term" data-term="kl">KL 约束</button>限制模型偏离已经学会的表达。只更新 slow model 的 MLP，fast model 保留 SFT 参数。</p></article>
+</div>
+<details class="implementation-details"><summary data-i18n="label.38">训练配置 <span aria-hidden="true">+</span></summary><p data-i18n="copy.p09">SFT：两路 transformer 的 attention / MLP 使用 LoRA，rank 32、alpha 16，训练 2,700 步后续训 1,600 步。策略阶段：仅 slow MLP 使用 rsLoRA，rank 16、alpha 64；每次采样 12 个请求，每个 8 个候选，更新一次，KL 权重 0.02。读音控制发生在文本进入模型前；耳语 guidance 与强度 steering 发生在推理时。</p></details>
+</section>
+<section aria-labelledby="controls-title" class="controls-section" id="controls">
+<div class="section-shell">
+<div class="section-heading reveal"><div><h2 data-i18n="label.17" id="controls-title">控制功能</h2></div></div>
+<nav aria-label="七项功能" class="feature-index" data-i18n-aria-label="attr.7"><a data-i18n="label.39" href="#whole-emotion">01 整句情感</a><a data-i18n="label.40" href="#vocal-events">02 发声事件</a><a data-i18n="label.41" href="#transitions">03 情感转折</a><a data-i18n="label.42" href="#whisper">04 耳语</a><a data-i18n="label.43" href="#intensity">05 强度</a><a data-i18n="label.44" href="#reference">06 音色</a><a data-i18n="label.45" href="#readings">07 读音</a></nav>
+<div class="feature-featured reveal" data-feature="vocal-events" id="vocal-events">
+<div class="feature-explainer"><h3 data-i18n="label.46">发声事件</h3><p data-i18n="copy.p10">将 <code>[sigh]</code>、<code>[laugh]</code> 或 <code>[cry]</code> 放在目标位置，生成叹气、笑声或哭声。</p><div class="feature-explanation"><h4 data-i18n="label.47">训练数据</h4><p data-i18n="copy.p11">录音中的事件与文本标签配对，再和普通语音一起训练。原始笑声／叹气池有 4,637 条；其中一组哭声数据只有 179 条，重复采样 6 次，后续还补入筛选的生成音频与中文哭声。</p><h4 data-i18n="label.48">事件与位置奖励</h4><p data-i18n="copy.p12">笑声／叹气由事件识别器检测，并与标签附近的文本位置匹配；哭声用<button class="term" data-term="beats">BEATs 检测器</button>检查。漏掉要求的事件，或多出没有要求的笑声，都会受罚。单纯“语气很开心”不能算完成了 <code>[laugh]</code>。</p><h4 data-i18n="label.49">连续生成</h4><p data-i18n="copy.p13">标签随文本进入同一个语音生成器，事件和后面的语音连续产生。位置检查仍是近似的，当前结果没有证明能把哭声精确放到任意毫秒。</p></div></div>
+<div class="feature-demo"><div aria-label="发声事件" class="mini-tabs" data-i18n-aria-label="attr.8" role="tablist"><button aria-controls="event-panel" aria-selected="true" data-event="sigh" data-i18n="label.50" id="event-sigh" role="tab">叹气 <span aria-hidden="true">↘</span></button><button aria-controls="event-panel" aria-selected="false" data-event="laugh" data-i18n="label.51" id="event-laugh" role="tab" tabindex="-1">笑声 <span aria-hidden="true">☺</span></button><button aria-controls="event-panel" aria-selected="false" data-event="cry" data-i18n="label.52" id="event-cry" role="tab" tabindex="-1">哭声 <span aria-hidden="true">◡</span></button></div><div aria-labelledby="event-sigh" id="event-panel" role="tabpanel"><p class="demo-japanese" id="event-script" lang="ja"></p><p class="demo-translation translation-copy" id="event-translation"></p><div id="event-player"></div></div></div>
+</div>
+<div class="feature-pair reveal">
+<article class="feature-card" data-feature="transitions" id="transitions"><h3 data-i18n="label.53">情感转折</h3><p data-i18n="copy.p16">行内标签控制后续片段的情感。</p><div class="transition-script" lang="ja"><span>[happy]</span> やった、ついに完成したよ！<br/><span>[sad]</span> …でも、これを見せたかった人は、もういないんだ。</div><p class="demo-translation translation-copy" data-i18n="copy.p17">终于完成了！……可想让他看到的那个人，已经不在了。</p><div id="transition-player"></div><div class="feature-explanation"><h4 data-i18n="label.54">同说话人拼接</h4><p data-i18n="copy.p18">取同一个说话人的两段不同情感语音，把带标签的文字和语音码依次接起来，记录分界点，再用这个人的另一段录音作参考。最终混合数据含 5,000 条一般转折与 4,000 条更明确的非中性转折样本。</p><h4 data-i18n="label.55">分段奖励</h4><p data-i18n="copy.p19">训练时分别检查两部分的情感，衔接停顿超过 0.6 秒会被惩罚。使用时输入完整的带标签文本，一次生成整句语音。训练样本的拼接，是为了教会这种连续输出。</p><p class="how-boundary" data-i18n="copy.p20"><strong>尚未完成：</strong>当前发布包完整的分段评测。整段音频被判成“开心”，不能证明前开心、后难过都做对了。</p></div></article>
+<article class="feature-card whisper-card" data-feature="whisper" id="whisper"><h3 data-i18n="label.56">耳语</h3><p data-i18n="copy.p21">支持 <code>[whisper]</code> 标签或耳语参考音。</p><div aria-hidden="true" class="whisper-art"><i></i><i></i><i></i></div><p class="demo-translation" lang="ja">[whisper] ここだけの話だよ。<span class="translation-copy" data-i18n="label.57">这话只对你说。</span></p><div id="whisper-player"></div><div class="feature-explanation"><h4 data-i18n="label.58">双路输入</h4><p data-i18n="copy.p23">1,652 段耳语目标各自配两套输入：① 普通参考音 + <code>[whisper]</code>；② 耳语参考音 + 不带标签的文字。两套输入都预测同一段耳语，把“跟随参考中的发声方式”转成“也能听懂标签”。</p><h4>Guidance</h4><p data-i18n="copy.p24">每一步都计算“有耳语标签”和“去掉标签”两种预测，再用<button class="term" data-term="guidance">guidance</button>放大两者差异。默认强度为 1.5，非耳语时为 0；两路使用同一套权重，各自保留生成历史。</p><p class="how-boundary" data-i18n="copy.p25"><strong>代价：</strong>耳语更容易出现，但音色和预测质量也会下降。它不是把音量调低这么简单，也不是所有请求都能稳定成功。</p></div></article>
+</div>
+<div class="intensity-feature reveal" data-feature="intensity" id="intensity">
+<div><h3 data-i18n="label.59">强度控制 <span class="outline-badge">实验功能</span></h3><div class="feature-explanation"><h4 data-i18n="label.61">方向提取</h4><p data-i18n="copy.p26">对每种情感，用 500 条训练侧输入，分别记录带标签与不带标签时的<button class="term" data-term="hidden-state">隐状态</button>，求出并平均它们的差异。这个平均差异就是之后注入的方向。</p><h4 data-i18n="label.62">激活干预</h4><p data-i18n="copy.p27">在第 20、22 层按系数加入该方向，再保持原来的<button class="term" data-term="norm">激活范数</button>。四档系数为 −0.06、−0.03、0、0.045；0 就是普通的带情感标签生成。</p><p class="how-boundary" data-i18n="copy.p28"><strong>使用限制：</strong>非零强度只支持整句情感参数，不能同时带行内情感或事件标签。72 个上下文中只有 70.83% 完整按四档排序，且更强时音色可能偏移，因此仍是实验功能。</p></div></div>
+<div class="intensity-desk"><div class="intensity-top"><span data-i18n="label.63">生气强度</span><strong data-dynamic-copy="true" id="intensity-name">默认</strong></div><div aria-hidden="true" class="intensity-bars" id="intensity-bars"></div><label class="sr-only" data-i18n="label.64" for="intensity-range">情感强度</label><input aria-valuetext="默认" id="intensity-range" max="3" min="0" step="1" type="range" value="2"/><div class="range-labels"><span data-i18n="label.65">最弱</span><span data-i18n="label.66">较弱</span><span data-i18n="label.67">默认</span><span data-i18n="label.68">较强</span></div><p lang="ja">こんなことをして、良心が痛まないのか！</p><div id="intensity-player"></div></div>
+</div>
+<div class="feature-pair lower-features reveal">
+<article class="feature-card" data-feature="reference" id="reference"><h3 data-i18n="label.69">音色复刻</h3><div class="reference-row"><span data-i18n="label.70">参考音频</span><div id="reference-player"></div></div><div class="reference-row"><span data-i18n="label.71">生成音频</span><div id="clone-player"></div></div><p class="feature-footnote" data-i18n="copy.p30" lang="ja">参考：あなたたち？待って、それは誤解よ——<br/>生成：どうですか、冤罪だと言ったでしょう？</p><div class="feature-explanation"><h4 data-i18n="label.72">参考条件</h4><p data-i18n="copy.p31">参考录音先被压成语音码，与它的转写文字一起放入提示。新台词使用对应的说话人标记，模型据此延续该声音。界面里的预设音色只是选择不同参考录音，共用同一组模型权重。</p><h4 data-i18n="label.73">音色保持</h4><p data-i18n="copy.p32">SFT 保留每个目标的参考条件，并混入普通无标签语音；策略训练用<button class="term" data-term="sim">音色相似度 SIM</button>作奖励和筛选条件。耳语会改变发声特征，因此单独处理它的相似度门槛。</p><p class="how-boundary" data-i18n="copy.p33"><strong>准备参考时：</strong>转写应与录音一致。错误转写的鲁棒性尚未测量；强情感下音色相似度也会下降。</p></div></article>
+<article class="feature-card ruby-card" data-feature="readings" id="readings"><h3 data-i18n="label.74">读音控制</h3><div class="ruby-transform" lang="ja"><span>水神<em>[すいじん]</em>様</span><span>↓</span><span><strong>すいじん</strong>様</span></div><div id="reading-player"></div><div class="feature-explanation"><h4 data-i18n="label.75">文本预处理</h4><p data-i18n="copy.p34">解析器找到方括号前紧挨着的一串汉字，把它替换成括号里的假名。例子中，真正送进模型的文字已经是“すいじん様”，后面的生成流程不用改变。</p><h4 data-i18n="label.76">读音标签实验</h4><p data-i18n="copy.p35">学括号读法的候选没有达到要求，还损伤了耳语与叹气能力。显式改写在 264 条输出上达到 94.70% 读音命中，原版加同一前端也达到 93.90%。主要收益来自输入更明确。</p><p class="how-boundary" data-i18n="copy.p36"><strong>它解决的范围：</strong>指定假名读法。它不做自动分词，也不控制日语的高低音重音。</p></div></article>
+</div>
+</div>
+</section>
+<section aria-labelledby="results-title" class="results-section section-shell" id="results">
+<div class="section-heading reveal"><div><h2 data-i18n="label.77" id="results-title">评测结果</h2></div></div>
+<div class="results-highlight reveal"><div class="metric-main"><span class="eyebrow" data-i18n="label.78">EmoRuler 情感命中率</span><div class="big-metric"><span>6.04<small>%</small></span><i>↗</i><strong>89.17<small>%</small></strong></div><p data-i18n="copy.p37">原生路径，480 条匹配请求：Fish S2-Pro → Iroha</p></div><div class="metric-context"><div><span data-i18n="label.79">CER / 字错率 ↓</span><strong>5.63 → 5.62<span>%</span></strong></div><div><span data-i18n="label.80">SIM / 音色相似度 ↑</span><strong>0.685 → 0.643</strong></div></div></div>
+<div class="results-caveat reveal"><p data-i18n="copy.p38">该<button class="term" data-term="development">开发面板</button>反复用于模型选择，<strong>不是独立测试集</strong>。6 个评测音色中，4 个进入过 EmoRuler 训练；数据重叠审计有限。</p></div>
+<div class="table-heading reveal"><h3 data-i18n="label.81">发布路径对比</h3><button aria-label="评测设置" class="term info-button" data-i18n-aria-label="attr.9" data-term="evaluation-context" type="button"><span aria-hidden="true">i</span></button></div>
+<div aria-label="不同模型评测结果，窄屏可横向滚动" class="table-scroll reveal" data-i18n-aria-label="attr.10" role="region" tabindex="0"><table><thead><tr><th data-i18n="label.82" scope="col">模型</th><th scope="col"><button class="term" data-term="e2v">E2V</button> ↑<small data-i18n="label.83">情感命中 %</small></th><th scope="col"><button class="term" data-term="emoruler">EmoRuler</button> ↑<small data-i18n="label.83">情感命中 %</small></th><th scope="col"><button class="term" data-term="cer">CER</button> ↓<small data-i18n="label.84">字错率 %</small></th><th scope="col"><button class="term" data-term="sim">SIM</button> ↑<small data-i18n="label.85">音色相似度</small></th><th scope="col"><button class="term" data-term="utmos">UTMOS</button> ↑<small data-i18n="label.86">预测质量</small></th></tr></thead><tbody>
+<tr class="ours"><th scope="row">Iroha-TTS V1 </th><td>82.1</td><td>89.0</td><td>5.6</td><td>0.645</td><td>3.58</td></tr>
+<tr><th scope="row">Fish S2-Pro</th><td>17.9</td><td>6.0</td><td>5.6</td><td>0.685</td><td>3.51</td></tr>
+<tr><th scope="row">OmniVoice + GRPO</th><td>85.4</td><td>87.3</td><td>5.5</td><td>0.634</td><td>3.47</td></tr>
+<tr><th scope="row">Ming 0.5B + window GRPO</th><td>86.2</td><td>90.2</td><td>6.7</td><td>0.604</td><td>2.70</td></tr>
+<tr><th scope="row">Ming tiny + GRPO</th><td>85.0</td><td>84.2</td><td>5.5</td><td>0.638</td><td>2.97</td></tr>
+<tr><th scope="row">Qwen3-TTS + GRPO</th><td>85.2</td><td>89.0</td><td>7.1</td><td>0.632</td><td>3.41</td></tr>
+<tr><th scope="row">Fish Audio Drama 3</th><td>32.1</td><td>21.2</td><td>7.0</td><td>0.628</td><td>3.26</td></tr>
+<tr><th scope="row">IndexTTS 2.5</th><td>40.2</td><td>30.6</td><td>6.9</td><td>0.612</td><td>2.26</td></tr>
+<tr><th scope="row">Irodori-TTS v4-Large</th><td>30.8</td><td>20.6</td><td>6.0</td><td>0.649</td><td>3.03</td></tr>
+</tbody></table></div>
+<p class="source-note" data-i18n="copy.p39">表中 Iroha 为打包发布路径：EmoRuler 88.96%、E2V 82.08%、CER 5.58%，与上方原生路径分开报告。UTMOS 是模型预测，<strong>不是人工 <button class="term" data-term="mos">MOS</button></strong>。</p>
+<details class="additional-result"><summary data-i18n="label.87">无标签评测 <span aria-hidden="true">+</span></summary><p data-i18n="copy.p40">Chatterbox 只列无标签结果，不与上表的情感命中率混排：CER 6.5%、SIM 0.675、UTMOS 3.34。Iroha 的 120 条无标签发布评测为 CER 5.0%、SIM 0.685、UTMOS 3.63。</p></details>
+<div class="result-notes reveal"><article><h3 data-i18n="label.46">发声事件</h3><p data-i18n="copy.p41">发布评测中，叹气命中 56/60；哭声只有 16/60。笑声的本地判断为 26/60，外部判断为 44/59，评判口径本身就值得检查。</p></article><article><h3 data-i18n="label.88">耳语 guidance</h3><p data-i18n="copy.p42">60 条匹配耳语请求中，guidance 将命中从 4 条提高到 32 条，但 SIM 从 0.587 降到 0.494，UTMOS 从 2.80 降到 1.78。强度控制也有类似的音色代价。</p></article><article><h3 data-i18n="label.89">日语听者盲评</h3><p data-i18n="copy.p43">2026-10-30 的快照包含 5 位听者、75 个片段。Iroha 的情感贴合为 4.20、自然度 3.84、说话人一致 3.52（1–5 分）。完整表格与配对区间见<a href="/blog/zh/#human-evaluation">发布文章</a>。</p></article></div>
+</section>
+<section aria-labelledby="lessons-title" class="lessons-section section-shell" id="lessons">
+<div class="section-heading reveal"><div><h2 data-i18n="label.4" id="lessons-title">失败经验</h2></div></div>
+<div class="lessons-list reveal">
+<details open=""><summary><span class="lesson-index">01</span><h3 data-i18n="label.90">扩大未配对数据，收益有限</h3><span class="expand-sign">+</span></summary><div class="lesson-body"><p data-i18n="copy.p44">早期扩大未配对数据规模，对情感命中的帮助有限。配对样本固定内容与音色后，条件与声音之间的对应关系才更清楚。不同轮次的条件也有变化，不能把全部提升都归因于单一因素。</p></div></details>
+<details><summary><span class="lesson-index">02</span><h3 data-i18n="label.91">伪强度标签缺少声学差异</h3><span class="expand-sign">+</span></summary><div class="lesson-body"><p data-i18n="copy.p45">只改标签、复用音频的伪强度训练，无法提供真实的声学区别。隐状态方向控制的趋势更好，但严格扫描的 880 条输出中，没有正向设置通过全部质量门槛。</p></div></details>
+<details><summary><span class="lesson-index">03</span><h3 data-i18n="label.92">情感奖励诱发额外笑声</h3><span class="expand-sign">+</span></summary><div class="lesson-body"><p data-i18n="copy.p46">优化情感奖励时，模型可能找到更容易被识别的表达。一次检查中，开心样本里出现了 11.7% 的非预期笑声。奖励变高，并不代表台词演绎更符合请求。</p></div></details>
+<details><summary><span class="lesson-index">04</span><h3 data-i18n="label.93">普通质量门槛会误筛耳语</h3><span class="expand-sign">+</span></summary><div class="lesson-body"><p data-i18n="copy.p47">耳语会改变声学特征。沿用普通语音的相似度门槛，可能丢弃有效样本；强行提高耳语命中，又会让质量下降。事件检测器表现好，也不保证生成策略能学好对应事件。</p></div></details>
+<details><summary><span class="lesson-index">05</span><h3 data-i18n="label.94">显式读音改写更有效</h3><span class="expand-sign">+</span></summary><div class="lesson-body"><p data-i18n="copy.p48">在 264 条读音输出中，显式假名将命中率从 39.40% 提升到 94.70%；原版使用同一前端也达到 93.90%。这项提升应归功于明确的读音输入，而不是新的声学能力。</p></div></details>
+</div>
+</section>
+<section class="closing section-shell reveal"><h2 data-i18n="label.95">了解 Iroha-TTS-V1</h2><div class="closing-actions"><a class="button solid" data-i18n="label.5" data-release-link="" href="/blog/zh/">发布文章 ↗</a><a class="text-link" data-i18n="label.96" href="https://huggingface.co/IrohaStudio/Iroha-TTS" rel="noopener" target="_blank">模型 <span aria-hidden="true">↗</span></a></div></section>
+</main>
+<footer class="footer section-shell"><div><a aria-label="返回 Iroha Studios 主页" class="brand" data-home-link="" data-i18n-aria-label="attr.11" href="/ja/"><span class="logo-crop"><img alt="" class="generated-logo" height="52" src="/assets/iroha-logo.svg" width="52"/></span><span class="brand-wordmark"><img alt="Iroha" height="887" src="/blog/research/assets/iroha-wordmark-brush-v1.png" width="1774"/></span></a></div><div class="footer-meta"><a aria-label="Iroha-TTS-V1 发布文章" data-i18n="label.97" data-i18n-aria-label="attr.12" data-i18n-title="attr.13" data-release-link="" href="/blog/zh/" title="查看发布文章">发布文章 ↗</a><a data-i18n="label.98" href="#">回到开头 ↑</a></div></footer>
+<aside aria-label="Iroha Live2D 角色" class="vtuber-mini" data-i18n-aria-label="attr.14" hidden="" id="vtuber-mini">
+<button aria-label="收起角色" class="vtuber-mini-close" data-i18n-aria-label="attr.15" data-i18n-title="attr.15" id="vtuber-mini-close" title="收起角色" type="button">×</button>
+<canvas aria-hidden="true" id="sound-sculpture"></canvas>
+<div class="avatar-toolbar">
+<button aria-label="播放 Iroha 语音" id="avatar-audio" title="播放语音" type="button">▶</button>
+<button aria-label="暂停角色动效" aria-pressed="false" id="motion-toggle" title="暂停角色动效" type="button">Ⅱ</button>
+</div>
+</aside>
+<button aria-label="展开 Iroha 角色" data-i18n-aria-label="attr.16" data-i18n-title="attr.17" hidden="" id="avatar-restore" title="展开角色" type="button">Iroha</button>
+<div aria-live="polite" class="audio-toast" id="audio-toast" role="status"></div>
+
+</body>
+</html>

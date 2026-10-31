@@ -1,0 +1,143 @@
+/* Apple-native typography, with language-specific CJK and non-Apple fallbacks. */
+:root {
+  --font-en: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, system-ui, Iroha, sans-serif;
+  --font-zh: "SF Pro SC", "SF Pro Text", -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", "Noto Sans CJK SC", Iroha, sans-serif;
+  --font-ja: "SF Pro JP", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans CJK JP", Iroha, sans-serif;
+  --heading-en: "SF Pro Display", var(--font-en);
+  --heading-zh: "SF Pro SC", "SF Pro Display", var(--font-zh);
+  --heading-ja: "SF Pro JP", "SF Pro Display", var(--font-ja);
+  --font: var(--font-zh);
+  --mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --text-body: 1.125rem;
+  --text-secondary: 1rem;
+  --text-caption: .875rem;
+}
+:lang(en) { --font: var(--font-en); --font-heading: var(--heading-en); }
+:lang(zh) { --font: var(--font-zh); --font-heading: var(--heading-zh); }
+:lang(ja) { --font: var(--font-ja); --font-heading: var(--heading-ja); }
+[lang] { font-family: var(--font); }
+h1,h2,h3,h4 { font-family: var(--font-heading); }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { font-size: var(--text-body); font-weight: 400; line-height: 1.85; }
+button, input, select, textarea { font-family: var(--font); }
+
+/* Reading copy stays comfortably sized at every viewport. */
+.hero-description, .editorial-note p, .method-intro, .method-columns p,
+.how-body > p, .how-steps p, .feature-explainer p, .feature-explanation p,
+.feature-card > p:not(.feature-footnote):not(.demo-translation),
+.intensity-feature p, .result-notes p, .lesson-body p, .closing p {
+  font-size: var(--text-body);
+  line-height: 1.85;
+}
+.guide-item p, .section-heading > p, .implementation-details,
+.implementation-details p, .implementation-details summary,
+.results-caveat p, .additional-result p, .term-popup p {
+  font-size: var(--text-secondary);
+  line-height: 1.8;
+}
+.guide-item h2, .method-columns h3, .feature-card h3,
+.feature-explainer h3, .intensity-feature h3, .section-heading h2 {
+  letter-spacing: -.02em;
+}
+.how-steps h4, .feature-explanation h4, .lessons-list h3 {
+  font-size: var(--text-body);
+  font-weight: 600;
+}
+.how-boundary, .feature-footnote, .intensity-desk > .feature-footnote {
+  font-size: var(--text-caption) !important;
+  line-height: 1.85 !important;
+  color: #535e6b;
+}
+
+/* Labels use regular-width text; only code and numeric data use monospace. */
+.eyebrow, .small-label, .feature-kicker, .section-number, .guide-heading,
+.read-time, .byline > div span, .feature-index a, .sample-badge,
+.model-heading > span:last-child, .model-heading i, .desk-bottom,
+.demo-translation, .demo-result, .reference-row > span, .range-labels,
+.metric-main > p, .metric-context > div > span, .metric-context p,
+.source-note, .table-heading > span, .result-notes article > span,
+.lesson-body > span, .footer p, .footer-meta, .footer-meta > span,
+.term-popup-eyebrow, .term-popup-hint {
+  font-family: var(--font);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: normal;
+}
+.masthead nav a, .header-cta, .hero-actions .button,
+.hero-actions .text-link, .emotion-tabs button, .mini-tabs button {
+  font-size: .9375rem;
+  font-weight: 600;
+}
+.byline { flex-wrap: wrap; row-gap: 12px; }
+.byline > div { font-size: 1rem; }
+.read-time { max-width: none; }
+.guide-category, .guide-more, .guide-bottom > span, .reading-help p {
+  font-size: var(--text-caption);
+  line-height: 1.8;
+}
+.term-popup-hint, .term-popup-eyebrow, .guide-more,
+.reference-row > span, .lesson-body > span { color: #59636e; }
+.term-popup strong { font-size: 1.125rem; }
+.term-popup { max-height: calc(100dvh - 24px); overflow-y: auto; }
+.help-icon { font-family: var(--font); font-weight: 600; }
+.demo-japanese, .sample-prompt p { font-size: 1.25rem; line-height: 1.8; }
+.transition-script { font-size: 1.0625rem; line-height: 1.9; }
+.transition-script span, code, .prompt-tag { font-size: var(--text-caption); }
+.whisper-art > span { font-family: var(--font); font-weight: 500; }
+.whisper-card .demo-translation { font-size: var(--text-secondary); }
+.time-display { min-width: 6.5em; font-variant-numeric: tabular-nums; }
+.compact .time-display { min-width: 3.25em; }
+.model-heading { flex-wrap: wrap; font-size: 1rem; }
+.reference-row { flex-wrap: wrap; }
+.pipeline-track { flex-wrap: wrap; row-gap: 24px; }
+thead th, tbody th, td { font-size: .9375rem; line-height: 1.7; }
+thead th, thead small, tbody th { font-family: var(--font); }
+thead th { font-weight: 600; }
+thead small { font-size: var(--text-caption); font-weight: 500; }
+td { font-variant-numeric: tabular-nums; }
+.footer { flex-wrap: wrap; gap: 24px; }
+.footer p { max-width: 26em; }
+.footer-meta { min-width: 0; overflow-wrap: anywhere; }
+
+@media (max-width: 1080px) {
+  .masthead nav { display: none; }
+  .masthead .brand { margin-right: auto; }
+}
+@media (max-width: 760px) {
+  :root { --text-body: 1.0625rem; }
+  .hero-art { width: 100%; min-height: 185px; }
+  .art-caption { gap: 12px; padding-inline: 12px; }
+  .art-caption button { flex-shrink: 0; }
+  .cover-type small { max-width: 16em; line-height: 1.5; }
+  .byline-rule { display: none; }
+  .read-time { width: 100%; padding-left: 44px; }
+  .hero-actions { flex-wrap: wrap; gap: 20px; }
+  .hero-actions .button { gap: 24px; }
+  .header-cta { font-size: .875rem; }
+  .header-cta span { display: none; }
+  .emotion-tabs button { font-size: .9375rem; }
+  .feature-demo, .intensity-desk { padding: 20px 16px; }
+  .desk-bottom, .table-heading { flex-wrap: wrap; gap: 8px; }
+  .metric-context > div { flex-wrap: wrap; gap: 4px 12px; }
+  .lesson-body { margin-left: 0; }
+  .footer-meta { text-align: left; }
+}
+@media (max-width: 400px) {
+  .emotion-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Always-visible language choice; native select supports keyboard and touch. */
+.language-control{display:flex;align-items:center;gap:6px;padding:0 9px;border:1px solid #a7aeb8;border-radius:6px;background:#fff;color:#20272b;flex-shrink:0;min-height:44px}
+.language-control svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;pointer-events:none}
+.language-control select{min-height:42px;max-width:110px;padding:4px 3px;border:0;background:transparent;color:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.language-control:focus-within{outline:2px solid #528fb1;outline-offset:3px}
+.language-control select:focus-visible{outline:none}
+.masthead{gap:20px}
+html:lang(en) h1{font-size:clamp(34px,3.3vw,48px);letter-spacing:-.035em}
+html:lang(ja) h1{font-size:clamp(30px,3.1vw,45px);line-height:1.45}
+html:lang(ja) .translation-copy{display:none}
+.feature-card,.feature-explainer,.how-steps>div,.method-columns>article{min-width:0}
+@media(max-width:1199px){.masthead nav{display:none}.masthead .brand{margin-right:auto}}
+@media(max-width:760px){.masthead{gap:12px;padding-inline:20px}.masthead>.header-cta{display:none}.language-control{gap:4px;padding-inline:6px}.language-control select{font-size:15px}.masthead .brand-slash,.masthead .brand-edition{display:none}.hero-actions .button{gap:12px}.guide-item h2{overflow-wrap:anywhere}}
+@media(max-width:360px){.masthead{padding-inline:14px;gap:8px}.language-control svg{width:16px;height:16px}}
