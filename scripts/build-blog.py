@@ -37,7 +37,7 @@ def language_links(lang, prefix):
 
 
 def brand(lang):
-    return f'<a class="studio-brand" href="/{"en" if lang == "en" else "ja"}/" aria-label="Iroha Studios · {UI[lang]["home"]}"><img class="studio-mark" src="/assets/iroha-logo.svg" width="52" height="52" alt=""/><img class="studio-wordmark" src="/assets/iroha-wordmark-brush-v1.png" width="112" height="46" alt="Iroha"/><span>Studios</span></a>'
+    return f'<a class="studio-brand" href="/{lang}/" aria-label="Iroha Studios · {UI[lang]["home"]}"><img class="studio-mark" src="/assets/iroha-logo.svg" width="52" height="52" alt=""/><img class="studio-wordmark" src="/assets/iroha-wordmark-brush-v1.png" width="112" height="46" alt="Iroha"/><span>Studios</span></a>'
 
 
 def head_links(lang, prefix):
@@ -76,7 +76,7 @@ def build_release(lang):
     toc = ''.join(f'<a href="#{h["id"]}">{esc(h.get_text())}</a>' for h in headings)
     toc = toc.replace('<a href="#evaluation">', f'<a href="#listen">{u["listen"]}</a><a href="#evaluation">')
     tag = 'zh-CN' if lang == 'zh' else lang
-    home_lang = 'en' if lang == 'en' else 'ja'
+    home_lang = lang
     runtime = json.dumps(dict(emotions=u['emotions']), ensure_ascii=False).replace('<','\\u003c')
     page = f'''<!doctype html>
 <html lang="{tag}" data-locale="{lang}"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{esc(title)} · Iroha Studios</title><meta name="description" content="{esc(BeautifulSoup(lead,'html.parser').get_text())}"/><meta name="theme-color" content="#fafdff"/><meta property="og:title" content="{esc(title)}"/><meta property="og:type" content="article"/><meta property="og:url" content="{ORIGIN}/blog/{lang}/"/><meta property="og:image" content="{ORIGIN}/assets/sky-observatory.png"/>{head_links(lang,'/blog/')}<link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="{asset('/blog/blog.css')}"/><script defer src="{asset('/blog/release.js')}"></script><script id="blog-ui" type="application/json">{runtime}</script><noscript><style>.sample-tabs{{display:none}}</style></noscript></head>
@@ -114,7 +114,7 @@ def build_research(lang, catalog):
     for a in soup.select('a[href="/blog/"]'):
         a['href'] = f'/blog/{lang}/';a['data-release-link'] = ''
     for a in soup.select('a.brand'):
-        a['href'] = f'/{"en" if lang == "en" else "ja"}/';a['data-home-link']=''
+        a['href'] = f'/{lang}/';a['data-home-link']=''
     for e in soup.select('.brand-edition'): e.string='Studios'
     for e in soup.select('.brand-slash'): e.decompose()
     notice = soup.new_tag('p', attrs={'class':'research-snapshot'})

@@ -24,18 +24,6 @@
     "sha256": "8d02ec1859350a3579aac662bf2a1d9e3590cb0025d98851d7b133964461bcfd"
   },
   {
-    "file": "oregairu.mp4",
-    "sourceArchive": "oregairu-gal-20261028/web/oregairu-tts-web.mp4",
-    "bytes": 18715907,
-    "sha256": "08c3cf4634f3793f4390c8d0bfefabcc425251ec47005ec7342e0c1ec3ecdfde"
-  },
-  {
-    "file": "oregairu.jpg",
-    "sourceArchive": "oregairu-gal-20261028/web/poster.jpg",
-    "bytes": 186930,
-    "sha256": "3aea4fb05f3e52875ae708992e5034c3ecc51a8e6a19d502533513b794764616"
-  },
-  {
     "file": "after-school.mp4",
     "sourceArchive": "iroha-demo-video-20261027/web/houkago-melody-web.mp4",
     "bytes": 18065891,

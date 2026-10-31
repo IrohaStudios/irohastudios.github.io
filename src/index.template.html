@@ -16,6 +16,11 @@
     <link rel="canonical" href="{{locale.url}}" />
     <link
       rel="alternate"
+      hreflang="zh-CN"
+      href="https://irohastudios.github.io/zh/"
+    />
+    <link
+      rel="alternate"
       hreflang="ja"
       href="https://irohastudios.github.io/ja/"
     />
@@ -83,12 +88,14 @@
             name="language"
             aria-label="{{language.label}}"
           >
+            <option value="zh" lang="zh-CN" {{selected.zh}}>中文</option>
             <option value="ja" lang="ja" {{selected.ja}}>日本語</option>
             <option value="en" lang="en" {{selected.en}}>English</option>
           </select></label
         ><noscript
           ><nav class="language-fallback" aria-label="{{language.label}}">
-            <a href="/ja/" lang="ja">日本語</a
+            <a href="/zh/" lang="zh-CN">中文</a
+            ><a href="/ja/" lang="ja">日本語</a
             ><a href="/en/" lang="en">English</a>
           </nav></noscript
         >
@@ -137,7 +144,7 @@
         <div class="hero-wash" aria-hidden="true"></div>
         <canvas id="sky-particles" aria-hidden="true"></canvas>
         <div class="hero-content">
-          <h1 id="hero-title" class="hero-enter">{{hero.title}}</h1>
+          <h1 id="hero-title" class="hero-enter" lang="{{hero.language}}">{{hero.title}}</h1>
           <p class="hero-jp hero-enter" lang="en">{{hero.tagline}}</p>
           <p class="hero-description hero-enter">{{hero.description}}</p>
           <div class="hero-cta hero-enter">
@@ -476,50 +483,6 @@
                   preload="none"
                   width="1920"
                   height="1080"
-                  poster="/assets/demos/oregairu.jpg"
-                  src="/assets/demos/oregairu.mp4"
-                  aria-labelledby="demo-oregairu-title"
-                  aria-describedby="demo-oregairu-description"
-                ></video>
-                <button class="demo-start" type="button" hidden>
-                  <span class="sr-only"
-                    >{{demo.play}} — {{demo.oregairu.title}}</span
-                  >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M7 4 21 12 7 20z"></path>
-                  </svg>
-                </button>
-              </div>
-              <div class="demo-meta">
-                <span>{{demo.oregairu.label}}</span><span>3:12</span>
-              </div>
-              <h4 id="demo-oregairu-title">{{demo.oregairu.title}}</h4>
-              <p id="demo-oregairu-description">
-                {{demo.oregairu.description}}
-              </p>
-              <p class="demo-status" role="status" aria-live="polite"></p>
-              <a
-                class="demo-file"
-                href="/assets/demos/oregairu.mp4"
-                target="_blank"
-                rel="noopener noreferrer"
-                >{{demo.open}}
-                <span class="sr-only">— {{demo.oregairu.title}}</span
-                ><span aria-hidden="true">↗</span></a
-              >
-            </article>
-            <article class="demo-film">
-              <div class="demo-player">
-                <video
-                  controls
-                  playsinline
-                  preload="none"
-                  width="1920"
-                  height="1080"
                   poster="/assets/demos/after-school.jpg"
                   src="/assets/demos/after-school.mp4"
                   aria-labelledby="demo-school-title"
@@ -557,7 +520,6 @@
           </div>
           <details class="demo-credits">
             <summary>{{demo.credits}}</summary>
-            <p>{{demo.credits.original}}</p>
             <p>
               {{demo.credits.audio}}
               <a

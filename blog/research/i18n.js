@@ -31,7 +31,7 @@
     document.querySelector('meta[name="description"]').content = t('ui.pageDescription');
     document.querySelector('link[rel="canonical"]').href = `https://irohastudios.github.io/blog/research/${language}/`;
     document.querySelectorAll('[data-release-link]').forEach(link => { link.href = `/blog/${language}/`; });
-    document.querySelectorAll('[data-home-link]').forEach(link => { link.href = `/${language === 'en' ? 'en' : 'ja'}/`; });
+    document.querySelectorAll('[data-home-link]').forEach(link => { link.href = `/${language}/`; });
     const snapshot = document.querySelector('.research-snapshot');
     snapshot.textContent = snapshot.dataset[language];
     picker.value = language;

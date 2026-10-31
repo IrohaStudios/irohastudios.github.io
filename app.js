@@ -7,14 +7,13 @@
   const t = (key, values = {}) =>
     messages[key].replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
   const languageSelect = $("#language-select");
-  const languagePaths = { ja: "/ja/", en: "/en/" };
+  const languagePaths = { zh: "/zh/", ja: "/ja/", en: "/en/" };
   const pageLanguage = root.dataset.locale;
   window.addEventListener("pageshow", () => {
     languageSelect.value = pageLanguage;
   });
   const languageQuery = new URL(location.href).searchParams.get("lang");
-  // Old Chinese links now open the Japanese default without a redirect loop.
-  const requestedLanguage = languageQuery === "zh" ? "ja" : languageQuery;
+  const requestedLanguage = languageQuery;
   const isDefaultPage = ["/", "/index.html"].includes(location.pathname);
   const validLanguage = (value) => Object.hasOwn(languagePaths, value);
   let savedLanguage;

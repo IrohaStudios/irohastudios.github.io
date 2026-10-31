@@ -16,6 +16,11 @@
     <link rel="canonical" href="https://irohastudios.github.io/ja/" />
     <link
       rel="alternate"
+      hreflang="zh-CN"
+      href="https://irohastudios.github.io/zh/"
+    />
+    <link
+      rel="alternate"
       hreflang="ja"
       href="https://irohastudios.github.io/ja/"
     />
@@ -37,10 +42,10 @@
       as="image"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/style.css?v=f3a1369567ce" />
+    <link rel="stylesheet" href="/style.css?v=7e299c21c3c5" />
     <script defer="" src="/assets/vendor/gsap.min.js"></script>
     <script defer="" src="/assets/vendor/ScrollTrigger.min.js"></script>
-    <script defer="" src="/app.js?v=1a5f4a3c8f83"></script>
+    <script defer="" src="/app.js?v=4ee9fd88d189"></script>
     <noscript
       ><style>
         .motion-toggle,
@@ -83,12 +88,14 @@
             name="language"
             aria-label="言語を選択"
           >
+            <option value="zh" lang="zh-CN" >中文</option>
             <option value="ja" lang="ja" selected>日本語</option>
             <option value="en" lang="en" >English</option>
           </select></label
         ><noscript
           ><nav class="language-fallback" aria-label="言語を選択">
-            <a href="/ja/" lang="ja">日本語</a
+            <a href="/zh/" lang="zh-CN">中文</a
+            ><a href="/ja/" lang="ja">日本語</a
             ><a href="/en/" lang="en">English</a>
           </nav></noscript
         >
@@ -137,7 +144,7 @@
         <div class="hero-wash" aria-hidden="true"></div>
         <canvas id="sky-particles" aria-hidden="true"></canvas>
         <div class="hero-content">
-          <h1 id="hero-title" class="hero-enter">面白いものを、<br />つくろう。</h1>
+          <h1 id="hero-title" class="hero-enter" lang="ja">面白いものを、<br />つくろう。</h1>
           <p class="hero-jp hero-enter" lang="en">Made with curiosity.</p>
           <p class="hero-description hero-enter">AI とアニメ、ときどき浮かぶちょっと変わったアイデア。<br />小さなツール、技術の実験、まだ制作途中の作品たち。</p>
           <div class="hero-cta hero-enter">
@@ -476,50 +483,6 @@
                   preload="none"
                   width="1920"
                   height="1080"
-                  poster="/assets/demos/oregairu.jpg"
-                  src="/assets/demos/oregairu.mp4"
-                  aria-labelledby="demo-oregairu-title"
-                  aria-describedby="demo-oregairu-description"
-                ></video>
-                <button class="demo-start" type="button" hidden>
-                  <span class="sr-only"
-                    >動画を再生 — やはり俺の青春音声合成はまちがっている。</span
-                  >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M7 4 21 12 7 20z"></path>
-                  </svg>
-                </button>
-              </div>
-              <div class="demo-meta">
-                <span>ビジュアルノベル · 非公式ファン作品</span><span>3:12</span>
-              </div>
-              <h4 id="demo-oregairu-title">やはり俺の青春音声合成はまちがっている。</h4>
-              <p id="demo-oregairu-description">
-                「俺ガイル」を題材にした短編。Iroha-TTS の声で、放課後の会話をつくりました。
-              </p>
-              <p class="demo-status" role="status" aria-live="polite"></p>
-              <a
-                class="demo-file"
-                href="/assets/demos/oregairu.mp4"
-                target="_blank"
-                rel="noopener noreferrer"
-                >動画を別タブで開く
-                <span class="sr-only">— やはり俺の青春音声合成はまちがっている。</span
-                ><span aria-hidden="true">↗</span></a
-              >
-            </article>
-            <article class="demo-film">
-              <div class="demo-player">
-                <video
-                  controls
-                  playsinline
-                  preload="none"
-                  width="1920"
-                  height="1080"
                   poster="/assets/demos/after-school.jpg"
                   src="/assets/demos/after-school.mp4"
                   aria-labelledby="demo-school-title"
@@ -557,7 +520,6 @@
           </div>
           <details class="demo-credits">
             <summary>作品・音声のクレジット</summary>
-            <p>「俺ガイル」の短編は非公式ファン作品です。原作：渡航『やはり俺の青春ラブコメはまちがっている。』（小学館ガガガ文庫）。アニメ版声優の声は使用していません。</p>
             <p>
               3D 音声には TH Köln の KU100 近距離 HRIR を使用。ASMR と機能紹介の音声に畳み込み処理を適用しています。HRIR データのライセンス：
               <a

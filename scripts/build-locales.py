@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render Japanese and English pages, with Japanese at the default URL."""
+"""Render Chinese, Japanese and English pages, defaulting to Chinese."""
 import hashlib
 import html
 import json
@@ -8,7 +8,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://irohastudios.github.io'
-LOCALES = {'ja': ('ja', '/ja/'), 'en': ('en', '/en/')}
+LOCALES = {'zh': ('zh-CN', '/zh/'), 'ja': ('ja', '/ja/'), 'en': ('en', '/en/')}
 
 
 def build():
@@ -21,6 +21,7 @@ def build():
             raise ValueError(f'Translation keys differ for {locale}')
         values = {key: html.escape(value, quote=True).replace('\n', '<br />') for key, value in messages.items()}
         values.update({'locale.tag': tag, 'locale.code': locale, 'locale.url': ORIGIN + path})
+        values['hero.language'] = 'en' if locale == 'en' else 'ja'
         values.update({f'selected.{code}': 'selected' if code == locale else '' for code in LOCALES})
         values['hash.preview'] = hashlib.sha256((ROOT / 'assets/research-preview.png').read_bytes()).hexdigest()[:12]
         for ext in ['css', 'js']:
@@ -33,9 +34,9 @@ def build():
         destination.parent.mkdir(exist_ok=True)
         destination.write_text(page)
         print(f'Rendered {destination.relative_to(ROOT)} ({tag})')
-        if locale == 'ja':
+        if locale == 'zh':
             (ROOT / 'index.html').write_text(page)
-            print('Rendered index.html (ja, default)')
+            print('Rendered index.html (zh-CN, default; Japanese/English slogan)')
 
 
 if __name__ == '__main__':
