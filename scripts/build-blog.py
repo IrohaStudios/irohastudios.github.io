@@ -12,6 +12,8 @@ from markdown_it import MarkdownIt
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://irohastudios.github.io'
 LANGS = ('ja', 'en', 'zh')
+RELEASE = '/blog/irohattsv1/'
+SITE_COPY = json.loads((ROOT / 'src/locales.json').read_text())
 UI = {
     'ja': dict(home='ホーム', work='作品', journal='制作ノート', research='技術ノート', language='言語', skip='本文へ', release='リリース', toc='この記事の内容', listen='同じセリフを、聴き比べる', note='同じテキスト・同じ参照音声の日本語サンプルです。選んだ実例であり、成功率を示すものではありません。', emotions=['喜び', '怒り', '悲しみ', '驚き'], translation='そうね、ざっと千モラってとこかしら。', original='Fish S2-Pro · オリジナル', iroha='Iroha-TTS-V1', more='全20件のサンプルと実装を読む', download='Markdown を読む', next='7つの制御をどう実装したか', nextcopy='データと学習、音声デモ、評価条件、うまくいかなかった試み。', footer='AI、アニメーション、ときどき思いつくこと。', back='ページの先頭へ ↑', table='横にスクロールできるデータ表', audio='音声サンプル', error='音声を読み込めませんでした。下のリンクから音声を開いてください。', direct='音声ファイルを開く', source='2026年10月29日の技術ノート。聴取評価は10月30日の集計に更新しました。', snapshot='更新：2026年10月31日'),
     'en': dict(home='Home', work='Work', journal='Journal', research='Technical notes', language='Language', skip='Skip to article', release='Release', toc='In this article', listen='One line, different deliveries', note='Japanese samples with the same text and reference voice. These are selected examples, not a measure of success rate.', emotions=['Joy', 'Anger', 'Sadness', 'Surprise'], translation='Let’s see, roughly a thousand Mora, I suppose.', original='Fish S2-Pro · Original', iroha='Iroha-TTS-V1', more='Explore all 20 samples and the implementation', download='Read the Markdown', next='How we built Iroha’s seven controls', nextcopy='Data and training, audio demos, evaluation conditions, and attempts that didn’t work.', footer='AI, animation, and the occasional odd idea.', back='Back to top ↑', table='Horizontally scrollable data table', audio='Audio sample', error='The audio could not load. Use the link below to open the audio file.', direct='Open audio file', source='Technical notes from October 29, 2026, with the October 30 listening-study snapshot added.', snapshot='Updated October 31, 2026'),
@@ -55,6 +57,32 @@ def demo(lang):
         src = asset(f'/blog/research/assets/audio/{key}--emo-joy.mp3')
         players += f'<div class="release-player"><h3>{label}</h3><audio controls preload="none" src="{src}" data-model="{key}" aria-label="{label} · {u["emotions"][0]}"></audio><a class="audio-file" href="{src}">{u["direct"]} ↗</a></div>'
     return f'<section class="release-demo" id="listen" aria-labelledby="listen-title"><h2 id="listen-title">{u["listen"]}</h2><p>{u["note"]}</p><div class="sample-tabs" role="tablist" aria-label="{u["audio"]}">{tabs}</div><div id="sample-panel" role="tabpanel" aria-labelledby="sample-joy"><p class="sample-line" lang="ja"><code id="sample-tag">[happy]</code> そうね、ざっと千モラってとこかしら。</p>{"" if lang == "ja" else "<p class=\"sample-translation\">"+u["translation"]+"</p>"}<div class="release-players">{players}</div></div><p class="audio-error" role="status" hidden>{u["error"]}</p><a class="more-samples" href="/blog/research/{lang}/#listen">{u["more"]} →</a></section>'
+
+
+def video_demos(lang):
+    m = SITE_COPY[lang]
+    cards = []
+    for key, filename, duration in [('asmr', 'asmr-3d', '3:17'), ('intro', 'feature-tour', '4:06')]:
+        title = esc(m[f'demo.{key}.title'])
+        src = f'/assets/demos/{filename}.mp4'
+        cards.append(f'<article class="release-film" id="demo-{key}"><video controls playsinline preload="none" width="1920" height="1080" poster="/assets/demos/{filename}.jpg" src="{src}" aria-labelledby="demo-{key}-title" aria-describedby="demo-{key}-description"></video><div class="film-meta"><span>{esc(m[f"demo.{key}.label"])}</span><span>{duration}</span></div><h3 id="demo-{key}-title">{title}</h3><p id="demo-{key}-description">{esc(m[f"demo.{key}.description"])}</p><a href="{src}" target="_blank" rel="noopener noreferrer">{esc(m["demo.open"])} ↗</a></article>')
+    return f'<section class="release-videos" id="demos" aria-labelledby="demo-heading"><h2 id="demo-heading">{esc(m["demo.title"])}</h2><div class="release-film-grid">{"".join(cards)}</div><details class="film-credits"><summary>{esc(m["demo.credits"])}</summary><p>{esc(m["demo.credits.audio"])} <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p></details></section>'
+
+
+def build_journal(lang):
+    u = UI[lang]
+    article = BeautifulSoup((ROOT / f'blog/irohattsv1/{lang}/index.html').read_text(), 'html.parser')
+    title = article.h1.get_text()
+    lead = article.select_one('.article-lead').get_text()
+    byline = article.select_one('.article-byline').get_text()
+    link = f'{RELEASE}{lang}/'
+    tag = 'zh-CN' if lang == 'zh' else lang
+    page = f'''<!doctype html>
+<html lang="{tag}"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{u['journal']} · Iroha Studios</title>{head_links(lang,'/blog/')}<link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="{asset('/blog/blog.css')}"/></head><body id="top"><header class="studio-header">{brand(lang)}<nav class="studio-nav" aria-label="{u['journal']}"><a href="/{lang}/#work">{u['work']}</a><a class="current" href="/blog/{lang}/" aria-current="page">{u['journal']}</a><a href="/blog/research/{lang}/">{u['research']}</a></nav><nav class="blog-languages" aria-label="{u['language']}">{language_links(lang,'/blog/')}</nav></header><main class="journal-index"><h1>{u['journal']}</h1><article class="journal-entry"><a class="journal-image" href="{link}" aria-label="{esc(title)}"><img src="/assets/sky-observatory.png" width="1536" height="1024" alt=""/></a><div><p class="article-eyebrow">{u['release']}</p><h2><a href="{link}">{esc(title)}</a></h2><p class="article-byline">{esc(byline)}</p><p>{esc(lead)}</p><a href="{link}">{esc(SITE_COPY[lang]['research.read'])} →</a></div></article></main><footer class="studio-footer">{brand(lang)}<p>{u['footer']}</p><a href="#top">{u['back']}</a></footer><script>function redirectLegacySection(){{if(["release","motivation","evaluation","uses","getting-started","next","listen","human-evaluation","automatic-evaluation","other-results","demos"].includes(location.hash.slice(1)))location.replace({json.dumps(link)}+location.hash);}}redirectLegacySection();addEventListener("hashchange",redirectLegacySection);</script></body></html>'''
+    destination = ROOT / f'blog/{lang}/index.html'
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(page)
+    if lang == 'ja': (ROOT / 'blog/index.html').write_text(page)
 
 
 def model_mark(model):
@@ -121,7 +149,7 @@ def build_release(lang):
         mos.append(node.extract())
         if following is not None and following.name == 'h3': break
         node = following
-    toc = ''.join(f'<a href="#{h["id"]}">{esc(h.get_text())}</a>' for h in headings)
+    toc = f'<a href="#demos">{esc(SITE_COPY[lang]["demo.title"])}</a>' + ''.join(f'<a href="#{h["id"]}">{esc(h.get_text())}</a>' for h in headings)
     toc = toc.replace('<a href="#evaluation">', f'<a href="#listen">{u["listen"]}</a><a href="#evaluation">')
     evaluation_link = f'<a href="#evaluation">{esc(headings[2].get_text())}</a>'
     toc = toc.replace(evaluation_link, evaluation_link + f'<a href="#human-evaluation">{esc(mos_heading.get_text())}</a>')
@@ -130,15 +158,15 @@ def build_release(lang):
     home_lang = lang
     runtime = json.dumps(dict(emotions=u['emotions'], audio={model:{emotion:asset(f'/blog/research/assets/audio/{model}--emo-{emotion}.mp3') for emotion in ['joy','anger','sadness','surprise']} for model in ['stock','iroha-v1']}), ensure_ascii=False).replace('<','\\u003c')
     page = f'''<!doctype html>
-<html lang="{tag}" data-locale="{lang}"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{esc(title)} · Iroha Studios</title><meta name="description" content="{esc(BeautifulSoup(lead,'html.parser').get_text())}"/><meta name="theme-color" content="#fafdff"/><meta property="og:title" content="{esc(title)}"/><meta property="og:type" content="article"/><meta property="og:url" content="{ORIGIN}/blog/{lang}/"/><meta property="og:image" content="{ORIGIN}/assets/sky-observatory.png"/>{head_links(lang,'/blog/')}<link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="{asset('/blog/blog.css')}"/><link rel="stylesheet" href="{asset('/blog/mos.css')}"/><script defer src="{asset('/blog/release.js')}"></script><script id="blog-ui" type="application/json">{runtime}</script><noscript><style>.sample-tabs{{display:none}}</style></noscript></head>
-<body id="top"><a class="blog-skip" href="#article">{u['skip']}</a><header class="studio-header">{brand(lang)}<nav class="studio-nav" aria-label="{u['journal']}"><a href="/{home_lang}/#work">{u['work']}</a><a class="current" href="/blog/{lang}/" aria-current="page">{u['journal']}</a><a href="/blog/research/{lang}/">{u['research']}</a></nav><nav class="blog-languages" aria-label="{u['language']}">{language_links(lang,'/blog/')}</nav></header>
+<html lang="{tag}" data-locale="{lang}"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{esc(title)} · Iroha Studios</title><meta name="description" content="{esc(BeautifulSoup(lead,'html.parser').get_text())}"/><meta name="theme-color" content="#fafdff"/><meta property="og:title" content="{esc(title)}"/><meta property="og:type" content="article"/><meta property="og:url" content="{ORIGIN}{RELEASE}{lang}/"/><meta property="og:image" content="{ORIGIN}/assets/sky-observatory.png"/>{head_links(lang,RELEASE)}<link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="{asset('/blog/blog.css')}"/><link rel="stylesheet" href="{asset('/blog/mos.css')}"/><script defer src="{asset('/blog/release.js')}"></script><script id="blog-ui" type="application/json">{runtime}</script><noscript><style>.sample-tabs{{display:none}}</style></noscript></head>
+<body id="top"><a class="blog-skip" href="#article">{u['skip']}</a><header class="studio-header">{brand(lang)}<nav class="studio-nav" aria-label="{u['journal']}"><a href="/{home_lang}/#work">{u['work']}</a><a class="current" href="/blog/{lang}/" aria-current="page">{u['journal']}</a><a href="/blog/research/{lang}/">{u['research']}</a></nav><nav class="blog-languages" aria-label="{u['language']}">{language_links(lang,RELEASE)}</nav></header>
 <main><header class="article-hero"><div class="article-hero-inner"><a class="article-eyebrow" href="/blog/{lang}/">{u['journal']} <span>/</span> {u['release']}</a><h1>{esc(title)}</h1><div class="article-lead">{lead}</div><div class="article-byline">{byline}</div><div class="article-actions">{links}</div></div></header>
-<div class="reading-layout">{mobile_toc}<article id="article" class="release-prose">{soup}<div class="article-source"><a href="/blog/content/iroha-tts-v1-{lang}.md">{u['download']} ↓</a></div><a class="next-article" href="/blog/research/{lang}/"><span>{u['research']} ↗</span><h2>{u['next']}</h2><p>{u['nextcopy']}</p></a></article><aside class="article-toc"><nav aria-label="{u['toc']}"><p>{u['toc']}</p>{toc}</nav></aside></div></main>
+{video_demos(lang)}<div class="reading-layout">{mobile_toc}<article id="article" class="release-prose">{soup}<div class="article-source"><a href="/blog/content/iroha-tts-v1-{lang}.md">{u['download']} ↓</a></div><a class="next-article" href="/blog/research/{lang}/"><span>{u['research']} ↗</span><h2>{u['next']}</h2><p>{u['nextcopy']}</p></a></article><aside class="article-toc"><nav aria-label="{u['toc']}"><p>{u['toc']}</p>{toc}</nav></aside></div></main>
 <footer class="studio-footer">{brand(lang)}<p>{u['footer']}</p><a href="#top">{u['back']}</a></footer></body></html>'''
-    destination = ROOT / f'blog/{lang}/index.html'
-    destination.parent.mkdir(exist_ok=True)
+    destination = ROOT / f'blog/irohattsv1/{lang}/index.html'
+    destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(page)
-    if lang == 'ja': (ROOT / 'blog/index.html').write_text(page)
+    if lang == 'ja': (ROOT / 'blog/irohattsv1/index.html').write_text(page)
     return mos_heading.get_text(), ''.join(str(node) for node in mos.contents if node is not mos_heading)
 
 
@@ -167,7 +195,7 @@ def build_research(lang, catalog):
         option.attrs.pop('selected',None)
         if option['value'] == lang: option['selected']=''
     for a in soup.select('a[href="/blog/"]'):
-        a['href'] = f'/blog/{lang}/';a['data-release-link'] = ''
+        a['href'] = f'{RELEASE}{lang}/';a['data-release-link'] = ''
     for a in soup.select('a.brand'):
         a['href'] = f'/{lang}/';a['data-home-link']=''
     for e in soup.select('.brand-edition'): e.string='Studios'
@@ -203,6 +231,7 @@ def main():
     (ROOT/'blog/research/locales.js').write_text("'use strict';\nwindow.IrohaMessages = "+json.dumps(catalog,ensure_ascii=False,indent=2)+';\n'+glossary)
     for lang in LANGS:
         build_research(lang,catalog)
+        build_journal(lang)
         print(f'Rendered {lang}: release article + complete research notes')
 
 

@@ -26,7 +26,7 @@ GitHub Pages 使用仓库 `IrohaStudios/irohastudios.github.io` 的 `main` 分�
 - [三套规则检查](doc/quality-review.md)：Humanizer-zh、Impeccable、Taste Skill 的修改、测试及保留项。
 - [素材来源](assets/README.md)：原创插画及既有博客资产。
 
-博客已完整迁入本站：`/blog/` 为新版发布文章，`/blog/research/` 为完整技术笔记。两页默认日文，各有 `/ja/`、`/en/`、`/zh/` 静态版本；主页也提供中日英，中文版本的首屏标语保留日英原文。主页中的文章、试听、方法、控制和失败经验入口均使用站内链接。原站仅作为来源记录，不再承担本文资源加载。
+博客已完整迁入本站：`/blog/` 为日志列表，`/blog/irohattsv1/` 为 Iroha-TTS-V1 独立发布文章，`/blog/research/` 为完整技术笔记。页面默认日文，各有 `/ja/`、`/en/`、`/zh/` 静态版本；主页也提供中日英，中文版本的首屏标语保留日英原文。主页中的文章、试听、方法、控制和失败经验入口均使用站内链接。原站仅作为来源记录，不再承担本文资源加载。
 
 发布文章的 Markdown 位于 `blog/content/iroha-tts-v1-{ja,en,zh}.md`。修改文章后，使用 Python 3.12+，先安装 `scripts/requirements-blog.txt` 中的构建依赖，再运行 `python scripts/build-blog.py`。页面运行时无需这些依赖。技术笔记的模板和三语文本位于 `src/blog/`；样式、交互、全部 20 段 MP3、Live2D 模型和口型轨迹位于 `blog/research/`。不要直接修改生成的 HTML。
 

@@ -4,7 +4,7 @@
 
 Iroha Studios · 2026年10月31日
 
-[音声を聴く](#listen) · [モデルリポジトリ](https://huggingface.co/IrohaStudio/Iroha-TTS) · [技術ノート](/blog/research/ja/)
+[デモ映像](#demos) · [音声を聴く](#listen) · [モデルリポジトリ](https://huggingface.co/IrohaStudio/Iroha-TTS) · [技術ノート](/blog/research/ja/)
 
 ---
 

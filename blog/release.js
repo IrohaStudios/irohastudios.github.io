@@ -32,8 +32,11 @@
       if (next !== undefined) { event.preventDefault(); select(tabs[next],true); }
     });
   });
+  const media = [...players, ...document.querySelectorAll('.release-film video')];
+  media.forEach(player => {
+    player.addEventListener('play', () => media.forEach(other => { if (other !== player) other.pause(); }));
+  });
   players.forEach(player => {
-    player.addEventListener('play', () => players.forEach(other => { if (other !== player) other.pause(); }));
     player.addEventListener('error', () => { error.hidden = false; });
     player.addEventListener('playing', () => { error.hidden = true; });
   });

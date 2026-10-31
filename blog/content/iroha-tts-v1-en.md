@@ -4,7 +4,7 @@
 
 Iroha Studios · October 31, 2026
 
-[Listen](#listen) · [Model repository](https://huggingface.co/IrohaStudio/Iroha-TTS) · [Technical notes](/blog/research/en/)
+[Demo videos](#demos) · [Listen](#listen) · [Model repository](https://huggingface.co/IrohaStudio/Iroha-TTS) · [Technical notes](/blog/research/en/)
 
 ---
 
