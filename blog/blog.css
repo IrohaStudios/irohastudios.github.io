@@ -67,3 +67,5 @@
 }
 
 .studio-wordmark + span{margin-inline-start:-20px}
+
+@media(min-width:1101px){.studio-wordmark + span{margin-inline-start:-30px}}

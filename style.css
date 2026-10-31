@@ -1896,3 +1896,5 @@ html:lang(ja) .voice-translation {
     padding-inline: max(28px, env(safe-area-inset-left)) max(28px, env(safe-area-inset-right));
   }
 }
+
+@media(min-width:1101px){.brand > .brand-studios{margin-inline-start:-30px}}

@@ -95,3 +95,5 @@ html{font-synthesis:none}body{background:var(--paper);font-weight:500}h1,h2,h3,h
 .brand-edition .studios-wordmark{display:block;width:112px;height:46px;object-fit:contain;mix-blend-mode:multiply}
 
 .brand-wordmark + .brand-edition{margin-inline-start:-20px}
+
+@media(min-width:1101px){.brand-wordmark + .brand-edition{margin-inline-start:-30px}}
