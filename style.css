@@ -1880,3 +1880,7 @@ html:lang(ja) .voice-translation {
   .motion-toggle { width: 44px; padding: 0; justify-content: center; }
   #motion-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 }
+
+/* Companion brush lettering for the existing Iroha wordmark. */
+.brand > .brand-studios{padding-top:0;line-height:0}
+.brand .studios-wordmark{display:block;width:112px;height:46px;object-fit:contain;mix-blend-mode:multiply}

@@ -91,3 +91,5 @@ html{font-synthesis:none}body{background:var(--paper);font-weight:500}h1,h2,h3,h
   .mos-results{margin-top:36px}
   .supplementary-results{grid-template-columns:1fr}
 }
+
+.brand-edition .studios-wordmark{display:block;width:112px;height:46px;object-fit:contain;mix-blend-mode:multiply}

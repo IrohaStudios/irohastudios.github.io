@@ -39,7 +39,7 @@ def language_links(lang, prefix):
 
 
 def brand(lang):
-    return f'<a class="studio-brand" href="/{lang}/" aria-label="Iroha Studios · {UI[lang]["home"]}"><img class="studio-mark" src="/assets/iroha-logo.svg" width="52" height="52" alt=""/><img class="studio-wordmark" src="/assets/iroha-wordmark-brush-v1.png" width="112" height="46" alt="Iroha"/><span>Studios</span></a>'
+    return f'<a class="studio-brand" href="/{lang}/" aria-label="Iroha Studios · {UI[lang]["home"]}"><img class="studio-mark" src="/assets/iroha-logo.svg" width="52" height="52" alt=""/><img class="studio-wordmark" src="/assets/iroha-wordmark-brush-v1.png" width="112" height="46" alt="Iroha"/><span><img class="studios-wordmark" src="/assets/studios-wordmark-brush-v1.png" width="112" height="46" alt="Studios"/></span></a>'
 
 
 def head_links(lang, prefix):
@@ -209,7 +209,9 @@ def build_research(lang, catalog):
         a['href'] = f'{RELEASE}{lang}/';a['data-release-link'] = ''
     for a in soup.select('a.brand'):
         a['href'] = f'/{lang}/';a['data-home-link']=''
-    for e in soup.select('.brand-edition'): e.string='Studios'
+    for e in soup.select('.brand-edition'):
+        e.clear()
+        e.append(BeautifulSoup('<img class="studios-wordmark" src="/assets/studios-wordmark-brush-v1.png" width="112" height="46" alt="Studios"/>', 'html.parser'))
     for e in soup.select('.brand-slash'): e.decompose()
     notice = soup.new_tag('p', attrs={'class':'research-snapshot'})
     for code in LANGS: notice[f'data-{code}'] = UI[code]['source']

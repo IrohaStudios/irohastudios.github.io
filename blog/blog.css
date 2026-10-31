@@ -54,3 +54,5 @@
 @media(max-width:540px){.release-resources{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;max-width:340px}.article-actions .resource-bar{width:100%;min-height:76px}.resource-label strong{font-size:17px}.article-actions .release-secondary-links{gap:8px;font-size:13px}}
 
 @media(max-width:540px){.listening-mascot{width:76px;height:76px;left:6px}}
+
+.studio-brand .studios-wordmark{display:block;width:112px;height:46px;object-fit:contain;mix-blend-mode:multiply}
