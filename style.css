@@ -1898,3 +1898,9 @@ html:lang(ja) .voice-translation {
 }
 
 @media(min-width:1101px){.brand > .brand-studios{margin-inline-start:-30px}}
+
+.language-control{position:relative;display:inline-flex;align-items:center}
+.language-control .language-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:18px;height:18px;pointer-events:none;color:var(--ink)}
+.language-control select{width:124px;padding-left:34px}
+@media(max-width:600px){.language-control select{width:116px}}
+@media(max-width:380px){.header{gap:8px}.header-actions{gap:4px}}
