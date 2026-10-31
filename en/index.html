@@ -37,10 +37,10 @@
       as="image"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/style.css?v=3c3ca5c1b1ea" />
+    <link rel="stylesheet" href="/style.css?v=f3a1369567ce" />
     <script defer="" src="/assets/vendor/gsap.min.js"></script>
     <script defer="" src="/assets/vendor/ScrollTrigger.min.js"></script>
-    <script defer="" src="/app.js?v=28c3f5bacb62"></script>
+    <script defer="" src="/app.js?v=1a5f4a3c8f83"></script>
     <noscript
       ><style>
         .motion-toggle,
@@ -210,6 +210,9 @@
       <section class="work section wrap" id="work" aria-labelledby="work-title">
         <div class="section-heading reveal">
           <div><h2 id="work-title">Work and experiments</h2></div>
+          <a class="text-link" href="#demos"
+            >Watch the demos <span aria-hidden="true">↓</span></a
+          >
         </div>
         <div class="project-panel reveal">
           <div class="project-copy">
@@ -382,6 +385,196 @@
             >the research notes ↗</a
           >.
         </p>
+        <section class="demo-showcase" id="demos" aria-labelledby="demo-title">
+          <div class="demo-heading">
+            <h3 id="demo-title">Demo videos</h3>
+            <p>Short stories and a feature tour, voiced with Iroha-TTS. Japanese audio with Japanese and Chinese subtitles.</p>
+          </div>
+          <div class="demo-grid">
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/asmr-3d.jpg"
+                  src="/assets/demos/asmr-3d.mp4"
+                  aria-labelledby="demo-asmr-title"
+                  aria-describedby="demo-asmr-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >Play video — Hey… lend me your ear?</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>ASMR · Binaural 3D</span><span>3:17</span>
+              </div>
+              <h4 id="demo-asmr-title">Hey… lend me your ear?</h4>
+              <p id="demo-asmr-description">55 whispered lines, best heard with headphones. Direction and distance are added through audio post-processing.</p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/asmr-3d.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open video in a new tab <span class="sr-only">— Hey… lend me your ear?</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/feature-tour.jpg"
+                  src="/assets/demos/feature-tour.mp4"
+                  aria-labelledby="demo-intro-title"
+                  aria-describedby="demo-intro-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >Play video — What Iroha-TTS can do</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>Feature tour · Preview</span><span>4:06</span>
+              </div>
+              <h4 id="demo-intro-title">What Iroha-TTS can do</h4>
+              <p id="demo-intro-description">Emotion, intensity, laughter, whispering, and pronunciation, with side-by-side comparisons of the same lines.</p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/feature-tour.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open video in a new tab
+                <span class="sr-only">— What Iroha-TTS can do</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/oregairu.jpg"
+                  src="/assets/demos/oregairu.mp4"
+                  aria-labelledby="demo-oregairu-title"
+                  aria-describedby="demo-oregairu-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >Play video — My Youthful Speech Synthesis Is Wrong, As I Expected.</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>Visual novel · Unofficial fan work</span><span>3:12</span>
+              </div>
+              <h4 id="demo-oregairu-title">My Youthful Speech Synthesis Is Wrong, As I Expected.</h4>
+              <p id="demo-oregairu-description">
+                An Oregairu-inspired short, bringing after-school conversations to life with Iroha-TTS voices.
+              </p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/oregairu.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open video in a new tab
+                <span class="sr-only">— My Youthful Speech Synthesis Is Wrong, As I Expected.</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/after-school.jpg"
+                  src="/assets/demos/after-school.mp4"
+                  aria-labelledby="demo-school-title"
+                  aria-describedby="demo-school-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >Play video — After-School Melody</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>Visual novel · Original short</span><span>2:57</span>
+              </div>
+              <h4 id="demo-school-title">After-School Melody</h4>
+              <p id="demo-school-description">Three characters, changing emotions, and a short after-school story. All dialogue is generated with Iroha-TTS.</p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/after-school.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open video in a new tab
+                <span class="sr-only">— After-School Melody</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+          </div>
+          <details class="demo-credits">
+            <summary>Story and audio credits</summary>
+            <p>The Oregairu short is an unofficial fan work based on Wataru Watari’s My Youth Romantic Comedy Is Wrong, As I Expected. (Shogakukan, Gagaga Bunko). It does not use the anime cast’s voices.</p>
+            <p>
+              3D audio uses TH Köln’s KU100 near-field HRIRs, applied through convolution to the ASMR and feature-tour audio. HRIR data license:
+              <a
+                href="https://creativecommons.org/licenses/by-sa/3.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >CC BY-SA 3.0</a
+              >.
+            </p>
+          </details>
+        </section>
       </section>
       <section
         class="research section"
@@ -659,7 +852,7 @@
       ><span id="motion-label">Motion ON</span>
     </button>
     <script type="application/json" id="ui-messages">
-      {"menu.open": "Open menu", "menu.close": "Close menu", "audio.label": "Iroha-TTS emotion samples", "audio.heading": "Listen by emotion", "audio.sampleLanguage": "Japanese samples", "audio.choose": "Choose an emotion", "emotion.joy": "Joy", "emotion.anger": "Anger", "emotion.sadness": "Sadness", "emotion.surprise": "Surprise", "audio.translation": "See? I told you I was falsely accused.", "audio.initialLabel": "Play the joy sample", "audio.playLabel": "Play the {emotion} sample", "audio.pauseLabel": "Pause the {emotion} sample", "audio.listen": "Play this line", "audio.playing": "Playing", "audio.progress": "Audio playback position", "audio.notPlayed": "Not played yet", "audio.time": "{elapsed} of {duration}", "audio.more": "More samples", "audio.noscriptBefore": "Hear all samples on the ", "audio.noscriptAfter": ".", "audio.unavailable": "Samples are unavailable. Open “More samples” below to listen on the research blog.", "audio.loading": "Loading audio…", "audio.playError": "Couldn’t play the sample. Try again or open “More samples” below.", "audio.loadError": "Couldn’t load the audio. Try again or open “More samples” below.", "motion.enable": "Enable page motion", "motion.disable": "Disable page motion", "motion.on": "Motion ON", "motion.off": "Motion OFF", "motion.reduced": "Reduced motion"}
+      {"menu.open": "Open menu", "menu.close": "Close menu", "audio.label": "Iroha-TTS emotion samples", "audio.heading": "Listen by emotion", "audio.sampleLanguage": "Japanese samples", "audio.choose": "Choose an emotion", "emotion.joy": "Joy", "emotion.anger": "Anger", "emotion.sadness": "Sadness", "emotion.surprise": "Surprise", "audio.translation": "See? I told you I was falsely accused.", "audio.initialLabel": "Play the joy sample", "audio.playLabel": "Play the {emotion} sample", "audio.pauseLabel": "Pause the {emotion} sample", "audio.listen": "Play this line", "audio.playing": "Playing", "audio.progress": "Audio playback position", "audio.notPlayed": "Not played yet", "audio.time": "{elapsed} of {duration}", "audio.more": "More samples", "audio.noscriptBefore": "Hear all samples on the ", "audio.noscriptAfter": ".", "audio.unavailable": "Samples are unavailable. Open “More samples” below to listen on the research blog.", "audio.loading": "Loading audio…", "audio.playError": "Couldn’t play the sample. Try again or open “More samples” below.", "audio.loadError": "Couldn’t load the audio. Try again or open “More samples” below.", "motion.enable": "Enable page motion", "motion.disable": "Disable page motion", "motion.on": "Motion ON", "motion.off": "Motion OFF", "motion.reduced": "Reduced motion", "demo.error": "The video couldn’t load. Open it directly using the link below, or reload the page."}
     </script>
   </body>
 </html>

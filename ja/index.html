@@ -37,10 +37,10 @@
       as="image"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/style.css?v=3c3ca5c1b1ea" />
+    <link rel="stylesheet" href="/style.css?v=f3a1369567ce" />
     <script defer="" src="/assets/vendor/gsap.min.js"></script>
     <script defer="" src="/assets/vendor/ScrollTrigger.min.js"></script>
-    <script defer="" src="/app.js?v=28c3f5bacb62"></script>
+    <script defer="" src="/app.js?v=1a5f4a3c8f83"></script>
     <noscript
       ><style>
         .motion-toggle,
@@ -210,6 +210,9 @@
       <section class="work section wrap" id="work" aria-labelledby="work-title">
         <div class="section-heading reveal">
           <div><h2 id="work-title">作品と実験</h2></div>
+          <a class="text-link" href="#demos"
+            >デモ映像を見る <span aria-hidden="true">↓</span></a
+          >
         </div>
         <div class="project-panel reveal">
           <div class="project-copy">
@@ -382,6 +385,196 @@
             >研究ノート ↗</a
           >。
         </p>
+        <section class="demo-showcase" id="demos" aria-labelledby="demo-title">
+          <div class="demo-heading">
+            <h3 id="demo-title">デモ映像</h3>
+            <p>Iroha-TTS の声を、短い作品と機能紹介で。音声は日本語、字幕は日本語・中国語です。</p>
+          </div>
+          <div class="demo-grid">
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/asmr-3d.jpg"
+                  src="/assets/demos/asmr-3d.mp4"
+                  aria-labelledby="demo-asmr-title"
+                  aria-describedby="demo-asmr-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >動画を再生 — ねえ、耳……貸して？</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>ASMR · バイノーラル 3D</span><span>3:17</span>
+              </div>
+              <h4 id="demo-asmr-title">ねえ、耳……貸して？</h4>
+              <p id="demo-asmr-description">ヘッドホンで聴く、55 のささやき。声の方向と距離感は、生成後の音声処理で加えています。</p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/asmr-3d.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >動画を別タブで開く <span class="sr-only">— ねえ、耳……貸して？</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/feature-tour.jpg"
+                  src="/assets/demos/feature-tour.mp4"
+                  aria-labelledby="demo-intro-title"
+                  aria-describedby="demo-intro-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >動画を再生 — Iroha-TTS でできること</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>機能紹介 · プレビュー</span><span>4:06</span>
+              </div>
+              <h4 id="demo-intro-title">Iroha-TTS でできること</h4>
+              <p id="demo-intro-description">感情、強さ、笑い声、ささやき、読み方。同じセリフの比較を交えて紹介します。</p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/feature-tour.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >動画を別タブで開く
+                <span class="sr-only">— Iroha-TTS でできること</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/oregairu.jpg"
+                  src="/assets/demos/oregairu.mp4"
+                  aria-labelledby="demo-oregairu-title"
+                  aria-describedby="demo-oregairu-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >動画を再生 — やはり俺の青春音声合成はまちがっている。</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>ビジュアルノベル · 非公式ファン作品</span><span>3:12</span>
+              </div>
+              <h4 id="demo-oregairu-title">やはり俺の青春音声合成はまちがっている。</h4>
+              <p id="demo-oregairu-description">
+                「俺ガイル」を題材にした短編。Iroha-TTS の声で、放課後の会話をつくりました。
+              </p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/oregairu.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >動画を別タブで開く
+                <span class="sr-only">— やはり俺の青春音声合成はまちがっている。</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/after-school.jpg"
+                  src="/assets/demos/after-school.mp4"
+                  aria-labelledby="demo-school-title"
+                  aria-describedby="demo-school-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >動画を再生 — 放課後メロディ</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>ビジュアルノベル · オリジナル短編</span><span>2:57</span>
+              </div>
+              <h4 id="demo-school-title">放課後メロディ</h4>
+              <p id="demo-school-description">3 人の会話で、感情の変化や声の表現を試した短編です。セリフの音声は Iroha-TTS で生成しています。</p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/after-school.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >動画を別タブで開く
+                <span class="sr-only">— 放課後メロディ</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+          </div>
+          <details class="demo-credits">
+            <summary>作品・音声のクレジット</summary>
+            <p>「俺ガイル」の短編は非公式ファン作品です。原作：渡航『やはり俺の青春ラブコメはまちがっている。』（小学館ガガガ文庫）。アニメ版声優の声は使用していません。</p>
+            <p>
+              3D 音声には TH Köln の KU100 近距離 HRIR を使用。ASMR と機能紹介の音声に畳み込み処理を適用しています。HRIR データのライセンス：
+              <a
+                href="https://creativecommons.org/licenses/by-sa/3.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >CC BY-SA 3.0</a
+              >.
+            </p>
+          </details>
+        </section>
       </section>
       <section
         class="research section"
@@ -659,7 +852,7 @@
       ><span id="motion-label">動き ON</span>
     </button>
     <script type="application/json" id="ui-messages">
-      {"menu.open": "メニューを開く", "menu.close": "メニューを閉じる", "audio.label": "Iroha-TTS の感情別サンプル", "audio.heading": "感情別の試聴", "audio.sampleLanguage": "日本語サンプル", "audio.choose": "試聴する感情を選択", "emotion.joy": "喜び", "emotion.anger": "怒り", "emotion.sadness": "悲しみ", "emotion.surprise": "驚き", "audio.translation": "", "audio.initialLabel": "喜びの音声を再生", "audio.playLabel": "{emotion}の音声を再生", "audio.pauseLabel": "{emotion}の音声を一時停止", "audio.listen": "このセリフを聴く", "audio.playing": "再生中", "audio.progress": "音声の再生位置", "audio.notPlayed": "未再生", "audio.time": "{elapsed} / {duration}", "audio.more": "ほかのサンプルを聴く", "audio.noscriptBefore": "すべてのサンプルは", "audio.noscriptAfter": "でお聴きいただけます。", "audio.unavailable": "現在、試聴を利用できません。下の「ほかのサンプルを聴く」から研究ブログをご覧ください。", "audio.loading": "音声を読み込み中…", "audio.playError": "再生できませんでした。もう一度押すか、下の「ほかのサンプルを聴く」を開いてください。", "audio.loadError": "音声を読み込めませんでした。もう一度押すか、下の「ほかのサンプルを聴く」を開いてください。", "motion.enable": "アニメーションを有効にする", "motion.disable": "アニメーションを無効にする", "motion.on": "動き ON", "motion.off": "動き OFF", "motion.reduced": "動きを抑制中"}
+      {"menu.open": "メニューを開く", "menu.close": "メニューを閉じる", "audio.label": "Iroha-TTS の感情別サンプル", "audio.heading": "感情別の試聴", "audio.sampleLanguage": "日本語サンプル", "audio.choose": "試聴する感情を選択", "emotion.joy": "喜び", "emotion.anger": "怒り", "emotion.sadness": "悲しみ", "emotion.surprise": "驚き", "audio.translation": "", "audio.initialLabel": "喜びの音声を再生", "audio.playLabel": "{emotion}の音声を再生", "audio.pauseLabel": "{emotion}の音声を一時停止", "audio.listen": "このセリフを聴く", "audio.playing": "再生中", "audio.progress": "音声の再生位置", "audio.notPlayed": "未再生", "audio.time": "{elapsed} / {duration}", "audio.more": "ほかのサンプルを聴く", "audio.noscriptBefore": "すべてのサンプルは", "audio.noscriptAfter": "でお聴きいただけます。", "audio.unavailable": "現在、試聴を利用できません。下の「ほかのサンプルを聴く」から研究ブログをご覧ください。", "audio.loading": "音声を読み込み中…", "audio.playError": "再生できませんでした。もう一度押すか、下の「ほかのサンプルを聴く」を開いてください。", "audio.loadError": "音声を読み込めませんでした。もう一度押すか、下の「ほかのサンプルを聴く」を開いてください。", "motion.enable": "アニメーションを有効にする", "motion.disable": "アニメーションを無効にする", "motion.on": "動き ON", "motion.off": "動き OFF", "motion.reduced": "動きを抑制中", "demo.error": "動画を読み込めませんでした。下のリンクから直接開くか、ページを再読み込みしてください。"}
     </script>
   </body>
 </html>

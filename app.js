@@ -308,6 +308,49 @@
   sizeCanvas();
   applyMotion();
 
+  // Start media only on request, and keep videos and voice samples from overlapping.
+  const demoVideos = $$(".demo-film video");
+  const allMedia = [...demoVideos, $("#voice-audio")];
+  allMedia.forEach((media) => {
+    media.addEventListener("play", () => {
+      allMedia.forEach((other) => {
+        if (other !== media) other.pause();
+      });
+    });
+  });
+  demoVideos.forEach((video) => {
+    const film = video.closest(".demo-film");
+    const notice = film.querySelector(".demo-status");
+    const start = film.querySelector(".demo-start");
+    video.controls = false;
+    start.hidden = false;
+    start.addEventListener("click", async () => {
+      start.hidden = true;
+      video.controls = true;
+      notice.textContent = "";
+      if (video.error) video.load();
+      try {
+        await video.play();
+        video.focus();
+      } catch (error) {
+        if (error.name === "AbortError") return;
+        video.controls = false;
+        start.hidden = false;
+        notice.textContent = t("demo.error");
+        start.focus();
+      }
+    });
+    video.addEventListener("error", () => {
+      notice.textContent = t("demo.error");
+    });
+    video.addEventListener("playing", () => {
+      notice.textContent = "";
+    });
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) demoVideos.forEach((video) => video.pause());
+  });
+
   // Samples and waveform peaks are preserved from the existing public research blog.
   const audio = $("#voice-audio");
   const playButton = $("#play-sample");

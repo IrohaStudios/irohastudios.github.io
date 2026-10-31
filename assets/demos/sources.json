@@ -1,0 +1,50 @@
+[
+  {
+    "file": "asmr-3d.mp4",
+    "sourceArchive": "iroha-demo-video-20261027/web/nee-mimi-kashite-binaural-web.mp4",
+    "bytes": 17130569,
+    "sha256": "00625c733d552619fa568caef92feb051e9b44d29e7cd82392f1c620bd4c7d3d"
+  },
+  {
+    "file": "asmr-3d.jpg",
+    "sourceArchive": "iroha-demo-video-20261027/web/poster-asmr.jpg",
+    "bytes": 215742,
+    "sha256": "4b10455824404b12728b2367e39d882de0df2bbe95fd8efa14e77261f33dab5c"
+  },
+  {
+    "file": "feature-tour.mp4",
+    "sourceArchive": "iroha-intro-video-20261028/web/iroha-tts-v1-intro-draft2-web.mp4",
+    "bytes": 18341163,
+    "sha256": "ad75b0c58daf67e4c73bf94bb83a77f1fb675f99c805fd851b5c587a11d48c28"
+  },
+  {
+    "file": "feature-tour.jpg",
+    "sourceArchive": "iroha-demo-video-20261027/web/poster-intro.jpg",
+    "bytes": 107435,
+    "sha256": "8d02ec1859350a3579aac662bf2a1d9e3590cb0025d98851d7b133964461bcfd"
+  },
+  {
+    "file": "oregairu.mp4",
+    "sourceArchive": "oregairu-gal-20261028/web/oregairu-tts-web.mp4",
+    "bytes": 18715907,
+    "sha256": "08c3cf4634f3793f4390c8d0bfefabcc425251ec47005ec7342e0c1ec3ecdfde"
+  },
+  {
+    "file": "oregairu.jpg",
+    "sourceArchive": "oregairu-gal-20261028/web/poster.jpg",
+    "bytes": 186930,
+    "sha256": "3aea4fb05f3e52875ae708992e5034c3ecc51a8e6a19d502533513b794764616"
+  },
+  {
+    "file": "after-school.mp4",
+    "sourceArchive": "iroha-demo-video-20261027/web/houkago-melody-web.mp4",
+    "bytes": 18065891,
+    "sha256": "a12e0315cb52e4a04e9c7c455402860c6eaaa5ef9855d61e48d8ff2bf166876d"
+  },
+  {
+    "file": "after-school.jpg",
+    "sourceArchive": "iroha-demo-video-20261027/web/poster-gal.jpg",
+    "bytes": 196262,
+    "sha256": "a75c7552f4b2ab4013eefe020ffbb13f87eeaa1c89b5dbb035805d1157917021"
+  }
+]

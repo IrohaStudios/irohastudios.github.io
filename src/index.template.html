@@ -210,6 +210,9 @@
       <section class="work section wrap" id="work" aria-labelledby="work-title">
         <div class="section-heading reveal">
           <div><h2 id="work-title">{{work.title}}</h2></div>
+          <a class="text-link" href="#demos"
+            >{{demo.jump}} <span aria-hidden="true">↓</span></a
+          >
         </div>
         <div class="project-panel reveal">
           <div class="project-copy">
@@ -382,6 +385,196 @@
             >{{work.details}}</a
           >{{work.end}}
         </p>
+        <section class="demo-showcase" id="demos" aria-labelledby="demo-title">
+          <div class="demo-heading">
+            <h3 id="demo-title">{{demo.title}}</h3>
+            <p>{{demo.description}}</p>
+          </div>
+          <div class="demo-grid">
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/asmr-3d.jpg"
+                  src="/assets/demos/asmr-3d.mp4"
+                  aria-labelledby="demo-asmr-title"
+                  aria-describedby="demo-asmr-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >{{demo.play}} — {{demo.asmr.title}}</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>{{demo.asmr.label}}</span><span>3:17</span>
+              </div>
+              <h4 id="demo-asmr-title">{{demo.asmr.title}}</h4>
+              <p id="demo-asmr-description">{{demo.asmr.description}}</p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/asmr-3d.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{demo.open}} <span class="sr-only">— {{demo.asmr.title}}</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/feature-tour.jpg"
+                  src="/assets/demos/feature-tour.mp4"
+                  aria-labelledby="demo-intro-title"
+                  aria-describedby="demo-intro-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >{{demo.play}} — {{demo.intro.title}}</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>{{demo.intro.label}}</span><span>4:06</span>
+              </div>
+              <h4 id="demo-intro-title">{{demo.intro.title}}</h4>
+              <p id="demo-intro-description">{{demo.intro.description}}</p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/feature-tour.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{demo.open}}
+                <span class="sr-only">— {{demo.intro.title}}</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/oregairu.jpg"
+                  src="/assets/demos/oregairu.mp4"
+                  aria-labelledby="demo-oregairu-title"
+                  aria-describedby="demo-oregairu-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >{{demo.play}} — {{demo.oregairu.title}}</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>{{demo.oregairu.label}}</span><span>3:12</span>
+              </div>
+              <h4 id="demo-oregairu-title">{{demo.oregairu.title}}</h4>
+              <p id="demo-oregairu-description">
+                {{demo.oregairu.description}}
+              </p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/oregairu.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{demo.open}}
+                <span class="sr-only">— {{demo.oregairu.title}}</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+            <article class="demo-film">
+              <div class="demo-player">
+                <video
+                  controls
+                  playsinline
+                  preload="none"
+                  width="1920"
+                  height="1080"
+                  poster="/assets/demos/after-school.jpg"
+                  src="/assets/demos/after-school.mp4"
+                  aria-labelledby="demo-school-title"
+                  aria-describedby="demo-school-description"
+                ></video>
+                <button class="demo-start" type="button" hidden>
+                  <span class="sr-only"
+                    >{{demo.play}} — {{demo.school.title}}</span
+                  >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 4 21 12 7 20z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="demo-meta">
+                <span>{{demo.school.label}}</span><span>2:57</span>
+              </div>
+              <h4 id="demo-school-title">{{demo.school.title}}</h4>
+              <p id="demo-school-description">{{demo.school.description}}</p>
+              <p class="demo-status" role="status" aria-live="polite"></p>
+              <a
+                class="demo-file"
+                href="/assets/demos/after-school.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{demo.open}}
+                <span class="sr-only">— {{demo.school.title}}</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </article>
+          </div>
+          <details class="demo-credits">
+            <summary>{{demo.credits}}</summary>
+            <p>{{demo.credits.original}}</p>
+            <p>
+              {{demo.credits.audio}}
+              <a
+                href="https://creativecommons.org/licenses/by-sa/3.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >CC BY-SA 3.0</a
+              >.
+            </p>
+          </details>
+        </section>
       </section>
       <section
         class="research section"

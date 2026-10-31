@@ -13,4 +13,19 @@
 
 研究博客：https://iroha-research.liuyun5620472.chatgpt.site/
 
-未复制参考游戏官网的角色、美术或商标。素材的本站使用不等同于向第三方授予独立素材许可。
+主视觉和 UI 未复制参考游戏官网的原始美术。素材的本站使用不等同于向第三方授予独立素材许可。
+
+## 用户指定的 Demo 视频
+
+2026-10-31 按用户截图，将归档目录 `/data/ly/codebase/data/tts/html/` 中四段既有网页 MP4 和原封面复制到 `demos/`。未重新压制或修改音轨。每项的相对归档路径、字节数及 SHA-256 见 `demos/sources.json`；仅发布选定视频和封面，不发布生成工程、参考音频或内部角色对应记录。
+
+| 展示 | 本站文件 | 归档版本 | 时长 |
+| --- | --- | --- | --- |
+| ASMR 双耳 3D | `demos/asmr-3d.mp4` | `iroha-demo-video-20261027/web/nee-mimi-kashite-binaural-web.mp4` | 3:17 |
+| 功能介绍 | `demos/feature-tour.mp4` | `iroha-intro-video-20261028/web/iroha-tts-v1-intro-draft2-web.mp4` | 4:06 |
+| 春物同人短篇 | `demos/oregairu.mp4` | `oregairu-gal-20261028/web/oregairu-tts-web.mp4` | 3:12 |
+| 放课后旋律 | `demos/after-school.mp4` | `iroha-demo-video-20261027/web/houkago-melody-web.mp4` | 2:57 |
+
+视频均为 1920×1080 H.264 / 双声道 AAC，保留原片日语配音和中日字幕。ASMR 使用用户标出的双耳 3D 版本，位置和距离来自后期处理，不是 TTS 模型直接输出的空间音频。归档说明记载，ASMR 及功能介绍的空间处理使用 TH Köln KU100 近场 HRIR 数据（CC BY-SA 3.0）；页面中保留数据来源及许可链接。
+
+春物视频是非官方同人作品，原作为渡航『やはり俺の青春ラブコメはまちがっている。』（小学館ガガガ文庫）；归档说明及片尾注明未使用动画版声优音色。页面保留相应署名。其余作品的素材来源见各自归档 README。

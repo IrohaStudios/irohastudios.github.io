@@ -25,7 +25,7 @@ def build():
         for ext in ['css', 'js']:
             name = 'style.css' if ext == 'css' else 'app.js'
             values[f'hash.{ext}'] = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()[:12]
-        runtime = {key: value for key, value in messages.items() if key.startswith(('menu.', 'motion.', 'audio.', 'emotion.'))}
+        runtime = {key: value for key, value in messages.items() if key.startswith(('menu.', 'motion.', 'audio.', 'emotion.')) or key == 'demo.error'}
         values['ui.messages'] = json.dumps(runtime, ensure_ascii=False).replace('<', '\\u003c')
         page = re.sub(r'{{([\w.]+)}}', lambda match: values[match[1]], template)
         destination = ROOT / path.lstrip('/') / 'index.html'
