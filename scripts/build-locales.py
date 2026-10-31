@@ -21,6 +21,7 @@ def build():
             raise ValueError(f'Translation keys differ for {locale}')
         values = {key: html.escape(value, quote=True).replace('\n', '<br />') for key, value in messages.items()}
         values.update({'locale.tag': tag, 'locale.code': locale, 'locale.url': ORIGIN + path})
+        values['hash.language'] = hashlib.sha256((ROOT / 'assets/language.js').read_bytes()).hexdigest()[:12]
         values['hero.language'] = 'en' if locale == 'en' else 'ja'
         values.update({f'selected.{code}': 'selected' if code == locale else '' for code in LOCALES})
         values['hash.preview'] = hashlib.sha256((ROOT / 'assets/research-preview.png').read_bytes()).hexdigest()[:12]

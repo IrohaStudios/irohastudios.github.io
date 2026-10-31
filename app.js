@@ -7,50 +7,14 @@
   const t = (key, values = {}) =>
     messages[key].replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
   const languageSelect = $("#language-select");
-  const languagePaths = { zh: "/zh/", ja: "/ja/", en: "/en/" };
   const pageLanguage = root.dataset.locale;
-  window.addEventListener("pageshow", () => {
-    languageSelect.value = pageLanguage;
-  });
-  const languageQuery = new URL(location.href).searchParams.get("lang");
-  const requestedLanguage = languageQuery;
-  const isDefaultPage = ["/", "/index.html"].includes(location.pathname);
-  const validLanguage = (value) => Object.hasOwn(languagePaths, value);
-  let savedLanguage;
-  try {
-    savedLanguage = localStorage.getItem("iroha-language");
-  } catch (_) {
-    /* Language links work even when storage is unavailable. */
-  }
-  const preferredLanguage = validLanguage(requestedLanguage)
-    ? requestedLanguage
-    : isDefaultPage && validLanguage(savedLanguage)
-      ? savedLanguage
-      : pageLanguage;
-  function languageUrl(language) {
-    const url = new URL(location.href);
-    url.pathname = languagePaths[language];
-    url.searchParams.set("lang", language);
-    return url.href;
-  }
-  if (preferredLanguage !== pageLanguage) {
-    location.replace(languageUrl(preferredLanguage));
-    return;
-  }
-  try {
-    localStorage.setItem("iroha-language", pageLanguage);
-  } catch (_) {
-    /* Storage is optional. */
-  }
+  if (window.IrohaLanguage.redirecting) return;
+  window.addEventListener("pageshow", () => { languageSelect.value = pageLanguage; });
   languageSelect.addEventListener("change", () => {
     const language = languageSelect.value;
-    if (!validLanguage(language)) return;
-    try {
-      localStorage.setItem("iroha-language", language);
-    } catch (_) {
-      /* The explicit URL still preserves the selected language. */
-    }
-    location.assign(languageUrl(language));
+    if (!["zh", "ja", "en"].includes(language)) return;
+    window.IrohaLanguage.remember(language);
+    location.assign(window.IrohaLanguage.url(language).href);
   });
   const menu = $(".menu-toggle");
   const nav = $("#navigation");

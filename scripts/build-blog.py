@@ -43,7 +43,7 @@ def brand(lang):
 
 
 def head_links(lang, prefix):
-    result = f'<link rel="canonical" href="{ORIGIN}{prefix}{lang}/"/>'
+    result = f'<script src="{asset("/assets/language.js")}"></script><link rel="canonical" href="{ORIGIN}{prefix}{lang}/"/>'
     for code in LANGS:
         result += f'<link rel="alternate" hreflang="{code}" href="{ORIGIN}{prefix}{code}/"/>'
     return result + f'<link rel="alternate" hreflang="x-default" href="{ORIGIN}{prefix}"/>'
@@ -78,7 +78,7 @@ def build_journal(lang):
     link = f'{RELEASE}{lang}/'
     tag = 'zh-CN' if lang == 'zh' else lang
     page = f'''<!doctype html>
-<html lang="{tag}"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{u['journal']} · Iroha Studios</title>{head_links(lang,'/blog/')}<link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="{asset('/blog/blog.css')}"/></head><body id="top"><header class="studio-header">{brand(lang)}<nav class="studio-nav" aria-label="{u['journal']}"><a href="/{lang}/#work">{u['work']}</a><a class="current" href="/blog/{lang}/" aria-current="page">{u['journal']}</a><a href="/blog/research/{lang}/">{u['research']}</a></nav><nav class="blog-languages" aria-label="{u['language']}">{language_links(lang,'/blog/')}</nav></header><main class="journal-index"><h1>{u['journal']}</h1><article class="journal-entry"><a class="journal-image" href="{link}" aria-label="{esc(title)}"><img src="/assets/sky-observatory.png" width="1536" height="1024" alt=""/></a><div><p class="article-eyebrow">{u['release']}</p><h2><a href="{link}">{esc(title)}</a></h2><p class="article-byline">{esc(byline)}</p><p>{esc(lead)}</p><a href="{link}">{esc(SITE_COPY[lang]['research.read'])} →</a></div></article></main><footer class="studio-footer">{brand(lang)}<p>{u['footer']}</p><a href="#top">{u['back']}</a></footer><script>function redirectLegacySection(){{if(["release","motivation","evaluation","uses","getting-started","next","listen","human-evaluation","automatic-evaluation","other-results","demos"].includes(location.hash.slice(1)))location.replace({json.dumps(link)}+location.hash);}}redirectLegacySection();addEventListener("hashchange",redirectLegacySection);</script></body></html>'''
+<html lang="{tag}"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{u['journal']} · Iroha Studios</title>{head_links(lang,'/blog/')}<link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="{asset('/blog/blog.css')}"/></head><body id="top"><header class="studio-header">{brand(lang)}<nav class="studio-nav" aria-label="{u['journal']}"><a href="/{lang}/#work">{u['work']}</a><a class="current" href="/blog/{lang}/" aria-current="page">{u['journal']}</a><a href="/blog/research/{lang}/">{u['research']}</a></nav><nav class="blog-languages" aria-label="{u['language']}">{language_links(lang,'/blog/')}</nav></header><main class="journal-index"><h1>{u['journal']}</h1><article class="journal-entry"><a class="journal-image" href="{link}" aria-label="{esc(title)}"><img src="/assets/sky-observatory.png" width="1536" height="1024" alt=""/></a><div><p class="article-eyebrow">{u['release']}</p><h2><a href="{link}">{esc(title)}</a></h2><p class="article-byline">{esc(byline)}</p><p>{esc(lead)}</p><a href="{link}">{esc(SITE_COPY[lang]['research.read'])} →</a></div></article></main><footer class="studio-footer">{brand(lang)}<p>{u['footer']}</p><a href="#top">{u['back']}</a></footer><script>function redirectLegacySection(){{if(window.IrohaLanguage.redirecting)return;if(["release","motivation","evaluation","uses","getting-started","next","listen","human-evaluation","automatic-evaluation","other-results","demos"].includes(location.hash.slice(1)))location.replace({json.dumps(link)}+location.hash);}}redirectLegacySection();addEventListener("hashchange",redirectLegacySection);</script></body></html>'''
     destination = ROOT / f'blog/{lang}/index.html'
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(page)
@@ -196,7 +196,7 @@ def build_research(lang, catalog):
             element[attribute] = catalog[lang][element[f'data-i18n-{attribute}']]
     soup.title.string = catalog[lang]['ui.pageTitle']
     soup.select_one('meta[name="description"]')['content'] = catalog[lang]['ui.pageDescription']
-    soup.head.append(BeautifulSoup(head_links(lang,'/blog/research/'), 'html.parser'))
+    soup.select_one('meta[charset]').insert_after(BeautifulSoup(head_links(lang,'/blog/research/'), 'html.parser'))
     soup.head.append(soup.new_tag('link', rel='stylesheet', href=asset('/blog/research-theme.css')))
     soup.head.append(soup.new_tag('link', rel='stylesheet', href=asset('/blog/mos.css')))
     for element in soup.select('link[rel="stylesheet"],script[src]'):

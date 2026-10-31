@@ -2,13 +2,8 @@
 (() => {
   const catalogs = window.IrohaMessages;
   const supported = ['zh', 'ja', 'en'];
-  const storageKey = 'iroha-blog-language';
-  let saved;
-  try { saved = localStorage.getItem(storageKey); } catch (_) { /* Storage can be disabled. */ }
   const routeLanguage = () => location.pathname.match(/^\/blog\/research\/(zh|ja|en)\//)?.[1];
-  const requested = new URLSearchParams(location.search).get('lang');
-  let language = routeLanguage() || (supported.includes(requested) ? requested : null)
-    || document.documentElement.dataset.locale || (supported.includes(saved) ? saved : 'ja');
+  let language = window.IrohaLanguage.language;
   const picker = document.getElementById('language-select');
   function t(key, values = {}) {
     const value = catalogs[language][key] ?? catalogs.zh[key] ?? key;
@@ -41,7 +36,7 @@
     if (!supported.includes(value)) return;
     language = value;
     if (persist) {
-      try { localStorage.setItem(storageKey, language); } catch (_) { /* In-memory selection still works. */ }
+      window.IrohaLanguage.remember(language);
     }
     apply();
     const url = new URL(location.href);
