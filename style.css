@@ -135,6 +135,12 @@ svg {
   height: 46px;
   object-fit: contain;
 }
+.brand .brand-mark {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  mix-blend-mode: multiply;
+}
 .brand > span {
   font-size: 12px;
   letter-spacing: 0.21em;
@@ -1234,6 +1240,17 @@ h2 {
     height: 76px;
     gap: 18px;
   }
+  .brand {
+    gap: 8px;
+  }
+  .brand .brand-mark {
+    width: 42px;
+    height: 42px;
+  }
+  .brand .brand-wordmark {
+    width: 84px;
+    height: 38px;
+  }
   .nav {
     gap: 18px;
   }
@@ -1405,7 +1422,7 @@ h2 {
     height: 40px;
   }
   .brand > span {
-    display: block;
+    display: none;
     font-size: 11px;
     letter-spacing: 0.16em;
     font-weight: 600;
@@ -1796,8 +1813,8 @@ h2 {
     min-height: 270px;
   }
   .studio-art img {
-    width: 120px;
-    height: 145px;
+    width: 140px;
+    height: 140px;
   }
   .orbit {
     width: 270px;
