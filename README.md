@@ -18,6 +18,7 @@ GitHub Pages 使用仓库 `IrohaStudios/irohastudios.github.io` 的 `main` 分�
 - `assets/samples.json`：四种真实试听的音频路径、时长、波形与原始来源。
 - `assets/vendor/`：本地托管的 GSAP 3.15.0 和 ScrollTrigger，保留原始许可声明。
 - [设计说明](doc/design.md)：参考、Claude 咨询、设计选择与验证记录。
+- [三套规则检查](doc/quality-review.md)：Humanizer-zh、Impeccable、Taste Skill 的修改、测试及保留项。
 - [素材来源](assets/README.md)：原创插画及既有博客资产。
 
 原研究博客继续位于 https://iroha-research.liuyun5620472.chatgpt.site/ 。本站提供独立研究栏目和章节链接，不同步或改写博客内容。
