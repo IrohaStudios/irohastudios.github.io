@@ -4,6 +4,38 @@ html{font-synthesis:none}body{background:var(--paper);font-weight:500}h1,h2,h3,h
 @media(max-width:760px){.masthead .brand-edition{display:none}.masthead .brand-wordmark img{width:94px}.hero{padding-top:25px}.hero-grid{gap:28px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
+/* Evaluation data from the archived report, with horizontally scrollable metrics. */
+.evaluation-overview h3,.mos-results>h3{font-size:22px;line-height:1.6;margin-bottom:20px}
+.evaluation-intro{max-width:1050px;font-size:16px;line-height:1.85}
+.evaluation-intro b{color:var(--ink);font-weight:700}
+.overview-scroll{margin:30px 0 0;border-top:0;overscroll-behavior-x:contain}
+.overview-table{min-width:1100px;table-layout:fixed;border-collapse:separate;border-spacing:0;font-family:var(--font);font-size:15px;line-height:1.7}
+.overview-table .model-column{width:240px}
+.overview-table .emotions-column{width:150px}
+.overview-table th,.overview-table td{padding:18px 10px;border-bottom:1px solid var(--line);font:inherit;vertical-align:middle;color:var(--muted)}
+.overview-table thead th{text-align:right;font-size:14px;vertical-align:bottom;font-weight:500}
+.overview-table thead th[scope=colgroup]{text-align:center;color:var(--ink);border-bottom:0;font-weight:600}
+.overview-table th small{display:block;margin-top:4px;font-size:13px;line-height:1.6;color:var(--muted);font-weight:500}
+.overview-table tbody th{color:var(--ink);text-align:left;font-weight:500}
+.overview-table td{white-space:nowrap}
+.overview-table td strong{font-weight:700;color:var(--ink)}
+.overview-table tbody tr,.overview-table tbody tr:hover{background:transparent}
+.overview-table tbody tr.ours{background:#eef8fd}
+.overview-table tbody tr.ours th{font-weight:500}
+.overview-table tbody tr.ours th span{font:inherit;margin:0;padding:0;border:0}
+.overview-table .unsupported{text-align:left;white-space:normal;font-size:14px}
+.model-name{display:flex;align-items:center;gap:8px}
+.model-name>span:last-child{min-width:0}
+.model-mark{display:inline-block;width:18px;height:18px;flex:0 0 18px;border-radius:4px;background-position:center;background-size:contain;background-repeat:no-repeat}
+.model-fish{background-image:url('/blog/research/assets/models/fish.png')}
+.model-index{background-image:url('/blog/research/assets/models/index.png')}
+.model-resemble{background-image:url('/blog/research/assets/models/resemble.png')}
+.model-ours{background-image:url('/assets/iroha-logo.svg')}
+.model-irodori{background:linear-gradient(135deg,#f5a452,#e95780);color:white;text-align:center}
+.model-irodori::before{content:'Ir';display:block;font:700 12px/18px var(--font)}
+.mos-results{margin-top:48px}
+.supplementary-results{grid-template-columns:repeat(2,minmax(0,1fr))}
+
 .mobile-release-link{display:none}
 @media(max-width:1050px){
   html{scroll-padding-top:132px}
@@ -30,4 +62,16 @@ html{font-synthesis:none}body{background:var(--paper);font-weight:500}h1,h2,h3,h
   .avatar-toolbar button{width:44px;height:44px;border-radius:50%}
   #avatar-restore{min-height:44px;bottom:max(12px,env(safe-area-inset-bottom));left:max(12px,env(safe-area-inset-left))}
   .footer{padding-bottom:max(36px,env(safe-area-inset-bottom))}
+  .evaluation-overview h3,.mos-results>h3{font-size:20px}
+  .evaluation-intro{font-size:15px}
+  .overview-table{min-width:1000px;font-size:14px}
+  .overview-table .model-column{width:140px}
+  .overview-table th,.overview-table td{padding:16px 10px}
+  .overview-table thead th[scope=colgroup]{text-align:left}
+  .overview-table .metric-group{position:sticky;left:150px;display:inline-block}
+  .table-scroll .overview-table th,.table-scroll .overview-table td{position:static;box-shadow:none;background:transparent}
+  .table-scroll .overview-table tbody th,.table-scroll .overview-table thead tr:first-child>th:first-child{position:sticky;left:0;z-index:1;background:var(--paper);box-shadow:1px 0 var(--line)}
+  .table-scroll .overview-table .ours th{background:#eef8fd}
+  .mos-results{margin-top:36px}
+  .supplementary-results{grid-template-columns:1fr}
 }

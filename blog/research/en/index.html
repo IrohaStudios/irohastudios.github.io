@@ -11,12 +11,12 @@
 <link href="/blog/research/journal.css?v=7e9fffba6c08" rel="stylesheet"/>
 <link href="/blog/research/typography.css?v=0ec1a9dc5f0b" rel="stylesheet"/>
 <link href="/blog/research/vtuber.css?v=a5f49bec35df" rel="stylesheet"/>
-<script defer="" src="/blog/research/locales.js?v=7040104ad1b9"></script><script defer="" src="/blog/research/i18n.js?v=57b02993b1b7"></script><script defer="" src="/blog/research/glossary.js?v=286288d29944"></script>
+<script defer="" src="/blog/research/locales.js?v=09ebd64aa0c8"></script><script defer="" src="/blog/research/i18n.js?v=57b02993b1b7"></script><script defer="" src="/blog/research/glossary.js?v=286288d29944"></script>
 <script defer="" src="/blog/research/vendor/live2dcubismcore.min.js?v=25ae938cb4fe"></script>
 <script defer="" src="/blog/research/iroha-model.js?v=c2df50f90f63"></script>
 <script defer="" src="/blog/research/app.js?v=91271a1d8127"></script>
 <script defer="" src="/blog/research/vtuber.js?v=cd3097e2fa99"></script>
-<link href="https://irohastudios.github.io/blog/research/en/" rel="canonical"/><link href="https://irohastudios.github.io/blog/research/ja/" hreflang="ja" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/en/" hreflang="en" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/zh/" hreflang="zh" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/" hreflang="x-default" rel="alternate"/><link href="/blog/research-theme.css?v=cc4f7906a407" rel="stylesheet"/><link href="/blog/mos.css?v=633d79a5ebb1" rel="stylesheet"/></head>
+<link href="https://irohastudios.github.io/blog/research/en/" rel="canonical"/><link href="https://irohastudios.github.io/blog/research/ja/" hreflang="ja" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/en/" hreflang="en" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/zh/" hreflang="zh" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/" hreflang="x-default" rel="alternate"/><link href="/blog/research-theme.css?v=5756f8afc801" rel="stylesheet"/><link href="/blog/mos.css?v=633d79a5ebb1" rel="stylesheet"/></head>
 <body>
 <a class="skip-link" data-i18n="label.0" href="#main">Skip to content</a>
 <div aria-hidden="true" class="reading-progress"></div>
@@ -105,23 +105,12 @@
 </section>
 <section aria-labelledby="results-title" class="results-section section-shell" id="results">
 <div class="section-heading reveal"><div><h2 data-i18n="label.77" id="results-title">Evaluation</h2></div></div>
-<div class="results-highlight reveal"><div class="metric-main"><span class="eyebrow" data-i18n="label.78">EmoRuler emotion accuracy</span><div class="big-metric"><span>6.04<small>%</small></span><i>↗</i><strong>89.17<small>%</small></strong></div><p data-i18n="copy.p37">Native inference, 480 matched requests: Fish S2-Pro → Iroha</p></div><div class="metric-context"><div><span data-i18n="label.79">CER / Character error rate ↓</span><strong>5.63 → 5.62<span>%</span></strong></div><div><span data-i18n="label.80">SIM / Voice similarity ↑</span><strong>0.685 → 0.643</strong></div></div></div>
-<div class="results-caveat reveal"><p data-i18n="copy.p38">This <button class="term" data-term="development">development panel</button> was repeatedly used for model selection; it is <strong>not an independent test set</strong>. Four of its six evaluation voices appeared in EmoRuler training. Data-overlap auditing is limited.</p></div>
-<div class="table-heading reveal"><h3 data-i18n="label.81">Release inference comparison</h3><button aria-label="Evaluation setup" class="term info-button" data-i18n-aria-label="attr.9" data-term="evaluation-context" type="button"><span aria-hidden="true">i</span></button></div>
-<div aria-label="Model comparison; scroll horizontally on narrow screens" class="table-scroll reveal" data-i18n-aria-label="attr.10" role="region" tabindex="0"><table><thead><tr><th data-i18n="label.82" scope="col">Model</th><th scope="col"><button class="term" data-term="e2v">E2V</button> ↑<small data-i18n="label.83">Emotion accuracy %</small></th><th scope="col"><button class="term" data-term="emoruler">EmoRuler</button> ↑<small data-i18n="label.83">Emotion accuracy %</small></th><th scope="col"><button class="term" data-term="cer">CER</button> ↓<small data-i18n="label.84">Character error %</small></th><th scope="col"><button class="term" data-term="sim">SIM</button> ↑<small data-i18n="label.85">Voice similarity</small></th><th scope="col"><button class="term" data-term="utmos">UTMOS</button> ↑<small data-i18n="label.86">Predicted quality</small></th></tr></thead><tbody>
-<tr class="ours"><th scope="row">Iroha-TTS V1 </th><td>82.1</td><td>89.0</td><td>5.6</td><td>0.645</td><td>3.58</td></tr>
-<tr><th scope="row">Fish S2-Pro</th><td>17.9</td><td>6.0</td><td>5.6</td><td>0.685</td><td>3.51</td></tr>
-<tr><th scope="row">OmniVoice + GRPO</th><td>85.4</td><td>87.3</td><td>5.5</td><td>0.634</td><td>3.47</td></tr>
-<tr><th scope="row">Ming 0.5B + window GRPO</th><td>86.2</td><td>90.2</td><td>6.7</td><td>0.604</td><td>2.70</td></tr>
-<tr><th scope="row">Ming tiny + GRPO</th><td>85.0</td><td>84.2</td><td>5.5</td><td>0.638</td><td>2.97</td></tr>
-<tr><th scope="row">Qwen3-TTS + GRPO</th><td>85.2</td><td>89.0</td><td>7.1</td><td>0.632</td><td>3.41</td></tr>
-<tr><th scope="row">Fish Audio Drama 3</th><td>32.1</td><td>21.2</td><td>7.0</td><td>0.628</td><td>3.26</td></tr>
-<tr><th scope="row">IndexTTS 2.5</th><td>40.2</td><td>30.6</td><td>6.9</td><td>0.612</td><td>2.26</td></tr>
-<tr><th scope="row">Irodori-TTS v4-Large</th><td>30.8</td><td>20.6</td><td>6.0</td><td>0.649</td><td>3.03</td></tr>
-</tbody></table></div>
-<p class="source-note" data-i18n="copy.p39">The table uses packaged release inference: EmoRuler 88.96%, E2V 82.08%, CER 5.58%, reported separately from native inference above. UTMOS is a model prediction, <strong>not human <button class="term" data-term="mos">MOS</button></strong>.</p>
-<details class="additional-result"><summary data-i18n="label.87">Untagged evaluation <span aria-hidden="true">+</span></summary><p data-i18n="copy.p40">Chatterbox is reported only without tags, outside the emotion-accuracy table: CER 6.5%, SIM 0.675, UTMOS 3.34. Iroha’s 120 untagged release requests scored CER 5.0%, SIM 0.685 and UTMOS 3.63.</p></details>
-<div class="result-notes reveal"><article><h3 data-i18n="label.46">Vocal events</h3><p data-i18n="copy.p41">Release evaluation detected sighing in 56/60 clips and crying in 16/60. Laughter scored 26/60 under the local check and 44/59 under an external check, indicating a need to examine the evaluation criteria.</p></article><article><h3 data-i18n="label.88">Whisper guidance</h3><p data-i18n="copy.p42">On 60 matched whisper requests, guidance raised detections from 4 to 32, while SIM fell from 0.587 to 0.494 and UTMOS from 2.80 to 1.78. Intensity steering shows similar voice trade-offs.</p></article><article class="mos-results" id="human-evaluation"><h3 data-i18n="label.89">Subjective listening test: MOS (Japanese)</h3><div data-i18n="copy.p43">
+<div class="evaluation-overview" id="automatic-evaluation">
+<h3 data-i18n="evaluation.title">Overview</h3>
+<p class="evaluation-intro" data-i18n="evaluation.intro"><b>All our experiments are based on Fish S2 Pro.</b><br/>6 voices × 20 lines × joy, anger, sadness and surprise, for 480 clips. All models use the same reference audio and scoring procedure. Emotion accuracy is judged by two classifiers: emo2vec large (open source, not used in our training) and EmoRuler (our fine-tuned emo2vec large).<br/>Fish Audio Drama 3 uses the same bracketed emotion tags, which it treats as natural-language instructions. Of 720 clips, 7 stopped mid-sentence and remained silent until the 95-second limit; they were scored as generated.<br/><b>We also tested well-known multilingual TTS models, including Qwen3-TTS, OmniVoice and Ming 3.0 TTS. They work well in Chinese and English, but we heard more pronunciation errors and less natural delivery in Japanese, so this table compares models that performed better in Japanese.</b></p>
+<div data-i18n="evaluation.table"><div aria-label="Horizontally scrollable data table" class="table-scroll overview-scroll" role="region" tabindex="0"><table class="overview-table"><colgroup><col class="model-column"/><col/><col/><col class="emotions-column"/><col/><col/><col/><col/><col/><col/></colgroup><thead><tr><th rowspan="2" scope="col"><span class="sr-only">Model</span></th><th colspan="6" scope="colgroup"><span class="metric-group">With emotion (joy / anger / sadness / surprise)</span></th><th colspan="3" scope="colgroup"><span class="metric-group">Without emotion</span></th></tr><tr><th scope="col">Accuracy<small>emo2vec large</small></th><th scope="col">Accuracy<small>EmoRuler</small></th><th scope="col">Joy / Anger / Sadness / Surprise %<small>EmoRuler</small></th><th scope="col">Voice similarity<small>speaker similarity</small></th><th scope="col">Quality<small>UTMOS</small></th><th scope="col">Character error rate</th><th scope="col">Voice similarity<small>speaker similarity</small></th><th scope="col">Quality<small>UTMOS</small></th><th scope="col">Character error rate</th></tr></thead><tbody><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-fish"></span><span>Fish S2 Pro Original</span></span><small>Starting point, without training</small></th><td><strong>17.9%</strong></td><td>6.0%</td><td>6 / 0 / 9 / 9</td><td>0.685</td><td>3.51</td><td>5.6%</td><td>0.684</td><td>3.57</td><td>6.2%</td></tr><tr class="ours"><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-ours"></span><span>Ours</span></span><small>Fish S2 Pro + SFT + reinforcement learning</small></th><td><strong>85.6%</strong></td><td>93.3%</td><td>91 / 94 / 95 / 93</td><td>0.636</td><td>3.55</td><td>5.8%</td><td>0.694</td><td>3.78</td><td>4.8%</td></tr><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-fish"></span><span>Fish Audio Drama 3</span></span><small>Fish’s latest open-source model · 35B MoE (3B active)</small></th><td><strong>32.1%</strong></td><td>21.2%</td><td>32 / 14 / 21 / 18</td><td>0.628</td><td>3.26</td><td>7.0%</td><td>0.653</td><td>3.43</td><td>9.3%</td></tr><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-index"></span><span>IndexTTS-2.5</span></span><small>Open source · bilibili</small></th><td><strong>40.2%</strong></td><td>30.6%</td><td>65 / 18 / 19 / 20</td><td>0.612</td><td>2.26</td><td>6.9%</td><td>0.714</td><td>2.91</td><td>6.0%</td></tr><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-irodori"></span><span>Irodori-TTS · Text description</span></span><small>Open source · Aratako</small></th><td><strong>30.8%</strong></td><td>20.6%</td><td>34 / 23 / 8 / 17</td><td>0.649</td><td>3.03</td><td>6.0%</td><td>0.662</td><td>3.09</td><td>5.7%</td></tr><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-irodori"></span><span>Irodori-TTS · emoji</span></span><small>Open source · Aratako</small></th><td><strong>20.0%</strong></td><td>9.8%</td><td>17 / 2 / 8 / 12</td><td>0.651</td><td>3.03</td><td>6.5%</td><td>0.662</td><td>3.09</td><td>5.7%</td></tr><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-resemble"></span><span>Chatterbox</span></span><small>Open source · Resemble</small></th><td class="unsupported" colspan="6">Emotion cannot be specified with tags</td><td>0.675</td><td>3.34</td><td>6.5%</td></tr></tbody></table></div></div>
+</div>
+<article class="mos-results" id="human-evaluation"><h3 data-i18n="label.89">Subjective listening test: MOS (Japanese)</h3><div data-i18n="copy.p43">
 <p>We selected 15 groups × 5 emotions = 75 lines. Each listener heard all 75 lines.</p>
 <div aria-label="Horizontally scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
 <thead>
@@ -136,7 +125,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Ours</td>
+<td><span class="model-name"><span aria-hidden="true" class="model-mark model-ours"></span><span>Ours</span></span></td>
 <td>3.84</td>
 <td><strong>4.20</strong></td>
 <td>3.52</td>
@@ -144,7 +133,7 @@
 <td><strong>31.7%</strong></td>
 </tr>
 <tr>
-<td>Fish Audio Drama 3</td>
+<td><span class="model-name"><span aria-hidden="true" class="model-mark model-fish"></span><span>Fish Audio Drama 3</span></span></td>
 <td><strong>3.97</strong></td>
 <td>3.64</td>
 <td>3.45</td>
@@ -152,7 +141,7 @@
 <td>23.2%</td>
 </tr>
 <tr>
-<td>Irodori-TTS v4 large · Text description</td>
+<td><span class="model-name"><span aria-hidden="true" class="model-mark model-irodori"></span><span>Irodori-TTS v4 large · Text description</span></span></td>
 <td>3.61</td>
 <td>3.95</td>
 <td>3.32</td>
@@ -160,7 +149,7 @@
 <td>28.1%</td>
 </tr>
 <tr>
-<td>Fish S2 Pro Original</td>
+<td><span class="model-name"><span aria-hidden="true" class="model-mark model-fish"></span><span>Fish S2 Pro Original</span></span></td>
 <td>3.75</td>
 <td>2.93</td>
 <td><strong>3.72</strong></td>
@@ -168,7 +157,7 @@
 <td>12.1%</td>
 </tr>
 <tr>
-<td>IndexTTS-2.5</td>
+<td><span class="model-name"><span aria-hidden="true" class="model-mark model-index"></span><span>IndexTTS-2.5</span></span></td>
 <td>2.35</td>
 <td>3.49</td>
 <td>2.81</td>
@@ -206,7 +195,8 @@
 </tr>
 </tbody>
 </table></div>
-</div></article></div>
+</div></article>
+<div class="result-notes supplementary-results reveal"><article><h3 data-i18n="label.46">Vocal events</h3><p data-i18n="copy.p41">Release evaluation detected sighing in 56/60 clips and crying in 16/60. Laughter scored 26/60 under the local check and 44/59 under an external check, indicating a need to examine the evaluation criteria.</p></article><article><h3 data-i18n="label.88">Whisper guidance</h3><p data-i18n="copy.p42">On 60 matched whisper requests, guidance raised detections from 4 to 32, while SIM fell from 0.587 to 0.494 and UTMOS from 2.80 to 1.78. Intensity steering shows similar voice trade-offs.</p></article></div>
 </section>
 <section aria-labelledby="lessons-title" class="lessons-section section-shell" id="lessons">
 <div class="section-heading reveal"><div><h2 data-i18n="label.4" id="lessons-title">Failed approaches</h2></div></div>

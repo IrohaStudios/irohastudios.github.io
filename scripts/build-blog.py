@@ -57,6 +57,45 @@ def demo(lang):
     return f'<section class="release-demo" id="listen" aria-labelledby="listen-title"><h2 id="listen-title">{u["listen"]}</h2><p>{u["note"]}</p><div class="sample-tabs" role="tablist" aria-label="{u["audio"]}">{tabs}</div><div id="sample-panel" role="tabpanel" aria-labelledby="sample-joy"><p class="sample-line" lang="ja"><code id="sample-tag">[happy]</code> どうですか、冤罪だと言ったでしょう？</p>{"" if lang == "ja" else "<p class=\"sample-translation\">"+u["translation"]+"</p>"}<div class="release-players">{players}</div></div><p class="audio-error" role="status" hidden>{u["error"]}</p><a class="more-samples" href="/blog/research/{lang}/#listen">{u["more"]} →</a></section>'
 
 
+def model_mark(model):
+    return f'<span class="model-mark model-{model}" aria-hidden="true"></span>'
+
+
+def evaluation_table(lang, messages, data):
+    def label(key):
+        return esc(messages['evaluation.' + key])
+    def header(key, detail=None):
+        return f'<th scope="col">{label(key)}' + (f'<small>{detail}</small>' if detail else '') + '</th>'
+    headers = header('correct', 'emo2vec large') + header('correct', 'EmoRuler') + header('emotions', 'EmoRuler')
+    measures = header('similarity', 'speaker similarity') + header('quality', 'UTMOS') + header('cer')
+    rows = []
+    for row in data['rows']:
+        key = row['id']
+        model = f'<th scope="row"><span class="model-name">{model_mark(row["mark"])}<span>{label(key)}</span></span><small>{label(key + ".note")}</small></th>'
+        if row['emotional'] is None:
+            metrics = f'<td colspan="6" class="unsupported">{label("unsupported")}</td>'
+        else:
+            metrics = ''.join(f'<td><strong>{esc(value)}</strong></td>' if index == 0 else f'<td>{esc(value)}</td>' for index, value in enumerate(row['emotional']))
+        metrics += ''.join(f'<td>{esc(value)}</td>' for value in row['neutral'])
+        row_class = ' class="ours"' if key == 'ours' else ''
+        rows.append(f'<tr{row_class}>{model}{metrics}</tr>')
+    columns = '<colgroup><col class="model-column"/><col/><col/><col class="emotions-column"/>' + '<col/>' * 6 + '</colgroup>'
+    return f'<div class="table-scroll overview-scroll" tabindex="0" role="region" aria-label="{UI[lang]["table"]}"><table class="overview-table">{columns}<thead><tr><th rowspan="2" scope="col"><span class="sr-only">{esc(messages["label.82"])}</span></th><th colspan="6" scope="colgroup"><span class="metric-group">{label("emotional")}</span></th><th colspan="3" scope="colgroup"><span class="metric-group">{label("neutral")}</span></th></tr><tr>{headers}{measures}{measures}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
+
+
+def research_mos(body):
+    soup = BeautifulSoup(body, 'html.parser')
+    for row, model in zip(soup.select('table')[0].select('tbody tr'), ['ours', 'fish', 'irodori', 'fish', 'index']):
+        cell = row.find('td')
+        label = soup.new_tag('span', attrs={'class':'model-name'})
+        label.append(BeautifulSoup(model_mark(model), 'html.parser'))
+        name = soup.new_tag('span')
+        for node in list(cell.contents): name.append(node.extract())
+        label.append(name)
+        cell.append(label)
+    return str(soup)
+
+
 def build_release(lang):
     u = UI[lang]
     md = (ROOT / f'blog/content/iroha-tts-v1-{lang}.md').read_text()
@@ -153,9 +192,12 @@ def build_research(lang, catalog):
 
 def main():
     catalog = json.loads((ROOT/'src/blog/research-locales.json').read_text())
+    evaluation = json.loads((ROOT/'src/blog/evaluation-table.json').read_text())
     # Both articles share the MOS section maintained in the release Markdown.
     for lang in LANGS:
         catalog[lang]['label.89'], catalog[lang]['copy.p43'] = build_release(lang)
+        catalog[lang]['copy.p43'] = research_mos(catalog[lang]['copy.p43'])
+        catalog[lang]['evaluation.table'] = evaluation_table(lang, catalog[lang], evaluation)
     existing = (ROOT/'blog/research/locales.js').read_text()
     glossary = existing[existing.index('window.IrohaGlossary'):]
     (ROOT/'blog/research/locales.js').write_text("'use strict';\nwindow.IrohaMessages = "+json.dumps(catalog,ensure_ascii=False,indent=2)+';\n'+glossary)

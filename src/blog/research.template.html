@@ -105,23 +105,13 @@
 </section>
 <section aria-labelledby="results-title" class="results-section section-shell" id="results">
 <div class="section-heading reveal"><div><h2 data-i18n="label.77" id="results-title">评测结果</h2></div></div>
-<div class="results-highlight reveal"><div class="metric-main"><span class="eyebrow" data-i18n="label.78">EmoRuler 情感命中率</span><div class="big-metric"><span>6.04<small>%</small></span><i>↗</i><strong>89.17<small>%</small></strong></div><p data-i18n="copy.p37">原生路径，480 条匹配请求：Fish S2-Pro → Iroha</p></div><div class="metric-context"><div><span data-i18n="label.79">CER / 字错率 ↓</span><strong>5.63 → 5.62<span>%</span></strong></div><div><span data-i18n="label.80">SIM / 音色相似度 ↑</span><strong>0.685 → 0.643</strong></div></div></div>
-<div class="results-caveat reveal"><p data-i18n="copy.p38">该<button class="term" data-term="development">开发面板</button>反复用于模型选择，<strong>不是独立测试集</strong>。6 个评测音色中，4 个进入过 EmoRuler 训练；数据重叠审计有限。</p></div>
-<div class="table-heading reveal"><h3 data-i18n="label.81">发布路径对比</h3><button aria-label="评测设置" class="term info-button" data-i18n-aria-label="attr.9" data-term="evaluation-context" type="button"><span aria-hidden="true">i</span></button></div>
-<div aria-label="不同模型评测结果，窄屏可横向滚动" class="table-scroll reveal" data-i18n-aria-label="attr.10" role="region" tabindex="0"><table><thead><tr><th data-i18n="label.82" scope="col">模型</th><th scope="col"><button class="term" data-term="e2v">E2V</button> ↑<small data-i18n="label.83">情感命中 %</small></th><th scope="col"><button class="term" data-term="emoruler">EmoRuler</button> ↑<small data-i18n="label.83">情感命中 %</small></th><th scope="col"><button class="term" data-term="cer">CER</button> ↓<small data-i18n="label.84">字错率 %</small></th><th scope="col"><button class="term" data-term="sim">SIM</button> ↑<small data-i18n="label.85">音色相似度</small></th><th scope="col"><button class="term" data-term="utmos">UTMOS</button> ↑<small data-i18n="label.86">预测质量</small></th></tr></thead><tbody>
-<tr class="ours"><th scope="row">Iroha-TTS V1 </th><td>82.1</td><td>89.0</td><td>5.6</td><td>0.645</td><td>3.58</td></tr>
-<tr><th scope="row">Fish S2-Pro</th><td>17.9</td><td>6.0</td><td>5.6</td><td>0.685</td><td>3.51</td></tr>
-<tr><th scope="row">OmniVoice + GRPO</th><td>85.4</td><td>87.3</td><td>5.5</td><td>0.634</td><td>3.47</td></tr>
-<tr><th scope="row">Ming 0.5B + window GRPO</th><td>86.2</td><td>90.2</td><td>6.7</td><td>0.604</td><td>2.70</td></tr>
-<tr><th scope="row">Ming tiny + GRPO</th><td>85.0</td><td>84.2</td><td>5.5</td><td>0.638</td><td>2.97</td></tr>
-<tr><th scope="row">Qwen3-TTS + GRPO</th><td>85.2</td><td>89.0</td><td>7.1</td><td>0.632</td><td>3.41</td></tr>
-<tr><th scope="row">Fish Audio Drama 3</th><td>32.1</td><td>21.2</td><td>7.0</td><td>0.628</td><td>3.26</td></tr>
-<tr><th scope="row">IndexTTS 2.5</th><td>40.2</td><td>30.6</td><td>6.9</td><td>0.612</td><td>2.26</td></tr>
-<tr><th scope="row">Irodori-TTS v4-Large</th><td>30.8</td><td>20.6</td><td>6.0</td><td>0.649</td><td>3.03</td></tr>
-</tbody></table></div>
-<p class="source-note" data-i18n="copy.p39">表中 Iroha 为打包发布路径：EmoRuler 88.96%、E2V 82.08%、CER 5.58%，与上方原生路径分开报告。UTMOS 是模型预测，<strong>不是人工 <button class="term" data-term="mos">MOS</button></strong>。</p>
-<details class="additional-result"><summary data-i18n="label.87">无标签评测 <span aria-hidden="true">+</span></summary><p data-i18n="copy.p40">Chatterbox 只列无标签结果，不与上表的情感命中率混排：CER 6.5%、SIM 0.675、UTMOS 3.34。Iroha 的 120 条无标签发布评测为 CER 5.0%、SIM 0.685、UTMOS 3.63。</p></details>
-<div class="result-notes reveal"><article><h3 data-i18n="label.46">发声事件</h3><p data-i18n="copy.p41">发布评测中，叹气命中 56/60；哭声只有 16/60。笑声的本地判断为 26/60，外部判断为 44/59，评判口径本身就值得检查。</p></article><article><h3 data-i18n="label.88">耳语 guidance</h3><p data-i18n="copy.p42">60 条匹配耳语请求中，guidance 将命中从 4 条提高到 32 条，但 SIM 从 0.587 降到 0.494，UTMOS 从 2.80 降到 1.78。强度控制也有类似的音色代价。</p></article><article class="mos-results" id="human-evaluation"><h3 data-i18n="label.89"></h3><div data-i18n="copy.p43"></div></article></div>
+<div class="evaluation-overview" id="automatic-evaluation">
+<h3 data-i18n="evaluation.title"></h3>
+<p class="evaluation-intro" data-i18n="evaluation.intro"></p>
+<div data-i18n="evaluation.table"></div>
+</div>
+<article class="mos-results" id="human-evaluation"><h3 data-i18n="label.89"></h3><div data-i18n="copy.p43"></div></article>
+<div class="result-notes supplementary-results reveal"><article><h3 data-i18n="label.46">发声事件</h3><p data-i18n="copy.p41">发布评测中，叹气命中 56/60；哭声只有 16/60。笑声的本地判断为 26/60，外部判断为 44/59，评判口径本身就值得检查。</p></article><article><h3 data-i18n="label.88">耳语 guidance</h3><p data-i18n="copy.p42">60 条匹配耳语请求中，guidance 将命中从 4 条提高到 32 条，但 SIM 从 0.587 降到 0.494，UTMOS 从 2.80 降到 1.78。强度控制也有类似的音色代价。</p></article></div>
 </section>
 <section aria-labelledby="lessons-title" class="lessons-section section-shell" id="lessons">
 <div class="section-heading reveal"><div><h2 data-i18n="label.4" id="lessons-title">失败经验</h2></div></div>

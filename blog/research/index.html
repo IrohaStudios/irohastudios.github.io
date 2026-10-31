@@ -11,12 +11,12 @@
 <link href="/blog/research/journal.css?v=7e9fffba6c08" rel="stylesheet"/>
 <link href="/blog/research/typography.css?v=0ec1a9dc5f0b" rel="stylesheet"/>
 <link href="/blog/research/vtuber.css?v=a5f49bec35df" rel="stylesheet"/>
-<script defer="" src="/blog/research/locales.js?v=7040104ad1b9"></script><script defer="" src="/blog/research/i18n.js?v=57b02993b1b7"></script><script defer="" src="/blog/research/glossary.js?v=286288d29944"></script>
+<script defer="" src="/blog/research/locales.js?v=09ebd64aa0c8"></script><script defer="" src="/blog/research/i18n.js?v=57b02993b1b7"></script><script defer="" src="/blog/research/glossary.js?v=286288d29944"></script>
 <script defer="" src="/blog/research/vendor/live2dcubismcore.min.js?v=25ae938cb4fe"></script>
 <script defer="" src="/blog/research/iroha-model.js?v=c2df50f90f63"></script>
 <script defer="" src="/blog/research/app.js?v=91271a1d8127"></script>
 <script defer="" src="/blog/research/vtuber.js?v=cd3097e2fa99"></script>
-<link href="https://irohastudios.github.io/blog/research/ja/" rel="canonical"/><link href="https://irohastudios.github.io/blog/research/ja/" hreflang="ja" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/en/" hreflang="en" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/zh/" hreflang="zh" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/" hreflang="x-default" rel="alternate"/><link href="/blog/research-theme.css?v=cc4f7906a407" rel="stylesheet"/><link href="/blog/mos.css?v=633d79a5ebb1" rel="stylesheet"/></head>
+<link href="https://irohastudios.github.io/blog/research/ja/" rel="canonical"/><link href="https://irohastudios.github.io/blog/research/ja/" hreflang="ja" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/en/" hreflang="en" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/zh/" hreflang="zh" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/" hreflang="x-default" rel="alternate"/><link href="/blog/research-theme.css?v=5756f8afc801" rel="stylesheet"/><link href="/blog/mos.css?v=633d79a5ebb1" rel="stylesheet"/></head>
 <body>
 <a class="skip-link" data-i18n="label.0" href="#main">本文へ移動</a>
 <div aria-hidden="true" class="reading-progress"></div>
@@ -105,23 +105,12 @@
 </section>
 <section aria-labelledby="results-title" class="results-section section-shell" id="results">
 <div class="section-heading reveal"><div><h2 data-i18n="label.77" id="results-title">評価結果</h2></div></div>
-<div class="results-highlight reveal"><div class="metric-main"><span class="eyebrow" data-i18n="label.78">EmoRuler 感情認識精度</span><div class="big-metric"><span>6.04<small>%</small></span><i>↗</i><strong>89.17<small>%</small></strong></div><p data-i18n="copy.p37">ネイティブ推論、同条件の480要求：Fish S2-Pro → Iroha</p></div><div class="metric-context"><div><span data-i18n="label.79">CER / 文字誤り率 ↓</span><strong>5.63 → 5.62<span>%</span></strong></div><div><span data-i18n="label.80">SIM / 声質類似度 ↑</span><strong>0.685 → 0.643</strong></div></div></div>
-<div class="results-caveat reveal"><p data-i18n="copy.p38">この<button class="term" data-term="development">開発用評価セット</button>はモデル選択に繰り返し使っており、<strong>独立したテストセットではありません</strong>。評価用6音色のうち4つは EmoRuler の学習に使われています。データ重複の監査も限定的です。</p></div>
-<div class="table-heading reveal"><h3 data-i18n="label.81">配布版の推論比較</h3><button aria-label="評価条件" class="term info-button" data-i18n-aria-label="attr.9" data-term="evaluation-context" type="button"><span aria-hidden="true">i</span></button></div>
-<div aria-label="モデル評価の比較。狭い画面では横にスクロールできます。" class="table-scroll reveal" data-i18n-aria-label="attr.10" role="region" tabindex="0"><table><thead><tr><th data-i18n="label.82" scope="col">モデル</th><th scope="col"><button class="term" data-term="e2v">E2V</button> ↑<small data-i18n="label.83">感情認識精度 %</small></th><th scope="col"><button class="term" data-term="emoruler">EmoRuler</button> ↑<small data-i18n="label.83">感情認識精度 %</small></th><th scope="col"><button class="term" data-term="cer">CER</button> ↓<small data-i18n="label.84">文字誤り率 %</small></th><th scope="col"><button class="term" data-term="sim">SIM</button> ↑<small data-i18n="label.85">声質類似度</small></th><th scope="col"><button class="term" data-term="utmos">UTMOS</button> ↑<small data-i18n="label.86">予測品質</small></th></tr></thead><tbody>
-<tr class="ours"><th scope="row">Iroha-TTS V1 </th><td>82.1</td><td>89.0</td><td>5.6</td><td>0.645</td><td>3.58</td></tr>
-<tr><th scope="row">Fish S2-Pro</th><td>17.9</td><td>6.0</td><td>5.6</td><td>0.685</td><td>3.51</td></tr>
-<tr><th scope="row">OmniVoice + GRPO</th><td>85.4</td><td>87.3</td><td>5.5</td><td>0.634</td><td>3.47</td></tr>
-<tr><th scope="row">Ming 0.5B + window GRPO</th><td>86.2</td><td>90.2</td><td>6.7</td><td>0.604</td><td>2.70</td></tr>
-<tr><th scope="row">Ming tiny + GRPO</th><td>85.0</td><td>84.2</td><td>5.5</td><td>0.638</td><td>2.97</td></tr>
-<tr><th scope="row">Qwen3-TTS + GRPO</th><td>85.2</td><td>89.0</td><td>7.1</td><td>0.632</td><td>3.41</td></tr>
-<tr><th scope="row">Fish Audio Drama 3</th><td>32.1</td><td>21.2</td><td>7.0</td><td>0.628</td><td>3.26</td></tr>
-<tr><th scope="row">IndexTTS 2.5</th><td>40.2</td><td>30.6</td><td>6.9</td><td>0.612</td><td>2.26</td></tr>
-<tr><th scope="row">Irodori-TTS v4-Large</th><td>30.8</td><td>20.6</td><td>6.0</td><td>0.649</td><td>3.03</td></tr>
-</tbody></table></div>
-<p class="source-note" data-i18n="copy.p39">表は配布パッケージの推論結果です：EmoRuler 88.96%、E2V 82.08%、CER 5.58%。上のネイティブ推論とは別に報告しています。UTMOS はモデルによる予測で、<strong>人による <button class="term" data-term="mos">MOS</button> ではありません</strong>。</p>
-<details class="additional-result"><summary data-i18n="label.87">タグなし評価 <span aria-hidden="true">+</span></summary><p data-i18n="copy.p40">Chatterbox はタグなしの結果のみを示し、感情認識精度の表とは分けます：CER 6.5%、SIM 0.675、UTMOS 3.34。Iroha のタグなしリリース評価120件は CER 5.0%、SIM 0.685、UTMOS 3.63 でした。</p></details>
-<div class="result-notes reveal"><article><h3 data-i18n="label.46">発声イベント</h3><p data-i18n="copy.p41">リリース評価では、ため息は56/60件、泣き声は16/60件で検出されました。笑い声はローカル判定で26/60件、外部判定で44/59件。判定基準の違い自体も検証が必要です。</p></article><article><h3 data-i18n="label.88">ささやき guidance</h3><p data-i18n="copy.p42">同条件のささやき60要求で、guidance により検出数は4件から32件へ増加。一方、SIM は 0.587 から 0.494、UTMOS は 2.80 から 1.78 に低下しました。強度制御にも同様の声質とのトレードオフがあります。</p></article><article class="mos-results" id="human-evaluation"><h3 data-i18n="label.89">主観聴取テスト MOS（日本語）</h3><div data-i18n="copy.p43">
+<div class="evaluation-overview" id="automatic-evaluation">
+<h3 data-i18n="evaluation.title">総合比較</h3>
+<p class="evaluation-intro" data-i18n="evaluation.intro"><b>私たちの実験はすべて Fish S2 Pro をベースにしています。</b><br/>6音色 × 20文 × 喜び・怒り・悲しみ・驚きの計480音声です。全モデルで同じ参照音声と採点方法を使用しました。感情の正解率は、emo2vec large（オープンソースで、私たちの学習には未使用）と EmoRuler（私たちが fine-tune した emo2vec large）の2つの感情認識モデルで判定しています。<br/>Fish Audio Drama 3 にも同じ角括弧の感情タグを使いました（括弧内の内容は自然言語の指示として扱われます）。720音声のうち7件は文の途中で止まり、上限の95秒まで無音が続きましたが、そのまま採点しました。<br/><b>Qwen3-TTS、OmniVoice、Ming 3.0 TTS などの有名な多言語 TTS も試しました。中国語と英語では良い結果でしたが、日本語を聴くと発音の誤りが多く、自然さも十分ではなかったため、この表では日本語で比較的良い結果だった TTS を比較しています。</b></p>
+<div data-i18n="evaluation.table"><div aria-label="横にスクロールできるデータ表" class="table-scroll overview-scroll" role="region" tabindex="0"><table class="overview-table"><colgroup><col class="model-column"/><col/><col/><col class="emotions-column"/><col/><col/><col/><col/><col/><col/></colgroup><thead><tr><th rowspan="2" scope="col"><span class="sr-only">モデル</span></th><th colspan="6" scope="colgroup"><span class="metric-group">感情あり（喜び・怒り・悲しみ・驚き）</span></th><th colspan="3" scope="colgroup"><span class="metric-group">感情なし</span></th></tr><tr><th scope="col">正解率<small>emo2vec large</small></th><th scope="col">正解率<small>EmoRuler</small></th><th scope="col">喜び / 怒り / 悲しみ / 驚き %<small>EmoRuler</small></th><th scope="col">声質の類似度<small>speaker similarity</small></th><th scope="col">音質<small>UTMOS</small></th><th scope="col">文字誤り率</th><th scope="col">声質の類似度<small>speaker similarity</small></th><th scope="col">音質<small>UTMOS</small></th><th scope="col">文字誤り率</th></tr></thead><tbody><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-fish"></span><span>Fish S2 Pro オリジナル</span></span><small>学習前のベースモデル</small></th><td><strong>17.9%</strong></td><td>6.0%</td><td>6 / 0 / 9 / 9</td><td>0.685</td><td>3.51</td><td>5.6%</td><td>0.684</td><td>3.57</td><td>6.2%</td></tr><tr class="ours"><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-ours"></span><span>Ours</span></span><small>Fish S2 Pro に SFT + 強化学習</small></th><td><strong>85.6%</strong></td><td>93.3%</td><td>91 / 94 / 95 / 93</td><td>0.636</td><td>3.55</td><td>5.8%</td><td>0.694</td><td>3.78</td><td>4.8%</td></tr><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-fish"></span><span>Fish Audio Drama 3</span></span><small>Fish の最新オープンソース · 35B MoE（3B 活性化）</small></th><td><strong>32.1%</strong></td><td>21.2%</td><td>32 / 14 / 21 / 18</td><td>0.628</td><td>3.26</td><td>7.0%</td><td>0.653</td><td>3.43</td><td>9.3%</td></tr><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-index"></span><span>IndexTTS-2.5</span></span><small>オープンソース · bilibili</small></th><td><strong>40.2%</strong></td><td>30.6%</td><td>65 / 18 / 19 / 20</td><td>0.612</td><td>2.26</td><td>6.9%</td><td>0.714</td><td>2.91</td><td>6.0%</td></tr><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-irodori"></span><span>Irodori-TTS · テキスト記述</span></span><small>オープンソース · Aratako</small></th><td><strong>30.8%</strong></td><td>20.6%</td><td>34 / 23 / 8 / 17</td><td>0.649</td><td>3.03</td><td>6.0%</td><td>0.662</td><td>3.09</td><td>5.7%</td></tr><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-irodori"></span><span>Irodori-TTS · emoji</span></span><small>オープンソース · Aratako</small></th><td><strong>20.0%</strong></td><td>9.8%</td><td>17 / 2 / 8 / 12</td><td>0.651</td><td>3.03</td><td>6.5%</td><td>0.662</td><td>3.09</td><td>5.7%</td></tr><tr><th scope="row"><span class="model-name"><span aria-hidden="true" class="model-mark model-resemble"></span><span>Chatterbox</span></span><small>オープンソース · Resemble</small></th><td class="unsupported" colspan="6">タグで感情を指定できません</td><td>0.675</td><td>3.34</td><td>6.5%</td></tr></tbody></table></div></div>
+</div>
+<article class="mos-results" id="human-evaluation"><h3 data-i18n="label.89">主観聴取テスト MOS（日本語）</h3><div data-i18n="copy.p43">
 <p>15組 × 5種類の感情 = 75文を選び、各参加者が75文すべてを聴きました。</p>
 <div aria-label="横にスクロールできるデータ表" class="table-scroll" role="region" tabindex="0"><table>
 <thead>
@@ -136,7 +125,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Ours</td>
+<td><span class="model-name"><span aria-hidden="true" class="model-mark model-ours"></span><span>Ours</span></span></td>
 <td>3.84</td>
 <td><strong>4.20</strong></td>
 <td>3.52</td>
@@ -144,7 +133,7 @@
 <td><strong>31.7%</strong></td>
 </tr>
 <tr>
-<td>Fish Audio Drama 3</td>
+<td><span class="model-name"><span aria-hidden="true" class="model-mark model-fish"></span><span>Fish Audio Drama 3</span></span></td>
 <td><strong>3.97</strong></td>
 <td>3.64</td>
 <td>3.45</td>
@@ -152,7 +141,7 @@
 <td>23.2%</td>
 </tr>
 <tr>
-<td>Irodori-TTS v4 large · テキスト記述</td>
+<td><span class="model-name"><span aria-hidden="true" class="model-mark model-irodori"></span><span>Irodori-TTS v4 large · テキスト記述</span></span></td>
 <td>3.61</td>
 <td>3.95</td>
 <td>3.32</td>
@@ -160,7 +149,7 @@
 <td>28.1%</td>
 </tr>
 <tr>
-<td>Fish S2 Pro オリジナル</td>
+<td><span class="model-name"><span aria-hidden="true" class="model-mark model-fish"></span><span>Fish S2 Pro オリジナル</span></span></td>
 <td>3.75</td>
 <td>2.93</td>
 <td><strong>3.72</strong></td>
@@ -168,7 +157,7 @@
 <td>12.1%</td>
 </tr>
 <tr>
-<td>IndexTTS-2.5</td>
+<td><span class="model-name"><span aria-hidden="true" class="model-mark model-index"></span><span>IndexTTS-2.5</span></span></td>
 <td>2.35</td>
 <td>3.49</td>
 <td>2.81</td>
@@ -206,7 +195,8 @@
 </tr>
 </tbody>
 </table></div>
-</div></article></div>
+</div></article>
+<div class="result-notes supplementary-results reveal"><article><h3 data-i18n="label.46">発声イベント</h3><p data-i18n="copy.p41">リリース評価では、ため息は56/60件、泣き声は16/60件で検出されました。笑い声はローカル判定で26/60件、外部判定で44/59件。判定基準の違い自体も検証が必要です。</p></article><article><h3 data-i18n="label.88">ささやき guidance</h3><p data-i18n="copy.p42">同条件のささやき60要求で、guidance により検出数は4件から32件へ増加。一方、SIM は 0.587 から 0.494、UTMOS は 2.80 から 1.78 に低下しました。強度制御にも同様の声質とのトレードオフがあります。</p></article></div>
 </section>
 <section aria-labelledby="lessons-title" class="lessons-section section-shell" id="lessons">
 <div class="section-heading reveal"><div><h2 data-i18n="label.4" id="lessons-title">失敗からの知見</h2></div></div>
