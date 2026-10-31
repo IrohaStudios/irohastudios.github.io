@@ -226,14 +226,12 @@ svg {
   min-height: 44px;
   font-size: 13px;
 }
-.github-link {
+.hf-link {
   font-size: 16px;
   white-space: nowrap;
   font-weight: 600;
 }
-.github-link > span {
-  margin-left: 15px;
-}
+
 .menu-toggle {
   display: none;
   background: transparent;
@@ -1361,15 +1359,13 @@ h2 {
   .header-actions {
     gap: 8px;
   }
-  .header .github-link {
+  .header .hf-link {
     display: none;
   }
   .language-control select {
     width: 92px;
   }
-  .github-link > span {
-    margin-left: 6px;
-  }
+
   .menu-toggle {
     display: block;
   }
@@ -1778,7 +1774,7 @@ h2 {
   flex-shrink: 0;
   vertical-align: middle;
 }
-.github-link {
+.hf-link {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
