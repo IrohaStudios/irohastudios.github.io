@@ -20,13 +20,6 @@
       return valid(value) ? value : null;
     } catch (_) { return null; }
   }
-  function browserLanguage() {
-    for (const tag of navigator.languages || [navigator.language]) {
-      const language = String(tag).toLowerCase().split(/[-_]/)[0];
-      if (valid(language)) return language;
-    }
-    return 'en';
-  }
   function url(language, base = current.base) {
     const target = new URL(location.href);
     target.pathname = `${base}${language}/`;
@@ -34,7 +27,7 @@
     return target;
   }
   const requested = new URLSearchParams(location.search).get('lang');
-  const language = (valid(requested) ? requested : null) || current.language || savedLanguage() || browserLanguage();
+  const language = (valid(requested) ? requested : null) || current.language || savedLanguage() || 'en';
   if (valid(requested)) remember(requested);
   const target = url(language);
   const redirecting = location.pathname !== target.pathname;

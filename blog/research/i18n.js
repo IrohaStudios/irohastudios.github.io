@@ -6,7 +6,7 @@
   let language = window.IrohaLanguage.language;
   const picker = document.getElementById('language-select');
   function t(key, values = {}) {
-    const value = catalogs[language][key] ?? catalogs.zh[key] ?? key;
+    const value = catalogs[language][key] ?? catalogs.en[key] ?? key;
     return value.replace(/\{(\w+)\}/g, (match, name) => values[name] ?? match);
   }
   function apply() {
@@ -45,7 +45,7 @@
     history.replaceState(null, '', url);
   }
   picker.addEventListener('change', () => setLanguage(picker.value));
-  window.addEventListener('popstate', () => { language = routeLanguage() || 'ja'; apply(); });
+  window.addEventListener('popstate', () => { language = routeLanguage() || 'en'; apply(); });
   window.IrohaI18n = { t, setLanguage, get language() { return language; },
     glossary: key => window.IrohaGlossary?.[language]?.[key] };
   apply();

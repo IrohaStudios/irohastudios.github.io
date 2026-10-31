@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render Chinese, Japanese and English pages, defaulting to Chinese."""
+"""Render Chinese, Japanese and English pages, defaulting to English."""
 import hashlib
 import html
 import json
@@ -44,9 +44,9 @@ def build():
         destination.parent.mkdir(exist_ok=True)
         destination.write_text(page)
         print(f'Rendered {destination.relative_to(ROOT)} ({tag})')
-        if locale == 'zh':
+        if locale == 'en':
             (ROOT / 'index.html').write_text(page)
-            print('Rendered index.html (zh-CN, default; Japanese/English slogan)')
+            print('Rendered index.html (en, default)')
 
 
 if __name__ == '__main__':

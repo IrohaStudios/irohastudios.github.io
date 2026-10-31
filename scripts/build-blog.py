@@ -93,7 +93,7 @@ def build_journal(lang):
     destination = ROOT / f'blog/{lang}/index.html'
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(page)
-    if lang == 'ja': (ROOT / 'blog/index.html').write_text(page)
+    if lang == 'en': (ROOT / 'blog/index.html').write_text(page)
 
 
 def model_mark(model):
@@ -186,7 +186,7 @@ def build_release(lang):
     destination = ROOT / f'blog/irohattsv1/{lang}/index.html'
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(page)
-    if lang == 'ja': (ROOT / 'blog/irohattsv1/index.html').write_text(page)
+    if lang == 'en': (ROOT / 'blog/irohattsv1/index.html').write_text(page)
     return mos_heading.get_text(), ''.join(str(node) for node in mos.contents if node is not mos_heading)
 
 
@@ -241,7 +241,7 @@ def build_research(lang, catalog):
     destination = ROOT/f'blog/research/{lang}/index.html'
     destination.parent.mkdir(exist_ok=True)
     destination.write_text(str(soup))
-    if lang == 'ja': (ROOT/'blog/research/index.html').write_text(str(soup))
+    if lang == 'en': (ROOT/'blog/research/index.html').write_text(str(soup))
 
 
 def main():
