@@ -78,7 +78,8 @@ class DafeiyuLive2D {
       const index = this.indices.get(id);
       if (index === undefined) continue;
       const clamped = Math.min(p.maximumValues[index], Math.max(p.minimumValues[index], value));
-      this.core.setParameterValueById(id, clamped);
+      // Cubism expects an interned ID object; raw strings create virtual parameters.
+      this.core.setParameterValueByIndex(index, clamped);
       this.lastParameters[id] = clamped;
     }
   }
