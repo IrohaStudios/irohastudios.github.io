@@ -1286,6 +1286,9 @@ h2 {
   html:lang(en) h1 {
     font-size: clamp(30px, 9.4vw, 47px);
   }
+  html:lang(ja) h1 {
+    font-size: clamp(36px, 12vw, 47px);
+  }
   .hero-jp {
     font-size: 13px;
     margin-top: 13px;

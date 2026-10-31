@@ -1,24 +1,19 @@
 <!doctype html>
-<html lang="zh-CN" data-locale="zh">
+<html lang="ja" data-locale="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Iroha Studios 出于个人爱好，制作二次元相关的 AI 和 AI Agent，不以盈利为目的。这里分享项目、制作过程和研究记录。" />
+    <meta name="description" content="AI とアニメ、ときどき浮かぶちょっと変わったアイデア。小さなツール、技術の実験、まだ制作途中の作品たち。" />
     <meta name="theme-color" content="#f4faff" />
-    <meta property="og:title" content="Iroha Studios · 二次元 AI，出于爱好。" />
-    <meta property="og:description" content="Iroha Studios 出于个人爱好，制作二次元相关的 AI 和 AI Agent，不以盈利为目的。这里分享项目、制作过程和研究记录。" />
+    <meta property="og:title" content="Iroha Studios · Made with curiosity." />
+    <meta property="og:description" content="AI とアニメ、ときどき浮かぶちょっと変わったアイデア。小さなツール、技術の実験、まだ制作途中の作品たち。" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://irohastudios.github.io/" />
+    <meta property="og:url" content="https://irohastudios.github.io/ja/" />
     <meta
       property="og:image"
       content="https://irohastudios.github.io/assets/sky-observatory.png"
     />
-    <link rel="canonical" href="https://irohastudios.github.io/" />
-    <link
-      rel="alternate"
-      hreflang="zh-CN"
-      href="https://irohastudios.github.io/"
-    />
+    <link rel="canonical" href="https://irohastudios.github.io/ja/" />
     <link
       rel="alternate"
       hreflang="ja"
@@ -34,7 +29,7 @@
       hreflang="x-default"
       href="https://irohastudios.github.io/"
     />
-    <title>Iroha Studios · 二次元 AI，出于爱好。</title>
+    <title>Iroha Studios · Made with curiosity.</title>
     <link rel="icon" href="/assets/iroha-logo.svg" type="image/svg+xml" />
     <link
       rel="preload"
@@ -42,10 +37,10 @@
       as="image"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/style.css?v=2fc4df272314" />
+    <link rel="stylesheet" href="/style.css?v=3c3ca5c1b1ea" />
     <script defer="" src="/assets/vendor/gsap.min.js"></script>
     <script defer="" src="/assets/vendor/ScrollTrigger.min.js"></script>
-    <script defer="" src="/app.js?v=479de29112e2"></script>
+    <script defer="" src="/app.js?v=28c3f5bacb62"></script>
     <noscript
       ><style>
         .motion-toggle,
@@ -57,9 +52,9 @@
     >
   </head>
   <body>
-    <a class="skip-link" href="#main">跳至主要内容</a>
+    <a class="skip-link" href="#main">メインコンテンツへ</a>
     <header class="header" id="header">
-      <a class="brand" href="#home" aria-label="Iroha Studios 首页"
+      <a class="brand" href="#home" aria-label="Iroha Studios ホーム"
         ><img
           class="brand-mark"
           src="/assets/iroha-logo.svg"
@@ -75,27 +70,26 @@
           height="46"
         /><span lang="en">Studios</span></a
       >
-      <nav class="nav" id="navigation" aria-label="主导航">
-        <a href="#home" class="is-current">首页</a
-        ><a href="#work">项目</a><a href="#research">研究日志</a
-        ><a href="#studio">关于我们</a>
+      <nav class="nav" id="navigation" aria-label="メインナビゲーション">
+        <a href="#home" class="is-current">ホーム</a
+        ><a href="#work">作品</a><a href="#research">制作ノート</a
+        ><a href="#studio">私たちについて</a>
       </nav>
       <div class="header-actions">
         <label class="language-control"
-          ><span class="sr-only">选择语言</span
+          ><span class="sr-only">言語を選択</span
           ><select
             id="language-select"
             name="language"
-            aria-label="选择语言"
+            aria-label="言語を選択"
           >
-            <option value="zh" lang="zh-CN" selected>中文</option>
-            <option value="ja" lang="ja" >日本語</option>
+            <option value="ja" lang="ja" selected>日本語</option>
             <option value="en" lang="en" >English</option>
           </select></label
         ><noscript
-          ><nav class="language-fallback" aria-label="选择语言">
-            <a href="/?lang=zh" lang="zh-CN">中</a
-            ><a href="/ja/" lang="ja">日</a><a href="/en/" lang="en">EN</a>
+          ><nav class="language-fallback" aria-label="言語を選択">
+            <a href="/ja/" lang="ja">日本語</a
+            ><a href="/en/" lang="en">English</a>
           </nav></noscript
         >
         <a
@@ -123,7 +117,7 @@
           type="button"
           aria-expanded="false"
           aria-controls="navigation"
-          aria-label="打开菜单"
+          aria-label="メニューを開く"
         >
           <span></span><span></span>
         </button>
@@ -136,19 +130,19 @@
             src="/assets/sky-observatory.png"
             width="1672"
             height="941"
-            alt="原创插画：戴着耳机的白发创作者站在海边城市的屋顶，身后是蓝天与白云。"
+            alt="オリジナルイラスト。ヘッドホンを着けた白髪のクリエイターが、青空と白い雲を背に海辺の街の屋上に立っている。"
             fetchpriority="high"
           />
         </div>
         <div class="hero-wash" aria-hidden="true"></div>
         <canvas id="sky-particles" aria-hidden="true"></canvas>
         <div class="hero-content">
-          <h1 id="hero-title" class="hero-enter">二次元 AI，<br />因为喜欢。</h1>
-          <p class="hero-jp hero-enter">做些有趣的 AI Agent。</p>
-          <p class="hero-description hero-enter">出于个人爱好，做一些二次元相关的 AI。<br />不以盈利为目的，分享项目和制作记录。</p>
+          <h1 id="hero-title" class="hero-enter">面白いものを、<br />つくろう。</h1>
+          <p class="hero-jp hero-enter" lang="en">Made with curiosity.</p>
+          <p class="hero-description hero-enter">AI とアニメ、ときどき浮かぶちょっと変わったアイデア。<br />小さなツール、技術の実験、まだ制作途中の作品たち。</p>
           <div class="hero-cta hero-enter">
             <a class="button primary" href="#work"
-              >查看项目
+              >作品を見る
               <span aria-hidden="true"
                 ><svg
                   class="icon"
@@ -164,7 +158,7 @@
                 >
                   <path d="M12 4v16m-6-6 6 6 6-6"></path></svg></span></a
             ><a class="text-link" href="#research"
-              >研究日志
+              >制作ノート
               <span aria-hidden="true"
                 ><svg
                   class="icon"
@@ -185,18 +179,18 @@
         <div class="hero-bottom">
           <a href="#work" class="scroll-cue"
             ><span class="scroll-track" aria-hidden="true"></span
-            >向下看项目</a
+            >スクロールして作品を見る</a
           >
         </div>
       </section>
       <div class="news-strip wrap">
-        <span class="news-label">研究日志</span
+        <span class="news-label">制作ノート</span
         ><a
           href="https://iroha-research.liuyun5620472.chatgpt.site/"
           target="_blank"
           rel="noopener noreferrer"
           ><span class="news-date" lang="en">2026.10</span
-          ><span>Iroha 的七种声音控制：训练方法与试听</span
+          ><span>Iroha の7つの音声制御：学習手法と試聴</span
           ><span class="news-arrow" aria-hidden="true"
             ><svg
               class="icon"
@@ -215,19 +209,19 @@
       </div>
       <section class="work section wrap" id="work" aria-labelledby="work-title">
         <div class="section-heading reveal">
-          <div><h2 id="work-title">项目与尝试</h2></div>
+          <div><h2 id="work-title">作品と実験</h2></div>
         </div>
         <div class="project-panel reveal">
           <div class="project-copy">
             <h3 lang="en">Iroha-TTS</h3>
-            <p class="project-lead">可控语音合成</p>
-            <p class="project-description">支持情感、轻语和声音事件控制。<br />四段日语试听使用同一句台词。</p>
+            <p class="project-lead">表現を制御できる音声合成</p>
+            <p class="project-description">感情、ささやき、笑いなどの発声表現を制御できます。<br />4つの日本語サンプルは、すべて同じセリフです。</p>
             <a
               class="button light"
               href="https://huggingface.co/spaces/cyacya8023/Iroha-TTS"
               target="_blank"
               rel="noopener noreferrer"
-              >试用模型
+              >デモを試す
               <span aria-hidden="true"
                 ><svg
                   class="icon"
@@ -247,7 +241,7 @@
               href="https://huggingface.co/IrohaStudio/Iroha-TTS"
               target="_blank"
               rel="noopener noreferrer"
-              >查看模型
+              >モデルを見る
               <span aria-hidden="true"
                 ><svg
                   class="icon"
@@ -264,11 +258,11 @@
                   <path d="M5 19 19 5M5 5h14v14"></path></svg></span
             ></a>
           </div>
-          <div class="voice-lab" aria-label="Iroha-TTS 情感试听" data-ui="">
+          <div class="voice-lab" aria-label="Iroha-TTS の感情別サンプル" data-ui="">
             <div class="lab-top">
               <span
-                >情感试听<small class="sample-language"
-                  >日语样例</small
+                >感情別の試聴<small class="sample-language"
+                  >日本語サンプル</small
                 ></span
               >
               <span class="lab-version">V1</span>
@@ -276,7 +270,7 @@
             <div
               class="emotion-options"
               role="group"
-              aria-label="选择试听情感"
+              aria-label="試聴する感情を選択"
             >
               <button
                 type="button"
@@ -284,28 +278,28 @@
                 data-emotion="joy"
                 aria-pressed="true"
               >
-                开心</button
+                喜び</button
               ><button
                 type="button"
                 disabled=""
                 data-emotion="anger"
                 aria-pressed="false"
               >
-                生气</button
+                怒り</button
               ><button
                 type="button"
                 disabled=""
                 data-emotion="sadness"
                 aria-pressed="false"
               >
-                悲伤</button
+                悲しみ</button
               ><button
                 type="button"
                 disabled=""
                 data-emotion="surprise"
                 aria-pressed="false"
               >
-                惊讶
+                驚き
               </button>
             </div>
             <div class="voice-body">
@@ -313,7 +307,7 @@
               <p class="voice-script" lang="ja">
                 どうですか、冤罪だと<br />言ったでしょう？
               </p>
-              <p class="voice-translation">怎么样，我就说是被冤枉的吧？</p>
+              <p class="voice-translation"></p>
               <div class="waveform" id="waveform" aria-hidden="true">
                 <span class="wave-fallback"></span>
               </div>
@@ -322,12 +316,12 @@
                   id="play-sample"
                   type="button"
                   disabled=""
-                  aria-label="播放开心语音"
+                  aria-label="喜びの音声を再生"
                   aria-pressed="false"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m9 5 12 7-12 7z"></path></svg
-                  ><span>试听这句话</span></button
+                  ><span>このセリフを聴く</span></button
                 ><span id="playback-time">0:00</span>
               </div>
               <input
@@ -337,8 +331,8 @@
                 max="100"
                 step="0.1"
                 value="0"
-                aria-label="音频播放进度"
-                aria-valuetext="尚未播放"
+                aria-label="音声の再生位置"
+                aria-valuetext="未再生"
               />
               <p
                 class="audio-status"
@@ -353,7 +347,7 @@
                 href="https://iroha-research.liuyun5620472.chatgpt.site/#listen"
                 target="_blank"
                 rel="noopener noreferrer"
-                >更多试听样例
+                >ほかのサンプルを聴く
                 <span aria-hidden="true"
                   ><svg
                     class="icon"
@@ -372,20 +366,20 @@
             </div>
             <noscript
               ><p class="noscript-note">
-                请前往<a
+                すべてのサンプルは<a
                   href="https://iroha-research.liuyun5620472.chatgpt.site/#listen"
-                  >研究博客</a
-                >试听完整示例。
+                  >制作ノート</a
+                >でお聴きいただけます。
               </p></noscript
             >
           </div>
         </div>
         <p class="project-note">
-          试听选自 Iroha-TTS V1 研究博客。不同控制的能力与局限，详见<a
+          試聴サンプルは Iroha-TTS V1 の研究ブログから。各制御の効果と限界は、こちらをご覧ください：<a
             href="https://iroha-research.liuyun5620472.chatgpt.site/#controls"
             target="_blank"
             rel="noopener noreferrer"
-            >研究说明 ↗</a
+            >研究ノート ↗</a
           >。
         </p>
       </section>
@@ -396,13 +390,13 @@
       >
         <div class="wrap">
           <div class="section-heading reveal">
-            <div><h2 id="research-title">训练方法与实验记录</h2></div>
+            <div><h2 id="research-title">制作ノート</h2></div>
             <a
               class="text-link"
               href="https://iroha-research.liuyun5620472.chatgpt.site/"
               target="_blank"
               rel="noopener noreferrer"
-              >研究博客
+              >制作ノート
               <span aria-hidden="true"
                 ><svg
                   class="icon"
@@ -425,10 +419,10 @@
               href="https://iroha-research.liuyun5620472.chatgpt.site/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="阅读 Iroha 的七种控制研究博客"
+              aria-label="Iroha の7つの制御についての研究記事を読む"
               ><img
                 src="/assets/research-preview.png"
-                alt="Iroha 研究博客预览：怎么做出 Iroha 的七种控制，包含情感试听和训练方法。"
+                alt="Iroha の研究ブログのプレビュー。7つの音声制御について、感情別の試聴と学習手法を紹介。"
                 width="1060"
                 height="650"
                 loading="lazy"
@@ -439,16 +433,16 @@
                   href="https://iroha-research.liuyun5620472.chatgpt.site/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  >怎么做出<br />Iroha 的七种控制</a
+                  >Iroha の7つの制御は<br />どう生まれたか</a
                 >
               </h3>
-              <p>记录 Iroha 的数据与训练方法，以及情感、轻语和发音控制的效果。每种控制都有试听样例，也写下了没有奏效的尝试。</p>
+              <p>Iroha のデータと学習手法、感情・ささやき・発音制御の結果をまとめました。それぞれの試聴サンプルと、うまくいかなかった試みも紹介しています。</p>
               <a
                 class="button outline"
                 href="https://iroha-research.liuyun5620472.chatgpt.site/"
                 target="_blank"
                 rel="noopener noreferrer"
-                >阅读这篇研究
+                >研究記事を読む
                 <span aria-hidden="true"
                   ><svg
                     class="icon"
@@ -471,9 +465,9 @@
               href="https://iroha-research.liuyun5620472.chatgpt.site/#method"
               target="_blank"
               rel="noopener noreferrer"
-              ><strong>训练方法</strong
+              ><strong>学習手法</strong
               ><span
-                >数据与训练
+                >データと学習
                 <b aria-hidden="true"
                   ><svg
                     class="icon"
@@ -492,9 +486,9 @@
               href="https://iroha-research.liuyun5620472.chatgpt.site/#controls"
               target="_blank"
               rel="noopener noreferrer"
-              ><strong>七种控制</strong
+              ><strong>7つの制御</strong
               ><span
-                >效果与试听
+                >結果と試聴
                 <b aria-hidden="true"
                   ><svg
                     class="icon"
@@ -513,9 +507,9 @@
               href="https://iroha-research.liuyun5620472.chatgpt.site/#lessons"
               target="_blank"
               rel="noopener noreferrer"
-              ><strong>失败经验</strong
+              ><strong>試行錯誤</strong
               ><span
-                >没奏效的尝试
+                >うまくいかなかった試み
                 <b aria-hidden="true"
                   ><svg
                     class="icon"
@@ -542,16 +536,16 @@
         <div class="studio-art reveal">
           <img
             src="/assets/iroha-logo.svg"
-            alt="Iroha Studios 头像：深蓝短发、绿色眼睛，戴着耳机和红花发饰"
+            alt="Iroha Studios のアバター。紺色のショートヘアと緑の瞳、ヘッドホンと赤い花の髪飾り。"
             width="200"
             height="200"
             loading="lazy"
           />
         </div>
         <div class="studio-copy reveal">
-          <h2 id="studio-title">关于 Iroha Studios</h2>
-          <p>我们出于个人爱好，做一些二次元相关的 AI 和 AI Agent。</p>
-          <p class="studio-small">这些项目不以盈利为目的，只是把喜欢的想法慢慢做出来。Iroha-TTS 是其中一个项目，这里也会记录制作过程、尝试和遇到的问题。</p>
+          <h2 id="studio-title">Iroha Studios について</h2>
+          <p>私たちは個人の趣味として、二次元にまつわる AI や AI エージェントをつくっています。</p>
+          <p class="studio-small">利益を得るためではなく、好きだから続けている活動です。Iroha-TTS もその一つ。制作の過程や試行錯誤も、ここに記録していきます。</p>
           <div class="studio-socials">
             <a
               href="https://github.com/IrohaStudios"
@@ -597,7 +591,7 @@
       </section>
     </main>
     <footer class="footer wrap">
-      <a class="brand" href="#home" aria-label="返回 Iroha Studios 首页"
+      <a class="brand" href="#home" aria-label="Iroha Studios のホームへ戻る"
         ><img
           class="brand-mark"
           src="/assets/iroha-logo.svg"
@@ -619,7 +613,7 @@
           href="https://iroha-research.liuyun5620472.chatgpt.site/"
           target="_blank"
           rel="noopener noreferrer"
-          >研究博客
+          >制作ノート
           <span aria-hidden="true"
             ><svg
               class="icon"
@@ -635,7 +629,7 @@
             >
               <path d="M5 19 19 5M5 5h14v14"></path></svg></span></a
         ><a href="#home" class="back-top"
-          >返回顶部
+          >トップへ戻る
           <span aria-hidden="true"
             ><svg
               class="icon"
@@ -658,14 +652,14 @@
       id="motion-toggle"
       type="button"
       aria-pressed="true"
-      aria-label="关闭页面动效"
+      aria-label="アニメーションを無効にする"
     >
       <span class="motion-bars" aria-hidden="true"
         ><i></i><i></i><i></i><i></i></span
-      ><span id="motion-label">动效 ON</span>
+      ><span id="motion-label">動き ON</span>
     </button>
     <script type="application/json" id="ui-messages">
-      {"menu.open": "打开菜单", "menu.close": "关闭菜单", "audio.label": "Iroha-TTS 情感试听", "audio.heading": "情感试听", "audio.sampleLanguage": "日语样例", "audio.choose": "选择试听情感", "emotion.joy": "开心", "emotion.anger": "生气", "emotion.sadness": "悲伤", "emotion.surprise": "惊讶", "audio.translation": "怎么样，我就说是被冤枉的吧？", "audio.initialLabel": "播放开心语音", "audio.playLabel": "播放{emotion}语音", "audio.pauseLabel": "暂停{emotion}语音", "audio.listen": "试听这句话", "audio.playing": "正在播放", "audio.progress": "音频播放进度", "audio.notPlayed": "尚未播放", "audio.time": "{elapsed} / {duration}", "audio.more": "更多试听样例", "audio.noscriptBefore": "请前往", "audio.noscriptAfter": "试听完整示例。", "audio.unavailable": "试听暂时不可用，请通过下方「更多试听样例」进入研究博客。", "audio.loading": "正在加载音频…", "audio.playError": "未能播放，点击可重试，或打开下方「更多试听样例」。", "audio.loadError": "音频加载失败，点击可重试，或打开下方「更多试听样例」。", "motion.enable": "开启页面动效", "motion.disable": "关闭页面动效", "motion.on": "动效 ON", "motion.off": "动效 OFF", "motion.reduced": "系统减弱动效"}
+      {"menu.open": "メニューを開く", "menu.close": "メニューを閉じる", "audio.label": "Iroha-TTS の感情別サンプル", "audio.heading": "感情別の試聴", "audio.sampleLanguage": "日本語サンプル", "audio.choose": "試聴する感情を選択", "emotion.joy": "喜び", "emotion.anger": "怒り", "emotion.sadness": "悲しみ", "emotion.surprise": "驚き", "audio.translation": "", "audio.initialLabel": "喜びの音声を再生", "audio.playLabel": "{emotion}の音声を再生", "audio.pauseLabel": "{emotion}の音声を一時停止", "audio.listen": "このセリフを聴く", "audio.playing": "再生中", "audio.progress": "音声の再生位置", "audio.notPlayed": "未再生", "audio.time": "{elapsed} / {duration}", "audio.more": "ほかのサンプルを聴く", "audio.noscriptBefore": "すべてのサンプルは", "audio.noscriptAfter": "でお聴きいただけます。", "audio.unavailable": "現在、試聴を利用できません。下の「ほかのサンプルを聴く」から研究ブログをご覧ください。", "audio.loading": "音声を読み込み中…", "audio.playError": "再生できませんでした。もう一度押すか、下の「ほかのサンプルを聴く」を開いてください。", "audio.loadError": "音声を読み込めませんでした。もう一度押すか、下の「ほかのサンプルを聴く」を開いてください。", "motion.enable": "アニメーションを有効にする", "motion.disable": "アニメーションを無効にする", "motion.on": "動き ON", "motion.off": "動き OFF", "motion.reduced": "動きを抑制中"}
     </script>
   </body>
 </html>
