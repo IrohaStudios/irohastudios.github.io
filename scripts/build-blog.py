@@ -21,6 +21,12 @@ UI = {
 }
 SECTION_IDS = ['release', 'motivation', 'evaluation', 'uses', 'getting-started', 'next']
 SUBSECTION_IDS = ['automatic-evaluation', 'human-evaluation', 'other-results']
+PLAYER_UI = {
+    'ja': dict(play='再生', pause='一時停止', seek='再生位置'),
+    'en': dict(play='Play', pause='Pause', seek='Playback position'),
+    'zh': dict(play='播放', pause='暂停', seek='播放进度'),
+}
+SAMPLES = json.loads((ROOT / 'blog/research/assets/samples.json').read_text())
 
 
 def esc(value):
@@ -169,7 +175,7 @@ def build_release(lang):
     toc = toc.replace(evaluation_link, evaluation_link + f'<a href="#human-evaluation">{esc(mos_heading.get_text())}</a>')
     mobile_toc = f'<details class="mobile-toc"><summary>{u["toc"]}</summary><nav aria-label="{u["toc"]}">{toc}</nav></details>'
     tag = 'zh-CN' if lang == 'zh' else lang
-    runtime = json.dumps(dict(emotions=u['emotions'], audio={model:{emotion:asset(f'/blog/research/assets/audio/{model}--emo-{emotion}.mp3') for emotion in ['joy','anger','sadness','surprise']} for model in ['stock','iroha-v1']}), ensure_ascii=False).replace('<','\\u003c')
+    runtime = json.dumps(dict(emotions=u['emotions'], player=PLAYER_UI[lang], audio={model:{emotion:SAMPLES[f'{model}--emo-{emotion}'] for emotion in ['joy','anger','sadness','surprise']} for model in ['stock','iroha-v1']}), ensure_ascii=False).replace('<','\\u003c')
     page = f'''<!doctype html>
 <html lang="{tag}" data-locale="{lang}"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{esc(title)} · Iroha Studios</title><meta name="description" content="{esc(BeautifulSoup(lead,'html.parser').get_text())}"/><meta name="theme-color" content="#fafdff"/><meta property="og:title" content="{esc(title)}"/><meta property="og:type" content="article"/><meta property="og:url" content="{ORIGIN}{RELEASE}{lang}/"/><meta property="og:image" content="{ORIGIN}/assets/sky-observatory.png"/>{head_links(lang,RELEASE)}<link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="{asset('/blog/blog.css')}"/><link rel="stylesheet" href="{asset('/blog/mos.css')}"/><script defer src="{asset('/blog/release.js')}"></script><link rel="stylesheet" href="{asset('/assets/video-subtitles.css')}"/><script defer src="{asset('/assets/video-subtitles.js')}"></script><script id="blog-ui" type="application/json">{runtime}</script><noscript><style>.sample-tabs{{display:none}}</style></noscript></head>
 <body id="top"><a class="blog-skip" href="#article">{u['skip']}</a><header class="studio-header">{brand(lang)}<nav class="studio-nav" aria-label="{u['journal']}"><a href="#demos">{esc(SITE_COPY[lang]['demo.title'])}</a><a href="#listen">{u['audio']}</a><a href="/blog/research/{lang}/">{u['research']}</a></nav><nav class="blog-languages" aria-label="{u['language']}">{language_links(lang,RELEASE)}</nav></header>
