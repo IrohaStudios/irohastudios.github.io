@@ -5,7 +5,7 @@
 .mos-results small{display:block;font-size:14px;line-height:1.9;color:var(--muted)}
 .mos-results .table-scroll{width:100%;max-width:100%;margin:26px 0;padding:0;border:0}
 .mos-results .table-scroll table{width:100%;min-width:860px;font-family:inherit;font-size:14px;line-height:1.8;font-variant-numeric:tabular-nums}
-.mos-results .table-scroll th,.mos-results .table-scroll td{padding:16px 14px;min-width:90px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle;color:var(--muted);white-space:nowrap}
+.mos-results .table-scroll th,.mos-results .table-scroll td{padding:16px 14px;min-width:90px;border-bottom:1px solid var(--line);font-family:inherit;text-align:right;vertical-align:middle;color:var(--muted);white-space:nowrap}
 .mos-results .table-scroll th{background:transparent;font-weight:500}
 .mos-results .table-scroll th:first-child,.mos-results .table-scroll td:first-child{text-align:left;min-width:250px;white-space:normal}
 .mos-results .table-scroll td:first-child,.mos-results .table-scroll strong{color:var(--ink)}
