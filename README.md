@@ -2,7 +2,7 @@
 
 线上地址：https://irohastudios.github.io/
 
-Iroha Studios 的二次元风格团队主页，包含原创天空插画、Iroha-TTS 四种情感试听、研究博客栏目与团队入口。
+Iroha Studios 出于个人爱好制作二次元相关的 AI 和 AI Agent，不以盈利为目的。主页分享项目、制作过程和研究记录，Iroha-TTS 是其中一个项目。
 
 ## 本地预览与发布
 
