@@ -56,3 +56,12 @@
 @media(max-width:540px){.listening-mascot{width:76px;height:76px;left:6px}}
 
 .studio-brand .studios-wordmark{display:block;width:112px;height:46px;object-fit:contain;mix-blend-mode:multiply}
+/* Native video controls and a single column work in both phone orientations. */
+.release-film video{max-width:100%;object-fit:contain;touch-action:manipulation}
+.release-film video:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+.film-meta>:last-child{flex-shrink:0;font-variant-numeric:tabular-nums}
+@media(max-width:1024px){.release-film-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:1024px) and (max-height:500px) and (orientation:landscape){
+  .release-film video{max-width:calc((100vh - 128px) * 16 / 9);max-width:calc((100svh - 128px) * 16 / 9);margin-inline:auto}
+  .release-videos{padding-inline:max(24px,env(safe-area-inset-left)) max(24px,env(safe-area-inset-right))}
+}

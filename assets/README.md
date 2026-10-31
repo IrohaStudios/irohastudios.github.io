@@ -68,6 +68,8 @@
 
 按用户后续要求，已从本站移除春物短篇、封面和相关署名；保留原归档。当前展示作品的素材来源见各自归档 README。
 
+2026-10-31 为手机新增 `demos/*-720p.mp4`：仅将画面转为 H.264 Main / Level 3.1 的 1280×720 版本，AAC 双声道直接复制，三份音轨数据包哈希与原片一致。原 1080p 文件保持不变。来源与输出哈希见 `demos/mobile-sources.json`；生成脚本为 `scripts/build-mobile-videos.py`，适配与验证记录见 `doc/iphone-video.md`。
+
 ### 发布页入口素材
 
 - `huggingface-logo.svg`：Hugging Face [官方品牌素材](https://huggingface.co/brand)，原始文件来自 https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg ，未修改图形。

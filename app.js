@@ -273,6 +273,9 @@
 
   // Start media only on request, and keep videos and voice samples from overlapping.
   const demoVideos = $$(".demo-film video");
+  const nativeVideoControls = window.matchMedia(
+    "(pointer: coarse), (max-width: 1024px)",
+  ).matches;
   const allMedia = [...demoVideos, $("#voice-audio")];
   allMedia.forEach((media) => {
     media.addEventListener("play", () => {
@@ -285,8 +288,9 @@
     const film = video.closest(".demo-film");
     const notice = film.querySelector(".demo-status");
     const start = film.querySelector(".demo-start");
-    video.controls = false;
-    start.hidden = false;
+    // Keep Safari's touch playback, seeking and fullscreen controls accessible.
+    video.controls = nativeVideoControls;
+    start.hidden = nativeVideoControls;
     start.addEventListener("click", async () => {
       start.hidden = true;
       video.controls = true;
@@ -307,6 +311,8 @@
       notice.textContent = t("demo.error");
     });
     video.addEventListener("playing", () => {
+      start.hidden = true;
+      video.controls = true;
       notice.textContent = "";
     });
   });

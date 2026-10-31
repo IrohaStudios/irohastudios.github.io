@@ -43,10 +43,10 @@
       as="image"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/style.css?v=f085dfa3c21b" />
+    <link rel="stylesheet" href="/style.css?v=4fdcfe76455a" />
     <script defer="" src="/assets/vendor/gsap.min.js"></script>
     <script defer="" src="/assets/vendor/ScrollTrigger.min.js"></script>
-    <script defer="" src="/app.js?v=04f17ddefdd9"></script>
+    <script defer="" src="/app.js?v=01932997f329"></script>
     <noscript
       ><style>
         .motion-toggle,
@@ -402,10 +402,12 @@
                   width="1920"
                   height="1080"
                   poster="/assets/demos/asmr-3d.jpg"
-                  src="/assets/demos/asmr-3d.mp4"
                   aria-labelledby="demo-asmr-title"
                   aria-describedby="demo-asmr-description"
-                ></video>
+                >
+                  <source src="/assets/demos/asmr-3d-720p.mp4" type="video/mp4" media="(max-width: 1024px)" />
+                  <source src="/assets/demos/asmr-3d.mp4" type="video/mp4" />
+                </video>
                 <button class="demo-start" type="button" hidden>
                   <span class="sr-only"
                     >Play video — Hey… lend me your ear?</span
@@ -443,10 +445,12 @@
                   width="1920"
                   height="1080"
                   poster="/assets/demos/feature-tour.jpg"
-                  src="/assets/demos/feature-tour.mp4"
                   aria-labelledby="demo-intro-title"
                   aria-describedby="demo-intro-description"
-                ></video>
+                >
+                  <source src="/assets/demos/feature-tour-720p.mp4" type="video/mp4" media="(max-width: 1024px)" />
+                  <source src="/assets/demos/feature-tour.mp4" type="video/mp4" />
+                </video>
                 <button class="demo-start" type="button" hidden>
                   <span class="sr-only"
                     >Play video — What Iroha-TTS can do</span
@@ -485,10 +489,12 @@
                   width="1920"
                   height="1080"
                   poster="/assets/demos/after-school.jpg"
-                  src="/assets/demos/after-school.mp4"
                   aria-labelledby="demo-school-title"
                   aria-describedby="demo-school-description"
-                ></video>
+                >
+                  <source src="/assets/demos/after-school-720p.mp4" type="video/mp4" media="(max-width: 1024px)" />
+                  <source src="/assets/demos/after-school.mp4" type="video/mp4" />
+                </video>
                 <button class="demo-start" type="button" hidden>
                   <span class="sr-only"
                     >Play video — After-School Melody</span
