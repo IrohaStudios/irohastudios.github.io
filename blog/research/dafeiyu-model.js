@@ -68,6 +68,8 @@ class DafeiyuLive2D {
       desired[entry.Id] = entry.Blend === 'Multiply' ? current * entry.Value
         : entry.Blend === 'Overwrite' ? entry.Value : current + entry.Value;
     }
+    // Keep the normal eyes: the excited preset replaces them with >< symbols.
+    desired.ParamCheek76 = 0;
     // Audio and pointer parameters take precedence; expression eyebrows remain intact.
     for (const [id, value] of Object.entries(this.values)) {
       if (id.startsWith('ParamBrow')) continue;
