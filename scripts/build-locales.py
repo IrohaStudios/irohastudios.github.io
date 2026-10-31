@@ -24,6 +24,8 @@ def build():
         values['hash.language'] = hashlib.sha256((ROOT / 'assets/language.js').read_bytes()).hexdigest()[:12]
         values['hash.asmr'] = hashlib.sha256((ROOT / 'assets/demos/asmr-3d.mp4').read_bytes()).hexdigest()[:12]
         values['hash.asmrmobile'] = hashlib.sha256((ROOT / 'assets/demos/asmr-3d-720p.mp4').read_bytes()).hexdigest()[:12]
+        for key, name in [('subtitlecss', 'assets/video-subtitles.css'), ('subtitlejs', 'assets/video-subtitles.js'), ('subtitles', 'assets/demos/feature-tour.en.vtt')]:
+            values[f'hash.{key}'] = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()[:12]
         values['hero.language'] = 'en' if locale == 'en' else 'ja'
         values.update({f'selected.{code}': 'selected' if code == locale else '' for code in LOCALES})
         values['hash.preview'] = hashlib.sha256((ROOT / 'assets/research-preview.png').read_bytes()).hexdigest()[:12]

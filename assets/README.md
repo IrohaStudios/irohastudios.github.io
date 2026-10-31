@@ -74,3 +74,5 @@
 
 - `huggingface-logo.svg`：Hugging Face [官方品牌素材](https://huggingface.co/brand)，原始文件来自 https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg ，未修改图形。
 - `listening-chibi-v1.png`：使用内置 image_gen，以本站 `emotion-joy-chibi-v2.webp` 为角色参考，生成戴耳机聆听的透明 Q 版贴纸。完整提示词及修订记录见 `listening-chibi-v1.prompt.json`。用于发布页完整试听入口。
+
+2026-11-01：`demos/feature-tour.en.vtt` 直接复制已归档的 `iroha-demo-video-20261027/subs/full.en.vtt`，用于功能介绍视频的可选英文字幕；文本、时间点、位置设置未改动。三语言页面均默认关闭。

@@ -34,5 +34,11 @@
     "sourceArchive": "iroha-demo-video-20261027/web/poster-gal.jpg",
     "bytes": 196262,
     "sha256": "a75c7552f4b2ab4013eefe020ffbb13f87eeaa1c89b5dbb035805d1157917021"
+  },
+  {
+    "file": "feature-tour.en.vtt",
+    "sourceArchive": "iroha-demo-video-20261027/subs/full.en.vtt",
+    "bytes": 9095,
+    "sha256": "453f6d275ba91d47833dda5038cf6172efd82ee249898c5574334e1102afb286"
   }
 ]

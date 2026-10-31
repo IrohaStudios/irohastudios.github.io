@@ -46,6 +46,8 @@
     <link rel="stylesheet" href="/style.css?v=03903e7a0eda" />
     <script defer="" src="/assets/vendor/gsap.min.js"></script>
     <script defer="" src="/assets/vendor/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="/assets/video-subtitles.css?v=f91ed3398857" />
+    <script defer src="/assets/video-subtitles.js?v=518dbd340755"></script>
     <script defer="" src="/app.js?v=01932997f329"></script>
     <noscript
       ><style>
@@ -350,11 +352,13 @@
                   width="1920"
                   height="1080"
                   poster="/assets/demos/feature-tour.jpg"
+                  id="demo-intro-video"
                   aria-labelledby="demo-intro-title"
                   aria-describedby="demo-intro-description"
                 >
                   <source src="/assets/demos/feature-tour-720p.mp4" type="video/mp4" media="(max-width: 1024px)" />
                   <source src="/assets/demos/feature-tour.mp4" type="video/mp4" />
+                  <track kind="subtitles" srclang="en" label="English" src="/assets/demos/feature-tour.en.vtt?v=453f6d275ba9" />
                 </video>
                 <button class="demo-start" type="button" hidden>
                   <span class="sr-only"
@@ -368,6 +372,13 @@
                     <path d="M7 4 21 12 7 20z"></path>
                   </svg>
                 </button>
+              </div>
+              <div class="video-subtitles" data-subtitle-controls="demo-intro-video" role="group" aria-labelledby="demo-subtitles-label" hidden>
+                <span id="demo-subtitles-label">英語字幕</span>
+                <div class="subtitle-options">
+                  <button type="button" data-subtitles="on" aria-pressed="false" aria-controls="demo-intro-video">オン</button>
+                  <button type="button" data-subtitles="off" aria-pressed="true" aria-controls="demo-intro-video">オフ</button>
+                </div>
               </div>
               <div class="demo-meta">
                 <span>機能紹介 · プレビュー</span><span>4:06</span>

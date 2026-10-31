@@ -92,7 +92,10 @@
     "demo.school.description": "三个人的对话、一段放学后的故事，用来尝试情感变化和声音表达。全部台词由 Iroha-TTS 生成。",
     "demo.credits": "作品与音频来源",
     "demo.credits.audio": "3D 音频使用 TH Köln 的 KU100 近场 HRIR 数据，通过卷积处理加入 ASMR 和功能介绍的音轨。HRIR 数据许可：",
-    "demo.play": "播放视频"
+    "demo.play": "播放视频",
+    "demo.subtitles": "英语字幕",
+    "demo.subtitlesOn": "开",
+    "demo.subtitlesOff": "关"
   },
   "ja": {
     "meta.title": "Iroha Studios · Made with curiosity.",
@@ -187,7 +190,10 @@
     "demo.school.description": "3 人の会話で、感情の変化や声の表現を試した短編です。セリフの音声は Iroha-TTS で生成しています。",
     "demo.credits": "作品・音声のクレジット",
     "demo.credits.audio": "3D 音声には TH Köln の KU100 近距離 HRIR を使用。ASMR と機能紹介の音声に畳み込み処理を適用しています。HRIR データのライセンス：",
-    "demo.play": "動画を再生"
+    "demo.play": "動画を再生",
+    "demo.subtitles": "英語字幕",
+    "demo.subtitlesOn": "オン",
+    "demo.subtitlesOff": "オフ"
   },
   "en": {
     "meta.title": "Iroha Studios · Made with curiosity.",
@@ -282,6 +288,9 @@
     "demo.school.description": "Three characters, changing emotions, and a short after-school story. All dialogue is generated with Iroha-TTS.",
     "demo.credits": "Story and audio credits",
     "demo.credits.audio": "3D audio uses TH Köln’s KU100 near-field HRIRs, applied through convolution to the ASMR and feature-tour audio. HRIR data license:",
-    "demo.play": "Play video"
+    "demo.play": "Play video",
+    "demo.subtitles": "English subtitles",
+    "demo.subtitlesOn": "On",
+    "demo.subtitlesOff": "Off"
   }
 }
