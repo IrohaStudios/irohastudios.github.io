@@ -1887,7 +1887,7 @@ html:lang(ja) .voice-translation {
 }
 
 /* Companion brush lettering for the existing Iroha wordmark. */
-.brand > .brand-studios{padding-top:0;line-height:0}
+.brand > .brand-studios{padding-top:0;line-height:0;margin-inline-start:-20px}
 .brand .studios-wordmark{display:block;width:112px;height:46px;object-fit:contain;mix-blend-mode:multiply}
 /* Keep the entire player visible beneath the header on landscape phones. */
 @media (max-width: 1024px) and (max-height: 500px) and (orientation: landscape) {
