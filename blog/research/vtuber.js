@@ -85,11 +85,12 @@
     hairVelocity+=(hairTarget-hair)*dt*38-hairVelocity*dt*9;
     hair=Math.max(-1,Math.min(1,hair+hairVelocity*dt));
     const brow={joy:.15,anger:-.85,sadness:.65,surprise:.9}[emotion];
+    rig.setEmotion(emotion);
     rig.update({ParamAngleX:angleX,ParamAngleY:angleY,ParamAngleZ:moving?Math.sin(elapsed*.45)*6:0,
       ParamEyeLOpen:blink,ParamEyeROpen:blink,ParamEyeBallX:moving?gazeX*.7:0,ParamEyeBallY:moving?gazeY*.6:0,
       ParamMouthOpenY:mouth,ParamMouthForm:form,ParamBreath:moving?(Math.sin(elapsed*1.7)+1)/2:0,
       ParamHairFront:moving?hair*.45:0,ParamHairSide:moving?hair:0,ParamBrowLY:brow,ParamBrowRY:brow});
-    rig.draw(canvas);
+    rig.draw(canvas,moving?dt:0);
     canvas.dataset.avatarState=mouth>.05?'speaking':blink<.2?'blink':'idle';
     canvas.dataset.avatarExpression=emotion;canvas.dataset.viseme=cue??'amplitude';
     canvas.dataset.lipsync=cue===null?'amplitude-fallback':'timed-visemes';
@@ -112,6 +113,6 @@
   document.addEventListener('visibilitychange',()=>{lastFrame=performance.now();refresh();});
   window.irohaAvatar={refresh,cueAt,get model(){return rig;},get tracks(){return tracks;},get failed(){return failed;}};
   fetch('/blog/research/assets/lipsync.json').then(r=>{if(!r.ok)throw new Error('Missing viseme tracks');return r.json();}).then(data=>{tracks=data.samples;}).catch(error=>console.warn('Viseme tracks unavailable; amplitude fallback:',error.message));
-  IrohaLive2D.load('/blog/research/assets/live2d/iroha.model3.json').then(model=>{rig=model;rig.attach(canvas);refresh();requestAnimationFrame(animate);}).catch(error=>{failed=true;rig=undefined;dock.hidden=true;document.body.classList.remove('has-avatar-rail');console.error('Live2D failed:',error.message);});
+  DafeiyuLive2D.load('/blog/research/assets/dafeiyu/c_0120.model3.json').then(async model=>{await model.attach(canvas);rig=model;refresh();requestAnimationFrame(animate);}).catch(error=>{failed=true;rig=undefined;dock.hidden=true;document.body.classList.remove('has-avatar-rail');console.error('Live2D failed:',error.message);});
   refresh();
 })();

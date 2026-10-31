@@ -13,7 +13,8 @@
 <link href="/blog/research/vtuber.css" rel="stylesheet"/>
 <script defer="" src="/blog/research/locales.js"></script><script defer="" src="/blog/research/i18n.js"></script><script defer="" src="/blog/research/glossary.js"></script>
 <script defer="" src="/blog/research/vendor/live2dcubismcore.min.js"></script>
-<script defer="" src="/blog/research/iroha-model.js"></script>
+<script defer="" src="/blog/research/vendor/dafeiyu-vendor.js"></script>
+<script defer="" src="/blog/research/dafeiyu-model.js"></script>
 <script defer="" src="/blog/research/app.js"></script>
 <script defer="" src="/blog/research/vtuber.js"></script>
 </head>
@@ -133,8 +134,9 @@
 <button aria-label="播放 Iroha 语音" id="avatar-audio" title="播放语音" type="button">▶</button>
 <button aria-label="暂停角色动效" aria-pressed="false" id="motion-toggle" title="暂停角色动效" type="button">Ⅱ</button>
 </div>
+<a class="avatar-credit" href="/blog/research/assets/dafeiyu/credits.html" target="_blank" rel="noopener" data-i18n="avatar.credit">大肥鱼 · 模型署名</a>
 </aside>
-<button aria-label="展开 Iroha 角色" data-i18n-aria-label="attr.16" data-i18n-title="attr.17" hidden="" id="avatar-restore" title="展开角色" type="button">Iroha</button>
+<button aria-label="展开 Iroha 角色" data-i18n-aria-label="attr.16" data-i18n-title="attr.17" hidden="" id="avatar-restore" title="展开角色" type="button" data-i18n="avatar.name">大肥鱼</button>
 <div aria-live="polite" class="audio-toast" id="audio-toast" role="status"></div>
 <noscript><div class="noscript" data-i18n="label.99">启用 JavaScript 后可试听音频。</div></noscript>
 </body>

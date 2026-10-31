@@ -154,9 +154,9 @@
     "attr.11": "返回 Iroha Studios 主页",
     "attr.12": "Iroha-TTS-V1 发布文章",
     "attr.13": "查看发布文章",
-    "attr.14": "Iroha Live2D 角色",
+    "attr.14": "大肥鱼 Live2D 角色",
     "attr.15": "收起角色",
-    "attr.16": "展开 Iroha 角色",
+    "attr.16": "展开大肥鱼角色",
     "attr.17": "展开角色",
     "ui.language": "语言",
     "ui.play": "播放",
@@ -216,7 +216,9 @@
     "evaluation.irodori-emoji": "Irodori-TTS · emoji",
     "evaluation.irodori-emoji.note": "开源 · Aratako",
     "evaluation.chatterbox": "Chatterbox",
-    "evaluation.chatterbox.note": "开源 · Resemble"
+    "evaluation.chatterbox.note": "开源 · Resemble",
+    "avatar.name": "大肥鱼",
+    "avatar.credit": "大肥鱼 · 模型署名"
   },
   "en": {
     "copy.p01": "Keep the text and <button class=\"term\" data-term=\"reference\">reference audio</button> fixed. A <button class=\"term\" data-term=\"teacher\">teacher model</button> generates happy, angry, sad and surprised versions. Retain candidates with the requested emotion, correct words, consistent voice and acceptable quality.",
@@ -373,9 +375,9 @@
     "attr.11": "Back to Iroha Studios",
     "attr.12": "Iroha-TTS-V1 release article",
     "attr.13": "Read the release article",
-    "attr.14": "Iroha Live2D character",
+    "attr.14": "Dafeiyu Live2D character",
     "attr.15": "Hide character",
-    "attr.16": "Show Iroha character",
+    "attr.16": "Show Dafeiyu character",
     "attr.17": "Show character",
     "ui.language": "Language",
     "ui.play": "Play",
@@ -435,7 +437,9 @@
     "evaluation.irodori-emoji": "Irodori-TTS · emoji",
     "evaluation.irodori-emoji.note": "Open source · Aratako",
     "evaluation.chatterbox": "Chatterbox",
-    "evaluation.chatterbox.note": "Open source · Resemble"
+    "evaluation.chatterbox.note": "Open source · Resemble",
+    "avatar.name": "Dafeiyu",
+    "avatar.credit": "Dafeiyu · Credits"
   },
   "ja": {
     "copy.p01": "同じセリフと<button class=\"term\" data-term=\"reference\">参照音声</button>を固定し、<button class=\"term\" data-term=\"teacher\">教師モデル</button>で喜び・怒り・悲しみ・驚きの音声を生成します。感情、読み上げ内容、声質、品質の条件を満たす候補を残します。",
@@ -592,9 +596,9 @@
     "attr.11": "Iroha Studios ホームへ",
     "attr.12": "Iroha-TTS-V1 のリリース記事",
     "attr.13": "リリース記事を読む",
-    "attr.14": "Iroha Live2D キャラクター",
+    "attr.14": "大肥魚 Live2D キャラクター",
     "attr.15": "キャラクターを閉じる",
-    "attr.16": "Iroha キャラクターを表示",
+    "attr.16": "大肥魚を表示",
     "attr.17": "キャラクターを表示",
     "ui.language": "言語",
     "ui.play": "再生",
@@ -654,6 +658,8 @@
     "evaluation.irodori-emoji": "Irodori-TTS · emoji",
     "evaluation.irodori-emoji.note": "オープンソース · Aratako",
     "evaluation.chatterbox": "Chatterbox",
-    "evaluation.chatterbox.note": "オープンソース · Resemble"
+    "evaluation.chatterbox.note": "オープンソース · Resemble",
+    "avatar.name": "大肥魚",
+    "avatar.credit": "大肥魚 · クレジット"
   }
 }
