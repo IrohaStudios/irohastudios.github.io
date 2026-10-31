@@ -382,7 +382,7 @@
     playRequest++;
     audio.pause();
     status.textContent = "";
-    audio.src = new URL("/" + samples[emotion].url, location.origin).href;
+    audio.src = new URL(samples[emotion].url, location.origin).href;
     audio.load();
     $$(".emotion-options button").forEach((button) =>
       button.setAttribute(
@@ -404,18 +404,15 @@
   audioButtons.forEach((button) => {
     button.disabled = true;
   });
-  fetch("/assets/samples.json")
-    .then((response) => {
-      if (!response.ok) throw new Error("Sample manifest unavailable");
-      return response.json();
-    })
+  // Keep the dialogue and its audio snapshot together in the generated page.
+  Promise.resolve(messages.samples)
     .then((data) => {
       for (const emotion of Object.keys(emotionLabels)) {
         const sample = data[emotion];
         if (
           !sample ||
           !Array.isArray(sample.peaks) ||
-          !sample.url.startsWith("assets/")
+          !sample.url.startsWith("/blog/research/assets/audio/")
         )
           throw new Error("Invalid sample manifest");
       }

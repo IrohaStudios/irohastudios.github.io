@@ -1,0 +1,12 @@
+{
+  "text": "あっ、つい話し込んじゃってたわね。",
+  "translations": {
+    "zh": "啊，不知不觉聊了这么久。",
+    "ja": "あっ、つい話し込んじゃってたわね。",
+    "en": "Oh, I got carried away chatting."
+  },
+  "source_section": "sent-9",
+  "reference_sample": "reference-f1",
+  "models": ["stock", "iroha-v1"],
+  "emotions": ["joy", "anger", "sadness", "surprise"]
+}

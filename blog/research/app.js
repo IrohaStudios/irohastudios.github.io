@@ -146,9 +146,8 @@ const events = {
   cry:{name:'哭声',id:'iroha-v1--cry-m2-voice',text:'… [cry] 私の声…どうして、こんな声に……',zh:'……我的声音……怎么会变成这样的声音……',note:'发布评测 · 16 / 60 条命中（26.67%），仍是弱项'}
 };
 async function initPlayers() {
-  const response = await fetch('/blog/research/assets/samples.json', {cache:'no-cache'});
-  if (!response.ok) throw new Error('Missing audio manifest');
-  samples = await response.json();
+  // An open page must keep the audio paired with its own displayed dialogue.
+  samples = JSON.parse($('#research-samples').textContent);
   bindTabs('button[data-emotion]', 'emotion', key => {
     selectedEmotion = key;
     const e = emotions[key];

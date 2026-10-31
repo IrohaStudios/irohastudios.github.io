@@ -8,6 +8,7 @@ import re
 
 from bs4 import BeautifulSoup
 from markdown_it import MarkdownIt
+from audio_demo import load_audio_demo
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://irohastudios.github.io'
@@ -15,9 +16,9 @@ LANGS = ('ja', 'en', 'zh')
 RELEASE = '/blog/irohattsv1/'
 SITE_COPY = json.loads((ROOT / 'src/locales.json').read_text())
 UI = {
-    'ja': dict(home='ホーム', work='作品', journal='制作ノート', research='技術ノート', language='言語', skip='本文へ', release='リリース', toc='この記事の内容', listen='同じセリフを、聴き比べる', note='同じテキスト・同じ参照音声の日本語サンプルです。選んだ実例であり、成功率を示すものではありません。', emotions=['喜び', '怒り', '悲しみ', '驚き'], translation='あっ、つい話し込んじゃってたわね。', original='Fish S2-Pro · オリジナル', iroha='Iroha-TTS-V1', more='全20件のサンプルと実装を読む', download='Markdown を読む', next='7つの制御をどう実装したか', nextcopy='データと学習、音声デモ、評価条件、うまくいかなかった試み。', footer='AI、アニメーション、ときどき思いつくこと。', back='ページの先頭へ', table='横にスクロールできるデータ表', audio='音声サンプル', error='音声を読み込めませんでした。下のリンクから音声を開いてください。', direct='音声ファイルを開く', source='2026年10月29日の技術ノート。聴取評価は10月30日の集計に更新しました。', snapshot='更新：2026年10月31日'),
-    'en': dict(home='Home', work='Work', journal='Journal', research='Technical notes', language='Language', skip='Skip to article', release='Release', toc='In this article', listen='One line, different deliveries', note='Japanese samples with the same text and reference voice. These are selected examples, not a measure of success rate.', emotions=['Joy', 'Anger', 'Sadness', 'Surprise'], translation='Oh, I got carried away chatting.', original='Fish S2-Pro · Original', iroha='Iroha-TTS-V1', more='Explore all 20 samples and the implementation', download='Read the Markdown', next='How we built Iroha’s seven controls', nextcopy='Data and training, audio demos, evaluation conditions, and attempts that didn’t work.', footer='AI, animation, and the occasional odd idea.', back='Back to top', table='Horizontally scrollable data table', audio='Audio sample', error='The audio could not load. Use the link below to open the audio file.', direct='Open audio file', source='Technical notes from October 29, 2026, with the October 30 listening-study snapshot added.', snapshot='Updated October 31, 2026'),
-    'zh': dict(home='主页', work='作品', journal='创作日志', research='技术笔记', language='语言', skip='跳到正文', release='版本发布', toc='本文目录', listen='同一句台词，听听不同的表达', note='同一段日语文本与同一参考音色的试听。这些是精选例子，不用于推断成功率。', emotions=['开心', '生气', '难过', '惊讶'], translation='啊，不知不觉聊了这么久。', original='Fish S2-Pro · 原版', iroha='Iroha-TTS-V1', more='查看全部 20 段试听与实现方法', download='阅读 Markdown', next='Iroha 的七种控制是怎么做出来的', nextcopy='数据与训练方法、音频演示、评测条件，以及没有奏效的尝试。', footer='关于 AI、动画，以及偶尔冒出来的想法。', back='回到开头', table='可横向滚动的数据表', audio='试听音频', error='音频加载失败，可以使用下方链接打开音频文件。', direct='打开音频文件', source='技术笔记基于 2026-10-29 的报告；人工听测已补充 10-30 的快照。', snapshot='更新于 2026 年 10 月 31 日'),
+    'ja': dict(home='ホーム', work='作品', journal='制作ノート', research='技術ノート', language='言語', skip='本文へ', release='リリース', toc='この記事の内容', listen='同じセリフを、聴き比べる', note='同じテキスト・同じ参照音声の日本語サンプルです。選んだ実例であり、成功率を示すものではありません。', emotions=['喜び', '怒り', '悲しみ', '驚き'], original='Fish S2-Pro · オリジナル', iroha='Iroha-TTS-V1', more='全20件のサンプルと実装を読む', download='Markdown を読む', next='7つの制御をどう実装したか', nextcopy='データと学習、音声デモ、評価条件、うまくいかなかった試み。', footer='AI、アニメーション、ときどき思いつくこと。', back='ページの先頭へ', table='横にスクロールできるデータ表', audio='音声サンプル', error='音声を読み込めませんでした。下のリンクから音声を開いてください。', direct='音声ファイルを開く', source='2026年10月29日の技術ノート。聴取評価は10月30日の集計に更新しました。', snapshot='更新：2026年10月31日'),
+    'en': dict(home='Home', work='Work', journal='Journal', research='Technical notes', language='Language', skip='Skip to article', release='Release', toc='In this article', listen='One line, different deliveries', note='Japanese samples with the same text and reference voice. These are selected examples, not a measure of success rate.', emotions=['Joy', 'Anger', 'Sadness', 'Surprise'], original='Fish S2-Pro · Original', iroha='Iroha-TTS-V1', more='Explore all 20 samples and the implementation', download='Read the Markdown', next='How we built Iroha’s seven controls', nextcopy='Data and training, audio demos, evaluation conditions, and attempts that didn’t work.', footer='AI, animation, and the occasional odd idea.', back='Back to top', table='Horizontally scrollable data table', audio='Audio sample', error='The audio could not load. Use the link below to open the audio file.', direct='Open audio file', source='Technical notes from October 29, 2026, with the October 30 listening-study snapshot added.', snapshot='Updated October 31, 2026'),
+    'zh': dict(home='主页', work='作品', journal='创作日志', research='技术笔记', language='语言', skip='跳到正文', release='版本发布', toc='本文目录', listen='同一句台词，听听不同的表达', note='同一段日语文本与同一参考音色的试听。这些是精选例子，不用于推断成功率。', emotions=['开心', '生气', '难过', '惊讶'], original='Fish S2-Pro · 原版', iroha='Iroha-TTS-V1', more='查看全部 20 段试听与实现方法', download='阅读 Markdown', next='Iroha 的七种控制是怎么做出来的', nextcopy='数据与训练方法、音频演示、评测条件，以及没有奏效的尝试。', footer='关于 AI、动画，以及偶尔冒出来的想法。', back='回到开头', table='可横向滚动的数据表', audio='试听音频', error='音频加载失败，可以使用下方链接打开音频文件。', direct='打开音频文件', source='技术笔记基于 2026-10-29 的报告；人工听测已补充 10-30 的快照。', snapshot='更新于 2026 年 10 月 31 日'),
 }
 SECTION_IDS = ['release', 'motivation', 'evaluation', 'uses', 'getting-started', 'next']
 SUBSECTION_IDS = ['automatic-evaluation', 'human-evaluation', 'other-results']
@@ -26,7 +27,7 @@ PLAYER_UI = {
     'en': dict(play='Play', pause='Pause', seek='Playback position'),
     'zh': dict(play='播放', pause='暂停', seek='播放进度'),
 }
-SAMPLES = json.loads((ROOT / 'blog/research/assets/samples.json').read_text())
+DEMO, SAMPLES = load_audio_demo()
 
 
 def esc(value):
@@ -60,9 +61,9 @@ def demo(lang):
     tabs = ''.join(f'<button type="button" role="tab" id="sample-{key}" data-emotion="{key}" aria-selected="{str(i == 0).lower()}" aria-controls="sample-panel" tabindex="{0 if i == 0 else -1}">{label}</button>' for i, (key, label) in enumerate(zip(['joy','anger','sadness','surprise'], u['emotions'])))
     players = ''
     for key, label in [('stock', u['original']), ('iroha-v1', u['iroha'])]:
-        src = asset(f'/blog/research/assets/audio/{key}--emo-joy.mp3')
+        src = SAMPLES[f'{key}--emo-joy']['url']
         players += f'<div class="release-player"><h3>{label}</h3><audio controls preload="none" src="{src}" data-model="{key}" aria-label="{label} · {u["emotions"][0]}"></audio><a class="audio-file" href="{src}">{u["direct"]}</a></div>'
-    return f'<section class="release-demo" id="listen" aria-labelledby="listen-title"><h2 id="listen-title">{u["listen"]}</h2><p>{u["note"]}</p><div class="sample-tabs" role="tablist" aria-label="{u["audio"]}">{tabs}</div><div id="sample-panel" role="tabpanel" aria-labelledby="sample-joy"><p class="sample-line" lang="ja"><code id="sample-tag">[happy]</code> あっ、つい話し込んじゃってたわね。</p>{"" if lang == "ja" else "<p class=\"sample-translation\">"+u["translation"]+"</p>"}<div class="release-players">{players}</div></div><p class="audio-error" role="status" hidden>{u["error"]}</p><a class="more-samples" href="/blog/research/{lang}/#listen">{u["more"]}</a></section>'
+    return f'<section class="release-demo" id="listen" aria-labelledby="listen-title"><h2 id="listen-title">{u["listen"]}</h2><p>{u["note"]}</p><div class="sample-tabs" role="tablist" aria-label="{u["audio"]}">{tabs}</div><div id="sample-panel" role="tabpanel" aria-labelledby="sample-joy"><p class="sample-line" lang="ja"><code id="sample-tag">[happy]</code> {esc(DEMO["text"])}</p>{"" if lang == "ja" else "<p class=\"sample-translation\">"+esc(DEMO["translations"][lang])+"</p>"}<div class="release-players">{players}</div></div><p class="audio-error" role="status" hidden>{u["error"]}</p><a class="more-samples" href="/blog/research/{lang}/#listen">{u["more"]}</a></section>'
 
 
 def video_demos(lang):
@@ -196,6 +197,10 @@ def build_research(lang, catalog):
     soup.select_one('.masthead > nav').append(release_link)
     soup.html['lang'] = 'zh-CN' if lang == 'zh' else lang
     soup.html['data-locale'] = lang
+    soup.select_one('.sample-script p').string = DEMO['text']
+    audio_data = soup.new_tag('script', id='research-samples', type='application/json')
+    audio_data.string = json.dumps(SAMPLES, ensure_ascii=False).replace('<', '\\u003c')
+    soup.head.append(audio_data)
     for element in soup.select('[data-i18n]'):
         element.clear()
         element.append(BeautifulSoup(catalog[lang][element['data-i18n']], 'html.parser'))
@@ -229,7 +234,7 @@ def build_research(lang, catalog):
     soup.select_one('header').append(nojs)
     # Static audio fallback retains all samples when scripting is unavailable.
     fallback = soup.new_tag('noscript')
-    samples = json.loads((ROOT/'blog/research/assets/samples.json').read_text())
+    samples = SAMPLES
     fallback.append(BeautifulSoup('<div class="fallback-samples">'+''.join(f'<details><summary>{esc(key)}</summary><audio controls preload="none" src="{esc(value["url"])}" aria-label="{esc(key)}"></audio></details>' for key,value in samples.items())+'</div>', 'html.parser'))
     soup.select_one('#listen').append(fallback)
     soup.select_one('body > noscript').decompose()
@@ -244,6 +249,7 @@ def main():
     evaluation = json.loads((ROOT/'src/blog/evaluation-table.json').read_text())
     # Both articles share the MOS section maintained in the release Markdown.
     for lang in LANGS:
+        catalog[lang]['label.23'] = DEMO['translations'][lang]
         catalog[lang]['label.89'], catalog[lang]['copy.p43'] = build_release(lang)
         catalog[lang]['copy.p43'] = research_mos(catalog[lang]['copy.p43'])
         catalog[lang]['evaluation.table'] = evaluation_table(lang, catalog[lang], evaluation)
