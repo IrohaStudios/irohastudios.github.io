@@ -61,7 +61,6 @@
 
   // Motion is progressive enhancement; the document is visible without it.
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const desktop = window.matchMedia("(min-width: 801px)");
   let motionPreference = true;
   try {
     motionPreference = localStorage.getItem("iroha-motion") !== "off";
@@ -80,6 +79,29 @@
   let width = 0;
   let height = 0;
   let heroVisible = true;
+  // Pre-render the glows once; avoid per-frame shadow blur on mobile.
+  const particleSprites = ["#69c6ff", "#b9eeff", "#ffffff"].map((color) => {
+    const sprite = document.createElement("canvas");
+    sprite.width = sprite.height = 48;
+    const brush = sprite.getContext("2d");
+    if (!brush) return sprite;
+    const glow = brush.createRadialGradient(24, 24, 1, 24, 24, 23);
+    glow.addColorStop(0, color);
+    glow.addColorStop(0.18, color + "b3");
+    glow.addColorStop(0.48, color + "38");
+    glow.addColorStop(1, color + "00");
+    brush.fillStyle = glow;
+    brush.fillRect(0, 0, 48, 48);
+    brush.fillStyle = color;
+    brush.beginPath();
+    brush.arc(24, 24, 3, 0, Math.PI * 2);
+    brush.fill();
+    brush.fillStyle = "#ffffff";
+    brush.beginPath();
+    brush.arc(24, 24, 1.4, 0, Math.PI * 2);
+    brush.fill();
+    return sprite;
+  });
   function sizeCanvas() {
     width = canvas.clientWidth;
     height = canvas.clientHeight;
@@ -87,38 +109,61 @@
     canvas.width = Math.round(width * ratio);
     canvas.height = Math.round(height * ratio);
     if (context) context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    particles = Array.from({ length: 25 }, () => ({
+    const compact = window.innerWidth <= 600;
+    const count = compact
+      ? 24
+      : Math.min(82, Math.max(36, Math.round((width * height) / 15000)));
+    particles = Array.from({ length: count }, (_, index) => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: 1 + Math.random() * 2.3,
-      speed: 0.1 + Math.random() * 0.22,
+      size: 5 + Math.random() * (compact ? 6 : 10),
+      speed: 7 + Math.random() * 12,
+      drift: 2 + Math.random() * 5,
+      opacity: 0.5 + Math.random() * 0.4,
       phase: Math.random() * Math.PI * 2,
+      sprite: index % particleSprites.length,
+      star: index % 9 === 0,
     }));
     reconcileParticles();
   }
   function drawParticles(time) {
     frame = 0;
-    if (
-      !motionEnabled ||
-      !desktop.matches ||
-      !heroVisible ||
-      document.hidden ||
-      !context
-    )
-      return;
+    if (!motionEnabled || !heroVisible || document.hidden || !context) return;
     if (time - lastFrame >= 32) {
-      const delta = Math.min((time - lastFrame) / 16.7, 3);
+      const delta = Math.min((time - lastFrame) / 1000, 0.08);
       lastFrame = time;
       context.clearRect(0, 0, width, height);
       for (const p of particles) {
         p.y -= p.speed * delta;
-        p.x += Math.sin(time / 3000 + p.phase) * 0.16 * delta;
-        if (p.y < -10) p.y = height + 10;
-        context.beginPath();
-        context.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        context.fillStyle = "rgba(255,255,255,.58)";
-        context.fill();
+        p.x += Math.sin(time / 3500 + p.phase) * p.drift * delta;
+        if (p.y < -20) p.y = height + 20;
+        if (p.x < -20) p.x = width + 20;
+        if (p.x > width + 20) p.x = -20;
+        const edge = Math.max(0, Math.min(1, p.y / 48, (height - p.y) / 48));
+        const quietText =
+          window.innerWidth > 600 && p.x < width * 0.44 ? 0.22 : 1;
+        const shimmer = 0.72 + Math.sin(time / 1100 + p.phase) * 0.28;
+        context.globalAlpha = p.opacity * edge * quietText * shimmer;
+        context.drawImage(
+          particleSprites[p.sprite],
+          p.x - p.size,
+          p.y - p.size,
+          p.size * 2,
+          p.size * 2,
+        );
+        if (p.star) {
+          const ray = p.size * 0.6;
+          context.strokeStyle = "#dbf5ff";
+          context.lineWidth = 1;
+          context.beginPath();
+          context.moveTo(p.x - ray, p.y);
+          context.lineTo(p.x + ray, p.y);
+          context.moveTo(p.x, p.y - ray);
+          context.lineTo(p.x, p.y + ray);
+          context.stroke();
+        }
       }
+      context.globalAlpha = 1;
     }
     frame = requestAnimationFrame(drawParticles);
   }
@@ -126,13 +171,7 @@
     if (frame) cancelAnimationFrame(frame);
     frame = 0;
     lastFrame = performance.now();
-    if (
-      motionEnabled &&
-      desktop.matches &&
-      heroVisible &&
-      !document.hidden &&
-      context
-    )
+    if (motionEnabled && heroVisible && !document.hidden && context)
       frame = requestAnimationFrame(drawParticles);
     else if (context) context.clearRect(0, 0, width, height);
   }
@@ -203,7 +242,6 @@
     applyMotion();
   });
   reduce.addEventListener("change", applyMotion);
-  desktop.addEventListener("change", reconcileParticles);
   new IntersectionObserver((entries) => {
     heroVisible = entries[0].isIntersecting;
     reconcileParticles();
