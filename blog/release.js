@@ -41,4 +41,7 @@
   document.querySelectorAll('.blog-languages a').forEach(link => {
     link.addEventListener('click', () => { link.hash = location.hash; });
   });
+  document.querySelectorAll('.mobile-toc a').forEach(link => {
+    link.addEventListener('click', () => { link.closest('details').open = false; });
+  });
 })();

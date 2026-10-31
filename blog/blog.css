@@ -14,3 +14,33 @@
 @media(max-width:800px){html{scroll-padding-top:105px}.studio-header{min-height:78px;padding:12px 22px;gap:16px}.studio-nav{display:none}.blog-languages{margin-left:auto}.studio-mark{width:42px;height:42px}.studio-wordmark{width:92px;height:40px}.studio-brand{gap:5px}.reading-layout{display:block;padding:40px 24px 64px}.article-toc{display:none}.article-hero-inner{padding:38px 24px}.article-hero{background-position:62% center;background-image:linear-gradient(90deg,rgba(250,253,255,.96),rgba(250,253,255,.74)),url('/assets/sky-observatory.png')}.article-lead{font-size:17px}.release-prose{font-size:17px}.release-prose h2{font-size:27px}.release-prose h3{font-size:21px}.studio-footer{padding:30px 24px;gap:20px}.studio-footer>p{flex-basis:100%}.studio-footer>a:last-child{margin-left:0}}
 @media(max-width:540px){.studio-header{padding:10px 16px;gap:12px}.studio-mark{width:34px;height:38px}.studio-wordmark{width:76px;height:34px}.blog-languages{gap:9px}.blog-languages a{font-size:12px}.reading-layout{padding:34px 20px 55px}.article-hero-inner{padding:32px 20px}.article-hero h1{font-size:29px;line-height:1.5}.article-actions{font-size:14px}.article-actions p{gap:7px}.article-actions a:first-child{padding:8px 12px}.release-prose h2{font-size:25px}.release-prose pre{padding:18px}.release-prose hr{margin:38px 0}.release-demo{padding:24px 16px}.release-demo h2{font-size:23px}.release-players{grid-template-columns:1fr;gap:24px}.sample-tabs{gap:5px}.sample-tabs button{flex:1;padding:9px 7px;font-size:14px}.table-scroll th,.table-scroll td{padding:12px}.studio-footer .studio-brand>span{display:inline}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.mobile-toc{display:none}
+@media(max-width:800px){
+  html{scroll-padding-top:132px}
+  .studio-header{flex-wrap:wrap;gap:0 12px;padding:8px max(16px,env(safe-area-inset-left)) 0;min-height:0}
+  .studio-header .studio-brand{min-height:44px}
+  .blog-languages{gap:2px}
+  .blog-languages a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 5px;font-size:13px}
+  .studio-nav{display:flex;order:3;flex:0 0 100%;min-width:0;gap:24px;margin:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+  .studio-nav a{display:flex;align-items:center;min-height:44px;font-size:14px}
+  .article-actions a{display:inline-flex;align-items:center;min-height:44px}
+  .mobile-toc{display:block;margin:0 0 32px;border-block:1px solid var(--line);font-size:15px}
+  .mobile-toc summary{min-height:48px;padding:10px 0;font-weight:600;cursor:pointer}
+  .mobile-toc nav{display:grid;padding:0 0 12px}
+  .mobile-toc a{display:flex;align-items:center;min-height:44px;text-decoration:none;padding:7px 0;line-height:1.6}
+  .release-prose pre{font-size:14px}
+  .table-scroll{overscroll-behavior-x:contain;scrollbar-width:thin}
+  .table-scroll th:first-child,.table-scroll td:first-child{position:sticky;left:0;z-index:1;background:var(--paper);box-shadow:1px 0 var(--line)}
+  .table-scroll thead th:first-child{background:var(--mist)}
+  .table-scroll tbody tr:first-child td:first-child{background:#eef8fd}
+  .sample-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sample-tabs button{min-height:48px}
+  .audio-file,.more-samples,.article-source a,.studio-footer>a:last-child{display:inline-flex;align-items:center;min-height:44px}
+}
+@media(max-width:540px){
+  .studio-header .studio-mark{width:32px;height:38px}
+  .studio-header .studio-wordmark{width:64px;height:34px}
+  .studio-header .studio-brand{gap:4px}
+  .article-lead{font-size:16px}
+}

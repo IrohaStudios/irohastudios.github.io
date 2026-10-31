@@ -226,7 +226,7 @@ refreshLocalizedControls();
 const revealObserver = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } }), {threshold:.06});
 $$('.reveal').forEach(el=>revealObserver.observe(el));
 document.body.classList.add('js-ready');
-const sections = $$('.masthead nav a').map(a=>({a,section:document.querySelector(a.getAttribute('href'))}));
+const sections = $$('.masthead nav a[href^="#"]').map(a=>({a,section:document.getElementById(a.hash.slice(1))})).filter(item=>item.section);
 let scrollQueued=false;
 function scrollUpdate() {
   scrollQueued=false;

@@ -84,6 +84,9 @@ def build_release(lang):
         node = following
     toc = ''.join(f'<a href="#{h["id"]}">{esc(h.get_text())}</a>' for h in headings)
     toc = toc.replace('<a href="#evaluation">', f'<a href="#listen">{u["listen"]}</a><a href="#evaluation">')
+    evaluation_link = f'<a href="#evaluation">{esc(headings[2].get_text())}</a>'
+    toc = toc.replace(evaluation_link, evaluation_link + f'<a href="#human-evaluation">{esc(mos_heading.get_text())}</a>')
+    mobile_toc = f'<details class="mobile-toc"><summary>{u["toc"]}</summary><nav aria-label="{u["toc"]}">{toc}</nav></details>'
     tag = 'zh-CN' if lang == 'zh' else lang
     home_lang = lang
     runtime = json.dumps(dict(emotions=u['emotions']), ensure_ascii=False).replace('<','\\u003c')
@@ -91,7 +94,7 @@ def build_release(lang):
 <html lang="{tag}" data-locale="{lang}"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{esc(title)} · Iroha Studios</title><meta name="description" content="{esc(BeautifulSoup(lead,'html.parser').get_text())}"/><meta name="theme-color" content="#fafdff"/><meta property="og:title" content="{esc(title)}"/><meta property="og:type" content="article"/><meta property="og:url" content="{ORIGIN}/blog/{lang}/"/><meta property="og:image" content="{ORIGIN}/assets/sky-observatory.png"/>{head_links(lang,'/blog/')}<link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="{asset('/blog/blog.css')}"/><link rel="stylesheet" href="{asset('/blog/mos.css')}"/><script defer src="{asset('/blog/release.js')}"></script><script id="blog-ui" type="application/json">{runtime}</script><noscript><style>.sample-tabs{{display:none}}</style></noscript></head>
 <body id="top"><a class="blog-skip" href="#article">{u['skip']}</a><header class="studio-header">{brand(lang)}<nav class="studio-nav" aria-label="{u['journal']}"><a href="/{home_lang}/#work">{u['work']}</a><a class="current" href="/blog/{lang}/" aria-current="page">{u['journal']}</a><a href="/blog/research/{lang}/">{u['research']}</a></nav><nav class="blog-languages" aria-label="{u['language']}">{language_links(lang,'/blog/')}</nav></header>
 <main><header class="article-hero"><div class="article-hero-inner"><a class="article-eyebrow" href="/blog/{lang}/">{u['journal']} <span>/</span> {u['release']}</a><h1>{esc(title)}</h1><div class="article-lead">{lead}</div><div class="article-byline">{byline}</div><div class="article-actions">{links}</div></div></header>
-<div class="reading-layout"><article id="article" class="release-prose">{soup}<div class="article-source"><a href="/blog/content/iroha-tts-v1-{lang}.md">{u['download']} ↓</a></div><a class="next-article" href="/blog/research/{lang}/"><span>{u['research']} ↗</span><h2>{u['next']}</h2><p>{u['nextcopy']}</p></a></article><aside class="article-toc"><nav aria-label="{u['toc']}"><p>{u['toc']}</p>{toc}</nav></aside></div></main>
+<div class="reading-layout">{mobile_toc}<article id="article" class="release-prose">{soup}<div class="article-source"><a href="/blog/content/iroha-tts-v1-{lang}.md">{u['download']} ↓</a></div><a class="next-article" href="/blog/research/{lang}/"><span>{u['research']} ↗</span><h2>{u['next']}</h2><p>{u['nextcopy']}</p></a></article><aside class="article-toc"><nav aria-label="{u['toc']}"><p>{u['toc']}</p>{toc}</nav></aside></div></main>
 <footer class="studio-footer">{brand(lang)}<p>{u['footer']}</p><a href="#top">{u['back']}</a></footer></body></html>'''
     destination = ROOT / f'blog/{lang}/index.html'
     destination.parent.mkdir(exist_ok=True)
@@ -103,6 +106,8 @@ def build_release(lang):
 def build_research(lang, catalog):
     u = UI[lang]
     soup = BeautifulSoup((ROOT / 'src/blog/research.template.html').read_text(), 'html.parser')
+    release_link = soup.new_tag('a', attrs={'class':'mobile-release-link', 'data-i18n':'label.5', 'href':'/blog/'})
+    soup.select_one('.masthead > nav').append(release_link)
     soup.html['lang'] = 'zh-CN' if lang == 'zh' else lang
     soup.html['data-locale'] = lang
     for element in soup.select('[data-i18n]'):
