@@ -1,105 +1,103 @@
 {
   "artifact": "https://claude.ai/artifact/EnAFVuqrC4E6QA7BSVY7dg",
   "source_html_sha256": "a5026cffd3803c99b2fa3fc5e1a85037d9f77f174a9def872496accbd51c3dcd",
-  "selection": "First displayed example for each feature; untagged first voice for cloning; first reading is the OmniVoice preview. Laughter replaced with the user-selected Male 2 example on 2026-11-01.",
+  "selection": "Use generic examples without overt game names/terms. Laughter uses the beetle/firefly sumo sentence explicitly selected by the user. Transition and whisper retain their existing generic examples.",
   "samples": {
     "stock--emo-joy": {
-      "bundle": "sent-0",
-      "key": "0858bb3c887b9d76",
+      "bundle": "sent-9",
+      "key": "532bfa20599e67ba",
       "archive": "expressive-ja-tts-public",
-      "sha256": "47f4721d4432291e5d8fd47f623e86c5ee973519f37127a44bdff6007b546399",
-      "duration": 3.483
+      "sha256": "b573cf8d33dacea14516a7342b82a4c84099c6c4e0f2a7c125292532f556e6ce",
+      "duration": 3.111,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "stock--emo-anger": {
-      "bundle": "sent-0",
-      "key": "c710046f3ffcd140",
+      "bundle": "sent-9",
+      "key": "90aef517edcce74c",
       "archive": "expressive-ja-tts-public",
-      "sha256": "e13c4d6e759cebe3bf1f756cdcf805442c810107adb2502a44d1d87df0821fcf",
-      "duration": 3.715
+      "sha256": "c8292ebb3a5e4d5837ccb6b04db484de1671759671c8c371a5239e1460bc4f9d",
+      "duration": 3.251,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "stock--emo-sadness": {
-      "bundle": "sent-0",
-      "key": "dc4b22628e2fcfd3",
+      "bundle": "sent-9",
+      "key": "1ec613611be95e46",
       "archive": "expressive-ja-tts-public",
-      "sha256": "059886eb2df15c4cfcf7ed665baf7869e0e7c3b31cc9f27645ee5f8c36493872",
-      "duration": 3.529
+      "sha256": "ec9ac8bbe3d2e9e24e6e77cb3e2d2d5bc8e497654a2ee998dd71ceffcd1e1da8",
+      "duration": 3.019,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "stock--emo-surprise": {
-      "bundle": "sent-0",
-      "key": "3c1954b2fd121bdc",
+      "bundle": "sent-9",
+      "key": "d6e9ab4939411816",
       "archive": "expressive-ja-tts-public",
-      "sha256": "cc82d683e207db52cd7ec256b44da75ece50646d2116f08345efc536cc177c52",
-      "duration": 3.715
+      "sha256": "82d710c60f6329ad9fb64deb2cde41b7bd85521bf6a5ca04132ca2f85d5e213b",
+      "duration": 2.926,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "iroha-v1--emo-joy": {
-      "bundle": "v9-sent-0",
-      "key": "6f3698cd704aa14f",
+      "bundle": "v9-sent-9",
+      "key": "57a683f93c90dacd",
       "archive": "emotion-tts-report-1014",
-      "sha256": "3988fac3ed9092ab1ab10c5db1e56f0834fd2fb75da765278c510bd958b843d0",
-      "duration": 3.816
+      "sha256": "94d9585d07d7d708aa225d234f70b4349c6a3e0c2122e11cb8e8ebe4b8669ac7",
+      "duration": 3.12,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "iroha-v1--emo-anger": {
-      "bundle": "v9-sent-0",
-      "key": "7147e0bdab847a18",
+      "bundle": "v9-sent-9",
+      "key": "9b023a54055299db",
       "archive": "emotion-tts-report-1014",
-      "sha256": "c8c3767bd8d673942ea77f7317fd4d88f40d8d6457414840d2ed2f748becf23c",
-      "duration": 3.864
+      "sha256": "18d433ed693cf0870e28cbbd5c9c8226c7ae5e5e486e7efb780fec26ec4fee2a",
+      "duration": 3.552,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "iroha-v1--emo-sadness": {
-      "bundle": "v9-sent-0",
-      "key": "4426ac65c6e453f2",
+      "bundle": "v9-sent-9",
+      "key": "f6eefbe9f199b589",
       "archive": "emotion-tts-report-1014",
-      "sha256": "4892877bf0fa4c02fa7a97a79a5fd2321ccc6210148be30723c706298b4a6934",
-      "duration": 3.864
+      "sha256": "2b49543bcaf5f62fb0f38a90aef43b9ac0ed87bf178df8085bfef05f852597fc",
+      "duration": 4.752,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "iroha-v1--emo-surprise": {
-      "bundle": "v9-sent-0",
-      "key": "c82cb3c353e23c83",
+      "bundle": "v9-sent-9",
+      "key": "b80a1dd7ec5ea6af",
       "archive": "emotion-tts-report-1014",
-      "sha256": "40d08778d367c65e19d4eb1c6290d73a5b32348e97cf225250a1e9db0c78107a",
-      "duration": 3.768
+      "sha256": "74922aafc266e3f3a76a0fe7e6536c4d1373ca888b9d5d088eeb485f9e416af6",
+      "duration": 3.216,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "iroha-v1--int-weakest": {
       "bundle": "vec",
-      "key": "0e57d30ee845ac07",
+      "key": "adcbb429d66dcf38",
       "archive": "emotion-tts-report-1014",
-      "sha256": "a6083c58bcda525f3b2cbef8a2b6a65864600022c740f5c610f2cd0ece9a9e64",
-      "duration": 5.064
+      "sha256": "d3ae92103833dfdf528212ef8af7f8f10feda6dab76c9ebca38c4dd24bfaec98",
+      "duration": 2.76,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "iroha-v1--int-weak": {
       "bundle": "vec",
-      "key": "9ac88a23ff52966a",
+      "key": "8ac8175f25db5441",
       "archive": "emotion-tts-report-1014",
-      "sha256": "5a3a6617f00efff1007824cfbd4dd016f77a9743cb8cb92bac800211e021f790",
-      "duration": 4.992
+      "sha256": "170c91c634fccfe9662cad60fe83af39fceee74dcb945cbb41720382493edf02",
+      "duration": 3.36,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "iroha-v1--int-default": {
       "bundle": "vec",
-      "key": "992fe3ccac7307e2",
+      "key": "ad949019f65d95c8",
       "archive": "emotion-tts-report-1014",
-      "sha256": "76adb1c95f98213ae6b544344941ccd2b2fb00a71b38dc5b465bd130ab35c992",
-      "duration": 5.4
+      "sha256": "8335275b11208727da590a63f888d147389762a5bda94676b0f3b38f5dc25290",
+      "duration": 3.6,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "iroha-v1--int-strong": {
       "bundle": "vec",
-      "key": "284d5fdfe666285e",
+      "key": "3788afaba67d157e",
       "archive": "emotion-tts-report-1014",
-      "sha256": "3e2fc859dc0f18bba646ef450e3faf19b57ee26339f70f0efe56db488a56b8e2",
-      "duration": 5.448
-    },
-    "iroha-v1--sigh-m3-first": {
-      "bundle": "v9-sigh",
-      "key": "a9da45d8c9fffcb0",
-      "archive": "emotion-tts-report-1014",
-      "sha256": "43ea73c17952f973e84ddc2bf4eb219b28a7d09442e6f2d6264ccc16619fad61",
-      "duration": 3.672
-    },
-    "iroha-v1--cry-f1-first": {
-      "bundle": "v9-cry",
-      "key": "3c1de33fad19e321",
-      "archive": "emotion-tts-report-1014",
-      "sha256": "8cbfa628e4f61133a22cf9da62fb8e85837a95654b07a5935369264f27ba0784",
-      "duration": 9.768
+      "sha256": "517e25765e8a361e1a00f432e2adda7539383b1f7f04bfdbf369de017aa12670",
+      "duration": 3.552,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     },
     "iroha-v1--trn-T1": {
       "bundle": "trn-0",
@@ -107,20 +105,6 @@
       "archive": "expressive-ja-tts-public",
       "sha256": "b17044272221f6c689c49dfd9478e47c47f0a3ce0fd9a34b996a628399c24aec",
       "duration": 8.173
-    },
-    "reference-m1": {
-      "bundle": "sent-0",
-      "key": "cdaacae3927eaaea",
-      "archive": "expressive-ja-tts-public",
-      "sha256": "1becb6ffb4e9c240bd5058258c5574e61618848184f2109ee004962cb3cb37b4",
-      "duration": 5.072
-    },
-    "iroha-v1--clone-m1": {
-      "bundle": "v9-sent-0",
-      "key": "dce557245222f1d9",
-      "archive": "emotion-tts-report-1014",
-      "sha256": "040b494e022bc9ae75ace2b65e9264306e5ff19533acc87e6bf7977a9807efd6",
-      "duration": 3.312
     },
     "artifact-whisper": {
       "bundle": "whisper",
@@ -136,13 +120,45 @@
       "sha256": "e494ba372a325fc500c5094fa526b5daf134d57e705ce16771d454751ea3ab47",
       "duration": 4.416
     },
-    "iroha-v1--laugh-m2": {
+    "iroha-v1--laugh-f2-sumo": {
       "bundle": "v9-laugh",
-      "key": "e1b4409903895d07",
+      "key": "5f48262edea3edc1",
       "archive": "emotion-tts-report-1014",
-      "sha256": "ad80afa707396e9174b09d2aad9b88b2cb3847815be92c2713b901ace3b19a48",
-      "duration": 4.896,
-      "selection": "User-selected Male 2 laughter example, with [laugh], 2026-11-01"
+      "sha256": "d7ae352943e01f7ec2922f6382e18df576d515fdb7e1ce4d8b8515b0cf313eb7",
+      "duration": 6.696,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
+    },
+    "iroha-v1--sigh-m2-mail": {
+      "bundle": "v9-sigh",
+      "key": "f04713d50327c2f2",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "0763b1bf33883677ffcf93772454c714a4e0516acf583eb11bddc3a3ee84a3fe",
+      "duration": 5.448,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
+    },
+    "iroha-v1--cry-m2-voice": {
+      "bundle": "v9-cry",
+      "key": "8515d048b6de0358",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "6c7be539c51b2e40ce6180fbae3a02f7c99e1075f113d6581cd04f50359df029",
+      "duration": 5.16,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
+    },
+    "reference-f1": {
+      "bundle": "sent-9",
+      "key": "952ec9dd0da68339",
+      "archive": "expressive-ja-tts-public",
+      "sha256": "be26ee8c43d08b7292aff5598f3935affd742777127f67d2e1325bff4da59923",
+      "duration": 3.058,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
+    },
+    "iroha-v1--clone-f1": {
+      "bundle": "v9-sent-9",
+      "key": "77c1396cb9422f90",
+      "archive": "emotion-tts-report-1014",
+      "sha256": "ac3670dd6734a14f8e088eb8170b83316323dc49b47c515e900be40948b835e4",
+      "duration": 2.568,
+      "selection": "Generic example selected from the supplied artifact; laughter explicitly selected by user, 2026-11-01"
     }
   }
 }

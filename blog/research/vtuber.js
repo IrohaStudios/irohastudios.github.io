@@ -19,7 +19,7 @@
     const sample = playing() ? activePlayer.dataset.sample : '';
     const tag = sample.match(/--emo-(joy|anger|sadness|surprise)$/);
     if(tag)return tag[1];
-    if(sample.includes('--int-'))return 'joy';
+    if(sample.includes('--int-'))return 'anger';
     if(sample.includes('--laugh-'))return 'joy';
     if(sample.includes('--cry-')||sample.includes('--sigh-'))return 'sadness';
     return selectedEmotion;

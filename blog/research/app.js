@@ -89,8 +89,8 @@ function sampleLabel(id) {
   const intensity = id.match(/--int-(\w+)$/);
   if (intensity) return `${t('joy')} · ${t(intensity[1])}`;
   for (const key of ['sigh','laugh','cry']) if (id.includes(`--${key}-`)) return t(key);
-  return t({'iroha-v1--trn-T1':'transition','artifact-whisper':'whisper','reference-m1':'reference',
-    'iroha-v1--clone-m1':'clone','artifact-reading':'reading'}[id] || 'play');
+  return t({'iroha-v1--trn-T1':'transition','artifact-whisper':'whisper','reference-f1':'reference',
+    'iroha-v1--clone-f1':'clone','artifact-reading':'reading'}[id] || 'play');
 }
 function player(mount, sampleId, label, compact = false) {
   label = sampleLabel(sampleId);
@@ -141,9 +141,9 @@ const emotions = {
   surprise:{name:'惊讶',tag:'surprised',color:'#278bad'}
 };
 const events = {
-  sigh:{name:'叹气',id:'iroha-v1--sigh-m3-first',text:'[sigh] なかなか厄介な盤面ですね。',zh:'真是个棘手的局面啊。',note:'发布评测 · 56 / 60 条命中（93.33%）'},
-  laugh:{name:'笑声',id:'iroha-v1--laugh-m2',text:'主も早柚のように、[laugh] きちんと眠るのだぞ。',zh:'你也要像早柚一样，好好睡觉哦。',note:'发布评测 · 本地 26 / 60；外部 44 / 59，判定口径有差异'},
-  cry:{name:'哭声',id:'iroha-v1--cry-f1-first',text:'[cry] うう、また宇宙を漂う「美少女氷」に戻るなんてヤだよ……',zh:'呜呜，我才不要又变回漂在宇宙里的「美少女冰块」……',note:'发布评测 · 16 / 60 条命中（26.67%），仍是弱项'}
+  sigh:{name:'叹气',id:'iroha-v1--sigh-m2-mail',text:'[sigh] メールあるの忘れてた。さっさと片付けよう。',zh:'忘了还有邮件，赶紧处理吧。',note:'发布评测 · 56 / 60 条命中（93.33%）'},
+  laugh:{name:'笑声',id:'iroha-v1--laugh-f2-sumo',text:'ああ、[laugh] オニカブトムシ相撲をやめる！今日から、ホタル相撲をやるぜ！',zh:'啊，我不玩鬼兜虫相扑了！从今天起，改玩萤火虫相扑！',note:'发布评测 · 本地 26 / 60；外部 44 / 59，判定口径有差异'},
+  cry:{name:'哭声',id:'iroha-v1--cry-m2-voice',text:'… [cry] 私の声…どうして、こんな声に……',zh:'……我的声音……怎么会变成这样的声音……',note:'发布评测 · 16 / 60 条命中（26.67%），仍是弱项'}
 };
 async function initPlayers() {
   const response = await fetch('/blog/research/assets/samples.json', {cache:'no-cache'});
@@ -167,8 +167,8 @@ async function initPlayers() {
   });
   player('#transition-player', 'iroha-v1--trn-T1', '从开心到难过');
   player('#whisper-player', 'artifact-whisper', '耳语');
-  player('#reference-player', 'reference-m1', '参考音色', true);
-  player('#clone-player', 'iroha-v1--clone-m1', '参考音色生成', true);
+  player('#reference-player', 'reference-f1', '参考音色', true);
+  player('#clone-player', 'iroha-v1--clone-f1', '参考音色生成', true);
   player('#reading-player', 'artifact-reading', '显式读音');
   const levels = ['weakest','weak','default','strong'];
   $('#intensity-bars').innerHTML = Array.from({length:60}, (_,i) => `<i data-seed="${i}"></i>`).join('');
@@ -182,7 +182,7 @@ async function initPlayers() {
       bar.style.height = `${Math.max(5, base * (22 + value * 19))}px`;
       bar.style.opacity = .25 + value * .19 + base * .18;
     });
-    player('#intensity-player', `iroha-v1--int-${levels[value]}`, `${t('joy')} · ${name}`);
+    player('#intensity-player', `iroha-v1--int-${levels[value]}`, `${t('anger')} · ${name}`);
   }
   $('#intensity-range').addEventListener('input', setIntensity);
   setIntensity();
