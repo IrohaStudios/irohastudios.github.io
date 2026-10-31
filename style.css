@@ -276,8 +276,8 @@ svg {
   inset: 0;
   z-index: -3;
   background:
-    linear-gradient(90deg, #fffffff0 0%, #ffffffc4 30%, #ffffff00 65%),
-    linear-gradient(0deg, #ffffffeb, #ffffff00 28%);
+    linear-gradient(90deg, #ffffffa6 0%, #ffffff59 32%, #ffffff00 62%),
+    linear-gradient(0deg, #ffffff99, #ffffff00 22%);
 }
 #sky-particles {
   position: absolute;
@@ -1075,11 +1075,6 @@ h2 {
     letter-spacing: 0.08em;
     font-weight: 600;
   }
-  .hero-wash {
-    background:
-      linear-gradient(90deg, #fffffff0 0%, #ffffffc4 30%, #ffffff00 65%),
-      linear-gradient(0deg, #ffffffeb, #ffffff00 28%);
-  }
   .hero-art img {
     object-position: 63% top;
   }
@@ -1267,7 +1262,12 @@ h2 {
     object-fit: cover;
   }
   .hero-wash {
-    background: linear-gradient(180deg, #ffffff00 300px, #ffffff 450px);
+    background: linear-gradient(
+      180deg,
+      #ffffff00 325px,
+      #ffffffb3 420px,
+      #ffffff 480px
+    );
     z-index: -3;
   }
   .hero-content {
