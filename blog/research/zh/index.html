@@ -11,12 +11,12 @@
 <link href="/blog/research/journal.css?v=7e9fffba6c08" rel="stylesheet"/>
 <link href="/blog/research/typography.css?v=0ec1a9dc5f0b" rel="stylesheet"/>
 <link href="/blog/research/vtuber.css?v=a5f49bec35df" rel="stylesheet"/>
-<script defer="" src="/blog/research/locales.js?v=5a02895c5ab0"></script><script defer="" src="/blog/research/i18n.js?v=57b02993b1b7"></script><script defer="" src="/blog/research/glossary.js?v=286288d29944"></script>
+<script defer="" src="/blog/research/locales.js?v=7040104ad1b9"></script><script defer="" src="/blog/research/i18n.js?v=57b02993b1b7"></script><script defer="" src="/blog/research/glossary.js?v=286288d29944"></script>
 <script defer="" src="/blog/research/vendor/live2dcubismcore.min.js?v=25ae938cb4fe"></script>
 <script defer="" src="/blog/research/iroha-model.js?v=c2df50f90f63"></script>
 <script defer="" src="/blog/research/app.js?v=ba3c70309c17"></script>
 <script defer="" src="/blog/research/vtuber.js?v=cd3097e2fa99"></script>
-<link href="https://irohastudios.github.io/blog/research/zh/" rel="canonical"/><link href="https://irohastudios.github.io/blog/research/ja/" hreflang="ja" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/en/" hreflang="en" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/zh/" hreflang="zh" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/" hreflang="x-default" rel="alternate"/><link href="/blog/research-theme.css?v=f3e9a7bfef69" rel="stylesheet"/></head>
+<link href="https://irohastudios.github.io/blog/research/zh/" rel="canonical"/><link href="https://irohastudios.github.io/blog/research/ja/" hreflang="ja" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/en/" hreflang="en" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/zh/" hreflang="zh" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/" hreflang="x-default" rel="alternate"/><link href="/blog/research-theme.css?v=f3e9a7bfef69" rel="stylesheet"/><link href="/blog/mos.css?v=3d0df889481b" rel="stylesheet"/></head>
 <body>
 <a class="skip-link" data-i18n="label.0" href="#main">跳到正文</a>
 <div aria-hidden="true" class="reading-progress"></div>
@@ -121,7 +121,92 @@
 </tbody></table></div>
 <p class="source-note" data-i18n="copy.p39">表中 Iroha 为打包发布路径：EmoRuler 88.96%、E2V 82.08%、CER 5.58%，与上方原生路径分开报告。UTMOS 是模型预测，<strong>不是人工 <button class="term" data-term="mos">MOS</button></strong>。</p>
 <details class="additional-result"><summary data-i18n="label.87">无标签评测 <span aria-hidden="true">+</span></summary><p data-i18n="copy.p40">Chatterbox 只列无标签结果，不与上表的情感命中率混排：CER 6.5%、SIM 0.675、UTMOS 3.34。Iroha 的 120 条无标签发布评测为 CER 5.0%、SIM 0.685、UTMOS 3.63。</p></details>
-<div class="result-notes reveal"><article><h3 data-i18n="label.46">发声事件</h3><p data-i18n="copy.p41">发布评测中，叹气命中 56/60；哭声只有 16/60。笑声的本地判断为 26/60，外部判断为 44/59，评判口径本身就值得检查。</p></article><article><h3 data-i18n="label.88">耳语 guidance</h3><p data-i18n="copy.p42">60 条匹配耳语请求中，guidance 将命中从 4 条提高到 32 条，但 SIM 从 0.587 降到 0.494，UTMOS 从 2.80 降到 1.78。强度控制也有类似的音色代价。</p></article><article><h3 data-i18n="label.89">日语听者盲评</h3><p data-i18n="copy.p43">2026-10-30 的快照包含 5 位听者、75 个片段。Iroha 的情感贴合为 4.20、自然度 3.84、说话人一致 3.52（1–5 分）。完整表格与配对区间见<a href="/blog/zh/#human-evaluation">发布文章</a>。</p></article></div>
+<div class="result-notes reveal"><article><h3 data-i18n="label.46">发声事件</h3><p data-i18n="copy.p41">发布评测中，叹气命中 56/60；哭声只有 16/60。笑声的本地判断为 26/60，外部判断为 44/59，评判口径本身就值得检查。</p></article><article><h3 data-i18n="label.88">耳语 guidance</h3><p data-i18n="copy.p42">60 条匹配耳语请求中，guidance 将命中从 4 条提高到 32 条，但 SIM 从 0.587 降到 0.494，UTMOS 从 2.80 降到 1.78。强度控制也有类似的音色代价。</p></article><article class="mos-results" id="human-evaluation"><h3 data-i18n="label.89">主观听力测试 MOS（日语）</h3><div data-i18n="copy.p43">
+<p>我们挑了 15 组 × 5 种情感 = 75 句，每人听 75 句。</p>
+<div aria-label="可横向滚动的数据表" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">模型</th>
+<th scope="col">自然度 ↑</th>
+<th scope="col">情感匹配 ↑</th>
+<th scope="col">音色相似度 ↑</th>
+<th scope="col">综合分 ↑</th>
+<th scope="col">胜出占比 ↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ours</td>
+<td>3.84</td>
+<td><strong>4.20</strong></td>
+<td>3.52</td>
+<td><strong>3.85</strong></td>
+<td><strong>31.7%</strong></td>
+</tr>
+<tr>
+<td>Fish Audio Drama 3</td>
+<td><strong>3.97</strong></td>
+<td>3.64</td>
+<td>3.45</td>
+<td>3.69</td>
+<td>23.2%</td>
+</tr>
+<tr>
+<td>Irodori-TTS v4 large · 文字描述</td>
+<td>3.61</td>
+<td>3.95</td>
+<td>3.32</td>
+<td>3.63</td>
+<td>28.1%</td>
+</tr>
+<tr>
+<td>Fish S2 Pro 原版</td>
+<td>3.75</td>
+<td>2.93</td>
+<td><strong>3.72</strong></td>
+<td>3.47</td>
+<td>12.1%</td>
+</tr>
+<tr>
+<td>IndexTTS-2.5</td>
+<td>2.35</td>
+<td>3.49</td>
+<td>2.81</td>
+<td>2.88</td>
+<td>4.9%</td>
+</tr>
+</tbody>
+</table></div>
+<p><small>三个维度都是人工五分制打分（MOS），综合分是三项的不加权平均。胜出占比：对每个「听者-句子」组合比较五个模型，并列第一时平分。</small></p>
+<h4>两两胜率</h4>
+<p>Ours 的两两胜率，按综合评分计算，打平算半场胜：</p>
+<div aria-label="可横向滚动的数据表" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">对比</th>
+<th scope="col">Ours 胜率 ↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vs. Fish S2 Pro 原版</td>
+<td><strong>69.3%</strong></td>
+</tr>
+<tr>
+<td>vs. Fish Audio Drama 3</td>
+<td><strong>58.0%</strong></td>
+</tr>
+<tr>
+<td>vs. Irodori-TTS v4 large · 文字描述</td>
+<td><strong>58.7%</strong></td>
+</tr>
+<tr>
+<td>vs. IndexTTS-2.5</td>
+<td><strong>82.7%</strong></td>
+</tr>
+</tbody>
+</table></div>
+</div></article></div>
 </section>
 <section aria-labelledby="lessons-title" class="lessons-section section-shell" id="lessons">
 <div class="section-heading reveal"><div><h2 data-i18n="label.4" id="lessons-title">失败经验</h2></div></div>

@@ -11,12 +11,12 @@
 <link href="/blog/research/journal.css?v=7e9fffba6c08" rel="stylesheet"/>
 <link href="/blog/research/typography.css?v=0ec1a9dc5f0b" rel="stylesheet"/>
 <link href="/blog/research/vtuber.css?v=a5f49bec35df" rel="stylesheet"/>
-<script defer="" src="/blog/research/locales.js?v=5a02895c5ab0"></script><script defer="" src="/blog/research/i18n.js?v=57b02993b1b7"></script><script defer="" src="/blog/research/glossary.js?v=286288d29944"></script>
+<script defer="" src="/blog/research/locales.js?v=7040104ad1b9"></script><script defer="" src="/blog/research/i18n.js?v=57b02993b1b7"></script><script defer="" src="/blog/research/glossary.js?v=286288d29944"></script>
 <script defer="" src="/blog/research/vendor/live2dcubismcore.min.js?v=25ae938cb4fe"></script>
 <script defer="" src="/blog/research/iroha-model.js?v=c2df50f90f63"></script>
 <script defer="" src="/blog/research/app.js?v=ba3c70309c17"></script>
 <script defer="" src="/blog/research/vtuber.js?v=cd3097e2fa99"></script>
-<link href="https://irohastudios.github.io/blog/research/en/" rel="canonical"/><link href="https://irohastudios.github.io/blog/research/ja/" hreflang="ja" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/en/" hreflang="en" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/zh/" hreflang="zh" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/" hreflang="x-default" rel="alternate"/><link href="/blog/research-theme.css?v=f3e9a7bfef69" rel="stylesheet"/></head>
+<link href="https://irohastudios.github.io/blog/research/en/" rel="canonical"/><link href="https://irohastudios.github.io/blog/research/ja/" hreflang="ja" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/en/" hreflang="en" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/zh/" hreflang="zh" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/" hreflang="x-default" rel="alternate"/><link href="/blog/research-theme.css?v=f3e9a7bfef69" rel="stylesheet"/><link href="/blog/mos.css?v=3d0df889481b" rel="stylesheet"/></head>
 <body>
 <a class="skip-link" data-i18n="label.0" href="#main">Skip to content</a>
 <div aria-hidden="true" class="reading-progress"></div>
@@ -121,7 +121,92 @@
 </tbody></table></div>
 <p class="source-note" data-i18n="copy.p39">The table uses packaged release inference: EmoRuler 88.96%, E2V 82.08%, CER 5.58%, reported separately from native inference above. UTMOS is a model prediction, <strong>not human <button class="term" data-term="mos">MOS</button></strong>.</p>
 <details class="additional-result"><summary data-i18n="label.87">Untagged evaluation <span aria-hidden="true">+</span></summary><p data-i18n="copy.p40">Chatterbox is reported only without tags, outside the emotion-accuracy table: CER 6.5%, SIM 0.675, UTMOS 3.34. Iroha’s 120 untagged release requests scored CER 5.0%, SIM 0.685 and UTMOS 3.63.</p></details>
-<div class="result-notes reveal"><article><h3 data-i18n="label.46">Vocal events</h3><p data-i18n="copy.p41">Release evaluation detected sighing in 56/60 clips and crying in 16/60. Laughter scored 26/60 under the local check and 44/59 under an external check, indicating a need to examine the evaluation criteria.</p></article><article><h3 data-i18n="label.88">Whisper guidance</h3><p data-i18n="copy.p42">On 60 matched whisper requests, guidance raised detections from 4 to 32, while SIM fell from 0.587 to 0.494 and UTMOS from 2.80 to 1.78. Intensity steering shows similar voice trade-offs.</p></article><article><h3 data-i18n="label.89">Japanese listening study</h3><p data-i18n="copy.p43">The 2026-10-30 snapshot contains 5 listeners and 75 clips. Iroha scored 4.20 for emotion fit, 3.84 for naturalness and 3.52 for speaker similarity (1–5). See the <a href="/blog/en/#human-evaluation">release article</a> for the full table and paired intervals.</p></article></div>
+<div class="result-notes reveal"><article><h3 data-i18n="label.46">Vocal events</h3><p data-i18n="copy.p41">Release evaluation detected sighing in 56/60 clips and crying in 16/60. Laughter scored 26/60 under the local check and 44/59 under an external check, indicating a need to examine the evaluation criteria.</p></article><article><h3 data-i18n="label.88">Whisper guidance</h3><p data-i18n="copy.p42">On 60 matched whisper requests, guidance raised detections from 4 to 32, while SIM fell from 0.587 to 0.494 and UTMOS from 2.80 to 1.78. Intensity steering shows similar voice trade-offs.</p></article><article class="mos-results" id="human-evaluation"><h3 data-i18n="label.89">Subjective listening test: MOS (Japanese)</h3><div data-i18n="copy.p43">
+<p>We selected 15 groups × 5 emotions = 75 lines. Each listener heard all 75 lines.</p>
+<div aria-label="Horizontally scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">Model</th>
+<th scope="col">Naturalness ↑</th>
+<th scope="col">Emotion match ↑</th>
+<th scope="col">Voice similarity ↑</th>
+<th scope="col">Overall score ↑</th>
+<th scope="col">Win share ↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ours</td>
+<td>3.84</td>
+<td><strong>4.20</strong></td>
+<td>3.52</td>
+<td><strong>3.85</strong></td>
+<td><strong>31.7%</strong></td>
+</tr>
+<tr>
+<td>Fish Audio Drama 3</td>
+<td><strong>3.97</strong></td>
+<td>3.64</td>
+<td>3.45</td>
+<td>3.69</td>
+<td>23.2%</td>
+</tr>
+<tr>
+<td>Irodori-TTS v4 large · Text description</td>
+<td>3.61</td>
+<td>3.95</td>
+<td>3.32</td>
+<td>3.63</td>
+<td>28.1%</td>
+</tr>
+<tr>
+<td>Fish S2 Pro Original</td>
+<td>3.75</td>
+<td>2.93</td>
+<td><strong>3.72</strong></td>
+<td>3.47</td>
+<td>12.1%</td>
+</tr>
+<tr>
+<td>IndexTTS-2.5</td>
+<td>2.35</td>
+<td>3.49</td>
+<td>2.81</td>
+<td>2.88</td>
+<td>4.9%</td>
+</tr>
+</tbody>
+</table></div>
+<p><small>All three dimensions use human ratings on a five-point scale (MOS). The overall score is their unweighted mean. Win share compares the five models for each listener–line pair, splitting credit equally when models tie for first.</small></p>
+<h4>Pairwise win rates</h4>
+<p>Ours’ pairwise win rates, based on the overall score, with ties counted as half a win:</p>
+<div aria-label="Horizontally scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">Comparison</th>
+<th scope="col">Ours win rate ↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vs. Fish S2 Pro Original</td>
+<td><strong>69.3%</strong></td>
+</tr>
+<tr>
+<td>vs. Fish Audio Drama 3</td>
+<td><strong>58.0%</strong></td>
+</tr>
+<tr>
+<td>vs. Irodori-TTS v4 large · Text description</td>
+<td><strong>58.7%</strong></td>
+</tr>
+<tr>
+<td>vs. IndexTTS-2.5</td>
+<td><strong>82.7%</strong></td>
+</tr>
+</tbody>
+</table></div>
+</div></article></div>
 </section>
 <section aria-labelledby="lessons-title" class="lessons-section section-shell" id="lessons">
 <div class="section-heading reveal"><div><h2 data-i18n="label.4" id="lessons-title">Failed approaches</h2></div></div>

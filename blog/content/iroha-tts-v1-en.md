@@ -67,21 +67,30 @@ A **strictly paired comparison** isolates the weight adaptation: the same infere
 
 On these matched requests, better adherence to emotion tags did not come with a higher character error rate.
 
-### Japanese listening study
+### Subjective listening test: MOS (Japanese)
 
-Automatic scores do not replace listening. In this snapshot, 5 Japanese listeners each rated the same 75 clips on three 1–5 scales: naturalness, fit to the requested emotion, and similarity to the reference speaker. Naturalness was rated first, without revealing the target emotion.
+We selected 15 groups × 5 emotions = 75 lines. Each listener heard all 75 lines.
 
-| System | Emotion fit E-MOS | Naturalness N-MOS | Speaker similarity S-MOS |
-|---|---|---|---|
-| **Iroha-TTS-V1** | **4.20** | 3.84 | 3.52 |
-| Irodori-TTS v4-Large | 3.95 | 3.61 | 3.32 |
-| Fish Audio Drama 3 | 3.64 | 3.97 | 3.45 |
-| IndexTTS-2.5 | 3.49 | 2.35 | 2.81 |
-| Original Fish S2-Pro | 2.93 | 3.75 | 3.72 |
+| Model | Naturalness ↑ | Emotion match ↑ | Voice similarity ↑ | Overall score ↑ | Win share ↑ |
+|---|---|---|---|---|---|
+| Ours | 3.84 | **4.20** | 3.52 | **3.85** | **31.7%** |
+| Fish Audio Drama 3 | **3.97** | 3.64 | 3.45 | 3.69 | 23.2% |
+| Irodori-TTS v4 large · Text description | 3.61 | 3.95 | 3.32 | 3.63 | 28.1% |
+| Fish S2 Pro Original | 3.75 | 2.93 | **3.72** | 3.47 | 12.1% |
+| IndexTTS-2.5 | 2.35 | 3.49 | 2.81 | 2.88 | 4.9% |
 
-Paired by request, Iroha’s emotion fit improved by **1.27 points** over the original model (95% interval: 0.65–1.99). Listeners rated it higher on 12 of the 15 requests. The direction of the listener and classifier judgments agreed in all 13 comparable pairs.
+<small>All three dimensions use human ratings on a five-point scale (MOS). The overall score is their unweighted mean. Win share compares the five models for each listener–line pair, splitting credit equally when models tie for first.</small>
 
-<small>This is the October 30, 2026 snapshot: 5 complete questionnaires and 75 clips. It does not include later responses. The study is small, and collection continues.</small>
+#### Pairwise win rates
+
+Ours’ pairwise win rates, based on the overall score, with ties counted as half a win:
+
+| Comparison | Ours win rate ↑ |
+|---|---|
+| vs. Fish S2 Pro Original | **69.3%** |
+| vs. Fish Audio Drama 3 | **58.0%** |
+| vs. Irodori-TTS v4 large · Text description | **58.7%** |
+| vs. IndexTTS-2.5 | **82.7%** |
 
 ### Other controls and benchmarks
 

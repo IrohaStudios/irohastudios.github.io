@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-locale="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Iroha-TTS-V1: controllable emotional speech in Japanese · Iroha Studios</title><meta name="description" content="Choose how a Japanese line is delivered: its emotion and intensity, a change of feeling halfway through, a laugh or sigh, a whisper, or a specific pronunciation—all with a reference voice you provide."/><meta name="theme-color" content="#fafdff"/><meta property="og:title" content="Iroha-TTS-V1: controllable emotional speech in Japanese"/><meta property="og:type" content="article"/><meta property="og:url" content="https://irohastudios.github.io/blog/en/"/><meta property="og:image" content="https://irohastudios.github.io/assets/sky-observatory.png"/><link rel="canonical" href="https://irohastudios.github.io/blog/en/"/><link rel="alternate" hreflang="ja" href="https://irohastudios.github.io/blog/ja/"/><link rel="alternate" hreflang="en" href="https://irohastudios.github.io/blog/en/"/><link rel="alternate" hreflang="zh" href="https://irohastudios.github.io/blog/zh/"/><link rel="alternate" hreflang="x-default" href="https://irohastudios.github.io/blog/"/><link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="/blog/blog.css?v=db6dc5e6fd67"/><script defer src="/blog/release.js?v=54c56c2cb443"></script><script id="blog-ui" type="application/json">{"emotions": ["Joy", "Anger", "Sadness", "Surprise"]}</script><noscript><style>.sample-tabs{display:none}</style></noscript></head>
+<html lang="en" data-locale="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Iroha-TTS-V1: controllable emotional speech in Japanese · Iroha Studios</title><meta name="description" content="Choose how a Japanese line is delivered: its emotion and intensity, a change of feeling halfway through, a laugh or sigh, a whisper, or a specific pronunciation—all with a reference voice you provide."/><meta name="theme-color" content="#fafdff"/><meta property="og:title" content="Iroha-TTS-V1: controllable emotional speech in Japanese"/><meta property="og:type" content="article"/><meta property="og:url" content="https://irohastudios.github.io/blog/en/"/><meta property="og:image" content="https://irohastudios.github.io/assets/sky-observatory.png"/><link rel="canonical" href="https://irohastudios.github.io/blog/en/"/><link rel="alternate" hreflang="ja" href="https://irohastudios.github.io/blog/ja/"/><link rel="alternate" hreflang="en" href="https://irohastudios.github.io/blog/en/"/><link rel="alternate" hreflang="zh" href="https://irohastudios.github.io/blog/zh/"/><link rel="alternate" hreflang="x-default" href="https://irohastudios.github.io/blog/"/><link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="/blog/blog.css?v=db6dc5e6fd67"/><link rel="stylesheet" href="/blog/mos.css?v=3d0df889481b"/><script defer src="/blog/release.js?v=54c56c2cb443"></script><script id="blog-ui" type="application/json">{"emotions": ["Joy", "Anger", "Sadness", "Surprise"]}</script><noscript><style>.sample-tabs{display:none}</style></noscript></head>
 <body id="top"><a class="blog-skip" href="#article">Skip to article</a><header class="studio-header"><a class="studio-brand" href="/en/" aria-label="Iroha Studios · Home"><img class="studio-mark" src="/assets/iroha-logo.svg" width="52" height="52" alt=""/><img class="studio-wordmark" src="/assets/iroha-wordmark-brush-v1.png" width="112" height="46" alt="Iroha"/><span>Studios</span></a><nav class="studio-nav" aria-label="Journal"><a href="/en/#work">Work</a><a class="current" href="/blog/en/" aria-current="page">Journal</a><a href="/blog/research/en/">Technical notes</a></nav><nav class="blog-languages" aria-label="Language"><a href="/blog/ja/" lang="ja" hreflang="ja">日本語</a><a href="/blog/en/" lang="en" hreflang="en" aria-current="page">English</a><a href="/blog/zh/" lang="zh" hreflang="zh">中文</a></nav></header>
 <main><header class="article-hero"><div class="article-hero-inner"><a class="article-eyebrow" href="/blog/en/">Journal <span>/</span> Release</a><h1>Iroha-TTS-V1: controllable emotional speech in Japanese</h1><div class="article-lead"><p><strong>Choose how a Japanese line is delivered: its emotion and intensity, a change of feeling halfway through, a laugh or sigh, a whisper, or a specific pronunciation—all with a reference voice you provide.</strong></p></div><div class="article-byline"><p>Iroha Studios · October 31, 2026</p></div><div class="article-actions"><p><a href="#listen">Listen</a> · <a href="https://huggingface.co/IrohaStudio/Iroha-TTS">Model repository</a> · <a href="/blog/research/en/">Technical notes</a></p></div></div></header>
 <div class="reading-layout"><article id="article" class="release-prose">
@@ -131,53 +131,92 @@
 <li>Predicted quality, UTMOS: +0.06.</li>
 </ul>
 <p>On these matched requests, better adherence to emotion tags did not come with a higher character error rate.</p>
-<h3 id="human-evaluation">Japanese listening study</h3>
-<p>Automatic scores do not replace listening. In this snapshot, 5 Japanese listeners each rated the same 75 clips on three 1–5 scales: naturalness, fit to the requested emotion, and similarity to the reference speaker. Naturalness was rated first, without revealing the target emotion.</p>
+<section class="mos-results"><h3 id="human-evaluation">Subjective listening test: MOS (Japanese)</h3>
+<p>We selected 15 groups × 5 emotions = 75 lines. Each listener heard all 75 lines.</p>
 <div aria-label="Horizontally scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
 <thead>
 <tr>
-<th scope="col">System</th>
-<th scope="col">Emotion fit E-MOS</th>
-<th scope="col">Naturalness N-MOS</th>
-<th scope="col">Speaker similarity S-MOS</th>
+<th scope="col">Model</th>
+<th scope="col">Naturalness ↑</th>
+<th scope="col">Emotion match ↑</th>
+<th scope="col">Voice similarity ↑</th>
+<th scope="col">Overall score ↑</th>
+<th scope="col">Win share ↑</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Iroha-TTS-V1</strong></td>
-<td><strong>4.20</strong></td>
+<td>Ours</td>
 <td>3.84</td>
+<td><strong>4.20</strong></td>
 <td>3.52</td>
-</tr>
-<tr>
-<td>Irodori-TTS v4-Large</td>
-<td>3.95</td>
-<td>3.61</td>
-<td>3.32</td>
+<td><strong>3.85</strong></td>
+<td><strong>31.7%</strong></td>
 </tr>
 <tr>
 <td>Fish Audio Drama 3</td>
+<td><strong>3.97</strong></td>
 <td>3.64</td>
-<td>3.97</td>
 <td>3.45</td>
+<td>3.69</td>
+<td>23.2%</td>
+</tr>
+<tr>
+<td>Irodori-TTS v4 large · Text description</td>
+<td>3.61</td>
+<td>3.95</td>
+<td>3.32</td>
+<td>3.63</td>
+<td>28.1%</td>
+</tr>
+<tr>
+<td>Fish S2 Pro Original</td>
+<td>3.75</td>
+<td>2.93</td>
+<td><strong>3.72</strong></td>
+<td>3.47</td>
+<td>12.1%</td>
 </tr>
 <tr>
 <td>IndexTTS-2.5</td>
-<td>3.49</td>
 <td>2.35</td>
+<td>3.49</td>
 <td>2.81</td>
-</tr>
-<tr>
-<td>Original Fish S2-Pro</td>
-<td>2.93</td>
-<td>3.75</td>
-<td>3.72</td>
+<td>2.88</td>
+<td>4.9%</td>
 </tr>
 </tbody>
 </table></div>
-<p>Paired by request, Iroha’s emotion fit improved by <strong>1.27 points</strong> over the original model (95% interval: 0.65–1.99). Listeners rated it higher on 12 of the 15 requests. The direction of the listener and classifier judgments agreed in all 13 comparable pairs.</p>
-<p><small>This is the October 30, 2026 snapshot: 5 complete questionnaires and 75 clips. It does not include later responses. The study is small, and collection continues.</small></p>
-<h3 id="other-results">Other controls and benchmarks</h3>
+<p><small>All three dimensions use human ratings on a five-point scale (MOS). The overall score is their unweighted mean. Win share compares the five models for each listener–line pair, splitting credit equally when models tie for first.</small></p>
+<h4>Pairwise win rates</h4>
+<p>Ours’ pairwise win rates, based on the overall score, with ties counted as half a win:</p>
+<div aria-label="Horizontally scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">Comparison</th>
+<th scope="col">Ours win rate ↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vs. Fish S2 Pro Original</td>
+<td><strong>69.3%</strong></td>
+</tr>
+<tr>
+<td>vs. Fish Audio Drama 3</td>
+<td><strong>58.0%</strong></td>
+</tr>
+<tr>
+<td>vs. Irodori-TTS v4 large · Text description</td>
+<td><strong>58.7%</strong></td>
+</tr>
+<tr>
+<td>vs. IndexTTS-2.5</td>
+<td><strong>82.7%</strong></td>
+</tr>
+</tbody>
+</table></div>
+</section><h3 id="other-results">Other controls and benchmarks</h3>
 <ul>
 <li><strong>Japanese benchmarks:</strong> 4.80% CER on CV3-Eval, versus 5.30% for the original model rerun in the same environment. On the MiniMax Japanese set, CER is 3.33% and speaker similarity is 0.745.</li>
 <li><strong>Sighs:</strong> an event recognizer detected 56 of 60 requests, or 93.3%.</li>

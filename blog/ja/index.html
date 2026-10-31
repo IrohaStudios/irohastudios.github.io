@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja" data-locale="ja"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Iroha-TTS-V1：日本語の感情表現をコントロールする音声合成 · Iroha Studios</title><meta name="description" content="日本語のセリフを、どう話すか。感情とその強さ、途中での気持ちの変化、笑いやため息、ささやき、名前の読み方まで。用意した参照音声の声で、表現を指定できます。"/><meta name="theme-color" content="#fafdff"/><meta property="og:title" content="Iroha-TTS-V1：日本語の感情表現をコントロールする音声合成"/><meta property="og:type" content="article"/><meta property="og:url" content="https://irohastudios.github.io/blog/ja/"/><meta property="og:image" content="https://irohastudios.github.io/assets/sky-observatory.png"/><link rel="canonical" href="https://irohastudios.github.io/blog/ja/"/><link rel="alternate" hreflang="ja" href="https://irohastudios.github.io/blog/ja/"/><link rel="alternate" hreflang="en" href="https://irohastudios.github.io/blog/en/"/><link rel="alternate" hreflang="zh" href="https://irohastudios.github.io/blog/zh/"/><link rel="alternate" hreflang="x-default" href="https://irohastudios.github.io/blog/"/><link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="/blog/blog.css?v=db6dc5e6fd67"/><script defer src="/blog/release.js?v=54c56c2cb443"></script><script id="blog-ui" type="application/json">{"emotions": ["喜び", "怒り", "悲しみ", "驚き"]}</script><noscript><style>.sample-tabs{display:none}</style></noscript></head>
+<html lang="ja" data-locale="ja"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Iroha-TTS-V1：日本語の感情表現をコントロールする音声合成 · Iroha Studios</title><meta name="description" content="日本語のセリフを、どう話すか。感情とその強さ、途中での気持ちの変化、笑いやため息、ささやき、名前の読み方まで。用意した参照音声の声で、表現を指定できます。"/><meta name="theme-color" content="#fafdff"/><meta property="og:title" content="Iroha-TTS-V1：日本語の感情表現をコントロールする音声合成"/><meta property="og:type" content="article"/><meta property="og:url" content="https://irohastudios.github.io/blog/ja/"/><meta property="og:image" content="https://irohastudios.github.io/assets/sky-observatory.png"/><link rel="canonical" href="https://irohastudios.github.io/blog/ja/"/><link rel="alternate" hreflang="ja" href="https://irohastudios.github.io/blog/ja/"/><link rel="alternate" hreflang="en" href="https://irohastudios.github.io/blog/en/"/><link rel="alternate" hreflang="zh" href="https://irohastudios.github.io/blog/zh/"/><link rel="alternate" hreflang="x-default" href="https://irohastudios.github.io/blog/"/><link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="/blog/blog.css?v=db6dc5e6fd67"/><link rel="stylesheet" href="/blog/mos.css?v=3d0df889481b"/><script defer src="/blog/release.js?v=54c56c2cb443"></script><script id="blog-ui" type="application/json">{"emotions": ["喜び", "怒り", "悲しみ", "驚き"]}</script><noscript><style>.sample-tabs{display:none}</style></noscript></head>
 <body id="top"><a class="blog-skip" href="#article">本文へ</a><header class="studio-header"><a class="studio-brand" href="/ja/" aria-label="Iroha Studios · ホーム"><img class="studio-mark" src="/assets/iroha-logo.svg" width="52" height="52" alt=""/><img class="studio-wordmark" src="/assets/iroha-wordmark-brush-v1.png" width="112" height="46" alt="Iroha"/><span>Studios</span></a><nav class="studio-nav" aria-label="制作ノート"><a href="/ja/#work">作品</a><a class="current" href="/blog/ja/" aria-current="page">制作ノート</a><a href="/blog/research/ja/">技術ノート</a></nav><nav class="blog-languages" aria-label="言語"><a href="/blog/ja/" lang="ja" hreflang="ja" aria-current="page">日本語</a><a href="/blog/en/" lang="en" hreflang="en">English</a><a href="/blog/zh/" lang="zh" hreflang="zh">中文</a></nav></header>
 <main><header class="article-hero"><div class="article-hero-inner"><a class="article-eyebrow" href="/blog/ja/">制作ノート <span>/</span> リリース</a><h1>Iroha-TTS-V1：日本語の感情表現をコントロールする音声合成</h1><div class="article-lead"><p><strong>日本語のセリフを、どう話すか。感情とその強さ、途中での気持ちの変化、笑いやため息、ささやき、名前の読み方まで。用意した参照音声の声で、表現を指定できます。</strong></p></div><div class="article-byline"><p>Iroha Studios · 2026年10月31日</p></div><div class="article-actions"><p><a href="#listen">音声を聴く</a> · <a href="https://huggingface.co/IrohaStudio/Iroha-TTS">モデルリポジトリ</a> · <a href="/blog/research/ja/">技術ノート</a></p></div></div></header>
 <div class="reading-layout"><article id="article" class="release-prose">
@@ -131,53 +131,92 @@
 <li>予測音質 UTMOS：+0.06。</li>
 </ul>
 <p>この同条件の比較では、感情タグへの追従が改善しても、文字誤り率は増えていません。</p>
-<h3 id="human-evaluation">日本語話者による聴取評価</h3>
-<p>自動スコアだけでは聴こえ方を判断できないため、聴取評価を行いました。今回の集計では、日本語話者5人が同じ75クリップを聴き、自然さ・指定した感情への適合・参照話者との一致をそれぞれ1〜5点で評価しました。自然さは、目標の感情を知らせずに先に評価しています。</p>
+<section class="mos-results"><h3 id="human-evaluation">主観聴取テスト MOS（日本語）</h3>
+<p>15組 × 5種類の感情 = 75文を選び、各参加者が75文すべてを聴きました。</p>
 <div aria-label="横にスクロールできるデータ表" class="table-scroll" role="region" tabindex="0"><table>
 <thead>
 <tr>
-<th scope="col">システム</th>
-<th scope="col">感情適合 E-MOS</th>
-<th scope="col">自然さ N-MOS</th>
-<th scope="col">話者一致 S-MOS</th>
+<th scope="col">モデル</th>
+<th scope="col">自然さ ↑</th>
+<th scope="col">感情の一致度 ↑</th>
+<th scope="col">声質の類似度 ↑</th>
+<th scope="col">総合点 ↑</th>
+<th scope="col">首位獲得率 ↑</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Iroha-TTS-V1</strong></td>
-<td><strong>4.20</strong></td>
+<td>Ours</td>
 <td>3.84</td>
+<td><strong>4.20</strong></td>
 <td>3.52</td>
-</tr>
-<tr>
-<td>Irodori-TTS v4-Large</td>
-<td>3.95</td>
-<td>3.61</td>
-<td>3.32</td>
+<td><strong>3.85</strong></td>
+<td><strong>31.7%</strong></td>
 </tr>
 <tr>
 <td>Fish Audio Drama 3</td>
+<td><strong>3.97</strong></td>
 <td>3.64</td>
-<td>3.97</td>
 <td>3.45</td>
+<td>3.69</td>
+<td>23.2%</td>
+</tr>
+<tr>
+<td>Irodori-TTS v4 large · テキスト記述</td>
+<td>3.61</td>
+<td>3.95</td>
+<td>3.32</td>
+<td>3.63</td>
+<td>28.1%</td>
+</tr>
+<tr>
+<td>Fish S2 Pro オリジナル</td>
+<td>3.75</td>
+<td>2.93</td>
+<td><strong>3.72</strong></td>
+<td>3.47</td>
+<td>12.1%</td>
 </tr>
 <tr>
 <td>IndexTTS-2.5</td>
-<td>3.49</td>
 <td>2.35</td>
+<td>3.49</td>
 <td>2.81</td>
-</tr>
-<tr>
-<td>Fish S2-Pro オリジナル</td>
-<td>2.93</td>
-<td>3.75</td>
-<td>3.72</td>
+<td>2.88</td>
+<td>4.9%</td>
 </tr>
 </tbody>
 </table></div>
-<p>要求ごとに対応させると、Iroha の感情適合はオリジナルから <strong>1.27点</strong>向上しました（95%区間：0.65–1.99）。15要求のうち12要求で Iroha の評価が高く、比較可能な13組では、聴取評価と分類器の判断の方向がすべて一致しました。</p>
-<p><small>2026年10月30日時点の集計です（回答完了5人、75クリップ）。その後の回答は含みません。まだ小規模な評価で、収集を続けています。</small></p>
-<h3 id="other-results">その他の制御とベンチマーク</h3>
+<p><small>3項目はいずれも人による5段階評価（MOS）で、総合点は3項目の単純平均です。首位獲得率は「参加者・文」の組み合わせごとに5モデルを比較し、同点首位の場合は均等に配分します。</small></p>
+<h4>ペアごとの勝率</h4>
+<p>総合点で比較した Ours の勝率です。同点は0.5勝として数えます。</p>
+<div aria-label="横にスクロールできるデータ表" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">比較</th>
+<th scope="col">Ours の勝率 ↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vs. Fish S2 Pro オリジナル</td>
+<td><strong>69.3%</strong></td>
+</tr>
+<tr>
+<td>vs. Fish Audio Drama 3</td>
+<td><strong>58.0%</strong></td>
+</tr>
+<tr>
+<td>vs. Irodori-TTS v4 large · テキスト記述</td>
+<td><strong>58.7%</strong></td>
+</tr>
+<tr>
+<td>vs. IndexTTS-2.5</td>
+<td><strong>82.7%</strong></td>
+</tr>
+</tbody>
+</table></div>
+</section><h3 id="other-results">その他の制御とベンチマーク</h3>
 <ul>
 <li><strong>日本語ベンチマーク：</strong> CV3-Eval の CER は4.80%（同じ環境で再実行したオリジナルは5.30%）。MiniMax 日本語セットでは CER 3.33%、話者類似度 0.745 でした。</li>
 <li><strong>ため息：</strong> イベント認識器が60要求中56件を検出しました（93.3%）。</li>

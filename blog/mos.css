@@ -1,0 +1,19 @@
+/* Shared presentation for the release article and technical notes. */
+.mos-results{min-width:0;grid-column:1/-1}
+.mos-results h4{margin:32px 0 20px;font-size:20px;line-height:1.6;font-weight:700}
+.mos-results p{margin:0 0 24px;line-height:1.85}
+.mos-results small{display:block;font-size:14px;line-height:1.9;color:var(--muted)}
+.mos-results .table-scroll{width:100%;max-width:100%;margin:26px 0;padding:0;border:0}
+.mos-results .table-scroll table{width:100%;min-width:860px;font-family:inherit;font-size:14px;line-height:1.8;font-variant-numeric:tabular-nums}
+.mos-results .table-scroll th,.mos-results .table-scroll td{padding:16px 14px;min-width:90px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle;color:var(--muted);white-space:nowrap}
+.mos-results .table-scroll th{background:transparent;font-weight:500}
+.mos-results .table-scroll th:first-child,.mos-results .table-scroll td:first-child{text-align:left;min-width:250px;white-space:normal}
+.mos-results .table-scroll td:first-child,.mos-results .table-scroll strong{color:var(--ink)}
+.mos-results .table-scroll strong{font-weight:700}
+.mos-results .table-scroll tbody tr{background:transparent}
+.mos-results .table-scroll table:has(th:nth-child(6)) tbody tr:first-child{background:#eef8fd}
+.mos-results .table-scroll tbody tr:last-child>*{border-bottom:1px solid var(--line)}
+.mos-results .table-scroll table:not(:has(th:nth-child(3))){width:min(100%,650px);min-width:0}
+.mos-results .table-scroll table:not(:has(th:nth-child(3))) th,.mos-results .table-scroll table:not(:has(th:nth-child(3))) td{min-width:0}
+.mos-results .table-scroll table:not(:has(th:nth-child(3))) th:last-child,.mos-results .table-scroll table:not(:has(th:nth-child(3))) td:last-child{width:130px}
+@media(min-width:761px){.result-notes:has(.mos-results){grid-template-columns:repeat(2,minmax(0,1fr))}}

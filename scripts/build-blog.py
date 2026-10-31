@@ -73,13 +73,22 @@ def build_release(lang):
         for th in table.select('thead th'): th['scope'] = 'col'
         wrapper = soup.new_tag('div', attrs={'class':'table-scroll','tabindex':'0','role':'region','aria-label':u['table']})
         table.wrap(wrapper)
+    mos_heading = soup.select_one('#human-evaluation')
+    mos = soup.new_tag('section', attrs={'class': 'mos-results'})
+    mos_heading.insert_before(mos)
+    node = mos_heading
+    while node is not None:
+        following = node.next_sibling
+        mos.append(node.extract())
+        if following is not None and following.name == 'h3': break
+        node = following
     toc = ''.join(f'<a href="#{h["id"]}">{esc(h.get_text())}</a>' for h in headings)
     toc = toc.replace('<a href="#evaluation">', f'<a href="#listen">{u["listen"]}</a><a href="#evaluation">')
     tag = 'zh-CN' if lang == 'zh' else lang
     home_lang = lang
     runtime = json.dumps(dict(emotions=u['emotions']), ensure_ascii=False).replace('<','\\u003c')
     page = f'''<!doctype html>
-<html lang="{tag}" data-locale="{lang}"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{esc(title)} · Iroha Studios</title><meta name="description" content="{esc(BeautifulSoup(lead,'html.parser').get_text())}"/><meta name="theme-color" content="#fafdff"/><meta property="og:title" content="{esc(title)}"/><meta property="og:type" content="article"/><meta property="og:url" content="{ORIGIN}/blog/{lang}/"/><meta property="og:image" content="{ORIGIN}/assets/sky-observatory.png"/>{head_links(lang,'/blog/')}<link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="{asset('/blog/blog.css')}"/><script defer src="{asset('/blog/release.js')}"></script><script id="blog-ui" type="application/json">{runtime}</script><noscript><style>.sample-tabs{{display:none}}</style></noscript></head>
+<html lang="{tag}" data-locale="{lang}"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{esc(title)} · Iroha Studios</title><meta name="description" content="{esc(BeautifulSoup(lead,'html.parser').get_text())}"/><meta name="theme-color" content="#fafdff"/><meta property="og:title" content="{esc(title)}"/><meta property="og:type" content="article"/><meta property="og:url" content="{ORIGIN}/blog/{lang}/"/><meta property="og:image" content="{ORIGIN}/assets/sky-observatory.png"/>{head_links(lang,'/blog/')}<link rel="icon" type="image/svg+xml" href="/assets/iroha-logo.svg"/><link rel="stylesheet" href="{asset('/blog/blog.css')}"/><link rel="stylesheet" href="{asset('/blog/mos.css')}"/><script defer src="{asset('/blog/release.js')}"></script><script id="blog-ui" type="application/json">{runtime}</script><noscript><style>.sample-tabs{{display:none}}</style></noscript></head>
 <body id="top"><a class="blog-skip" href="#article">{u['skip']}</a><header class="studio-header">{brand(lang)}<nav class="studio-nav" aria-label="{u['journal']}"><a href="/{home_lang}/#work">{u['work']}</a><a class="current" href="/blog/{lang}/" aria-current="page">{u['journal']}</a><a href="/blog/research/{lang}/">{u['research']}</a></nav><nav class="blog-languages" aria-label="{u['language']}">{language_links(lang,'/blog/')}</nav></header>
 <main><header class="article-hero"><div class="article-hero-inner"><a class="article-eyebrow" href="/blog/{lang}/">{u['journal']} <span>/</span> {u['release']}</a><h1>{esc(title)}</h1><div class="article-lead">{lead}</div><div class="article-byline">{byline}</div><div class="article-actions">{links}</div></div></header>
 <div class="reading-layout"><article id="article" class="release-prose">{soup}<div class="article-source"><a href="/blog/content/iroha-tts-v1-{lang}.md">{u['download']} ↓</a></div><a class="next-article" href="/blog/research/{lang}/"><span>{u['research']} ↗</span><h2>{u['next']}</h2><p>{u['nextcopy']}</p></a></article><aside class="article-toc"><nav aria-label="{u['toc']}"><p>{u['toc']}</p>{toc}</nav></aside></div></main>
@@ -88,6 +97,7 @@ def build_release(lang):
     destination.parent.mkdir(exist_ok=True)
     destination.write_text(page)
     if lang == 'ja': (ROOT / 'blog/index.html').write_text(page)
+    return mos_heading.get_text(), ''.join(str(node) for node in mos.contents if node is not mos_heading)
 
 
 def build_research(lang, catalog):
@@ -105,6 +115,7 @@ def build_research(lang, catalog):
     soup.select_one('meta[name="description"]')['content'] = catalog[lang]['ui.pageDescription']
     soup.head.append(BeautifulSoup(head_links(lang,'/blog/research/'), 'html.parser'))
     soup.head.append(soup.new_tag('link', rel='stylesheet', href=asset('/blog/research-theme.css')))
+    soup.head.append(soup.new_tag('link', rel='stylesheet', href=asset('/blog/mos.css')))
     for element in soup.select('link[rel="stylesheet"],script[src]'):
         attr = 'href' if element.name == 'link' else 'src'
         if '?' not in element[attr]: element[attr] = asset(element[attr])
@@ -137,11 +148,13 @@ def build_research(lang, catalog):
 
 def main():
     catalog = json.loads((ROOT/'src/blog/research-locales.json').read_text())
+    # Both articles share the MOS section maintained in the release Markdown.
+    for lang in LANGS:
+        catalog[lang]['label.89'], catalog[lang]['copy.p43'] = build_release(lang)
     existing = (ROOT/'blog/research/locales.js').read_text()
     glossary = existing[existing.index('window.IrohaGlossary'):]
     (ROOT/'blog/research/locales.js').write_text("'use strict';\nwindow.IrohaMessages = "+json.dumps(catalog,ensure_ascii=False,indent=2)+';\n'+glossary)
     for lang in LANGS:
-        build_release(lang)
         build_research(lang,catalog)
         print(f'Rendered {lang}: release article + complete research notes')
 

@@ -11,12 +11,12 @@
 <link href="/blog/research/journal.css?v=7e9fffba6c08" rel="stylesheet"/>
 <link href="/blog/research/typography.css?v=0ec1a9dc5f0b" rel="stylesheet"/>
 <link href="/blog/research/vtuber.css?v=a5f49bec35df" rel="stylesheet"/>
-<script defer="" src="/blog/research/locales.js?v=5a02895c5ab0"></script><script defer="" src="/blog/research/i18n.js?v=57b02993b1b7"></script><script defer="" src="/blog/research/glossary.js?v=286288d29944"></script>
+<script defer="" src="/blog/research/locales.js?v=7040104ad1b9"></script><script defer="" src="/blog/research/i18n.js?v=57b02993b1b7"></script><script defer="" src="/blog/research/glossary.js?v=286288d29944"></script>
 <script defer="" src="/blog/research/vendor/live2dcubismcore.min.js?v=25ae938cb4fe"></script>
 <script defer="" src="/blog/research/iroha-model.js?v=c2df50f90f63"></script>
 <script defer="" src="/blog/research/app.js?v=ba3c70309c17"></script>
 <script defer="" src="/blog/research/vtuber.js?v=cd3097e2fa99"></script>
-<link href="https://irohastudios.github.io/blog/research/ja/" rel="canonical"/><link href="https://irohastudios.github.io/blog/research/ja/" hreflang="ja" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/en/" hreflang="en" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/zh/" hreflang="zh" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/" hreflang="x-default" rel="alternate"/><link href="/blog/research-theme.css?v=f3e9a7bfef69" rel="stylesheet"/></head>
+<link href="https://irohastudios.github.io/blog/research/ja/" rel="canonical"/><link href="https://irohastudios.github.io/blog/research/ja/" hreflang="ja" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/en/" hreflang="en" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/zh/" hreflang="zh" rel="alternate"/><link href="https://irohastudios.github.io/blog/research/" hreflang="x-default" rel="alternate"/><link href="/blog/research-theme.css?v=f3e9a7bfef69" rel="stylesheet"/><link href="/blog/mos.css?v=3d0df889481b" rel="stylesheet"/></head>
 <body>
 <a class="skip-link" data-i18n="label.0" href="#main">本文へ移動</a>
 <div aria-hidden="true" class="reading-progress"></div>
@@ -121,7 +121,92 @@
 </tbody></table></div>
 <p class="source-note" data-i18n="copy.p39">表は配布パッケージの推論結果です：EmoRuler 88.96%、E2V 82.08%、CER 5.58%。上のネイティブ推論とは別に報告しています。UTMOS はモデルによる予測で、<strong>人による <button class="term" data-term="mos">MOS</button> ではありません</strong>。</p>
 <details class="additional-result"><summary data-i18n="label.87">タグなし評価 <span aria-hidden="true">+</span></summary><p data-i18n="copy.p40">Chatterbox はタグなしの結果のみを示し、感情認識精度の表とは分けます：CER 6.5%、SIM 0.675、UTMOS 3.34。Iroha のタグなしリリース評価120件は CER 5.0%、SIM 0.685、UTMOS 3.63 でした。</p></details>
-<div class="result-notes reveal"><article><h3 data-i18n="label.46">発声イベント</h3><p data-i18n="copy.p41">リリース評価では、ため息は56/60件、泣き声は16/60件で検出されました。笑い声はローカル判定で26/60件、外部判定で44/59件。判定基準の違い自体も検証が必要です。</p></article><article><h3 data-i18n="label.88">ささやき guidance</h3><p data-i18n="copy.p42">同条件のささやき60要求で、guidance により検出数は4件から32件へ増加。一方、SIM は 0.587 から 0.494、UTMOS は 2.80 から 1.78 に低下しました。強度制御にも同様の声質とのトレードオフがあります。</p></article><article><h3 data-i18n="label.89">日本語話者による聴取評価</h3><p data-i18n="copy.p43">2026-10-30 時点で、5人が75クリップを評価しました。Iroha は感情適合度 4.20、自然さ 3.84、話者一致度 3.52（5段階）。全結果と対応のある比較の区間は<a href="/blog/ja/#human-evaluation">リリース記事</a>に掲載しています。</p></article></div>
+<div class="result-notes reveal"><article><h3 data-i18n="label.46">発声イベント</h3><p data-i18n="copy.p41">リリース評価では、ため息は56/60件、泣き声は16/60件で検出されました。笑い声はローカル判定で26/60件、外部判定で44/59件。判定基準の違い自体も検証が必要です。</p></article><article><h3 data-i18n="label.88">ささやき guidance</h3><p data-i18n="copy.p42">同条件のささやき60要求で、guidance により検出数は4件から32件へ増加。一方、SIM は 0.587 から 0.494、UTMOS は 2.80 から 1.78 に低下しました。強度制御にも同様の声質とのトレードオフがあります。</p></article><article class="mos-results" id="human-evaluation"><h3 data-i18n="label.89">主観聴取テスト MOS（日本語）</h3><div data-i18n="copy.p43">
+<p>15組 × 5種類の感情 = 75文を選び、各参加者が75文すべてを聴きました。</p>
+<div aria-label="横にスクロールできるデータ表" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">モデル</th>
+<th scope="col">自然さ ↑</th>
+<th scope="col">感情の一致度 ↑</th>
+<th scope="col">声質の類似度 ↑</th>
+<th scope="col">総合点 ↑</th>
+<th scope="col">首位獲得率 ↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ours</td>
+<td>3.84</td>
+<td><strong>4.20</strong></td>
+<td>3.52</td>
+<td><strong>3.85</strong></td>
+<td><strong>31.7%</strong></td>
+</tr>
+<tr>
+<td>Fish Audio Drama 3</td>
+<td><strong>3.97</strong></td>
+<td>3.64</td>
+<td>3.45</td>
+<td>3.69</td>
+<td>23.2%</td>
+</tr>
+<tr>
+<td>Irodori-TTS v4 large · テキスト記述</td>
+<td>3.61</td>
+<td>3.95</td>
+<td>3.32</td>
+<td>3.63</td>
+<td>28.1%</td>
+</tr>
+<tr>
+<td>Fish S2 Pro オリジナル</td>
+<td>3.75</td>
+<td>2.93</td>
+<td><strong>3.72</strong></td>
+<td>3.47</td>
+<td>12.1%</td>
+</tr>
+<tr>
+<td>IndexTTS-2.5</td>
+<td>2.35</td>
+<td>3.49</td>
+<td>2.81</td>
+<td>2.88</td>
+<td>4.9%</td>
+</tr>
+</tbody>
+</table></div>
+<p><small>3項目はいずれも人による5段階評価（MOS）で、総合点は3項目の単純平均です。首位獲得率は「参加者・文」の組み合わせごとに5モデルを比較し、同点首位の場合は均等に配分します。</small></p>
+<h4>ペアごとの勝率</h4>
+<p>総合点で比較した Ours の勝率です。同点は0.5勝として数えます。</p>
+<div aria-label="横にスクロールできるデータ表" class="table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">比較</th>
+<th scope="col">Ours の勝率 ↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vs. Fish S2 Pro オリジナル</td>
+<td><strong>69.3%</strong></td>
+</tr>
+<tr>
+<td>vs. Fish Audio Drama 3</td>
+<td><strong>58.0%</strong></td>
+</tr>
+<tr>
+<td>vs. Irodori-TTS v4 large · テキスト記述</td>
+<td><strong>58.7%</strong></td>
+</tr>
+<tr>
+<td>vs. IndexTTS-2.5</td>
+<td><strong>82.7%</strong></td>
+</tr>
+</tbody>
+</table></div>
+</div></article></div>
 </section>
 <section aria-labelledby="lessons-title" class="lessons-section section-shell" id="lessons">
 <div class="section-heading reveal"><div><h2 data-i18n="label.4" id="lessons-title">失敗からの知見</h2></div></div>

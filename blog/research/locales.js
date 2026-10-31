@@ -39,7 +39,6 @@ window.IrohaMessages = {
     "copy.p40": "Chatterbox 只列无标签结果，不与上表的情感命中率混排：CER 6.5%、SIM 0.675、UTMOS 3.34。Iroha 的 120 条无标签发布评测为 CER 5.0%、SIM 0.685、UTMOS 3.63。",
     "copy.p41": "发布评测中，叹气命中 56/60；哭声只有 16/60。笑声的本地判断为 26/60，外部判断为 44/59，评判口径本身就值得检查。",
     "copy.p42": "60 条匹配耳语请求中，guidance 将命中从 4 条提高到 32 条，但 SIM 从 0.587 降到 0.494，UTMOS 从 2.80 降到 1.78。强度控制也有类似的音色代价。",
-    "copy.p43": "2026-10-30 的快照包含 5 位听者、75 个片段。Iroha 的情感贴合为 4.20、自然度 3.84、说话人一致 3.52（1–5 分）。完整表格与配对区间见<a href=\"/blog/zh/#human-evaluation\">发布文章</a>。",
     "copy.p44": "早期扩大未配对数据规模，对情感命中的帮助有限。配对样本固定内容与音色后，条件与声音之间的对应关系才更清楚。不同轮次的条件也有变化，不能把全部提升都归因于单一因素。",
     "copy.p45": "只改标签、复用音频的伪强度训练，无法提供真实的声学区别。隐状态方向控制的趋势更好，但严格扫描的 880 条输出中，没有正向设置通过全部质量门槛。",
     "copy.p46": "优化情感奖励时，模型可能找到更容易被识别的表达。一次检查中，开心样本里出现了 11.7% 的非预期笑声。奖励变高，并不代表台词演绎更符合请求。",
@@ -132,7 +131,6 @@ window.IrohaMessages = {
     "label.86": "预测质量",
     "label.87": "无标签评测 <span aria-hidden=\"true\">+</span>",
     "label.88": "耳语 guidance",
-    "label.89": "日语听者盲评",
     "label.90": "扩大未配对数据，收益有限",
     "label.91": "伪强度标签缺少声学差异",
     "label.92": "情感奖励诱发额外笑声",
@@ -195,7 +193,9 @@ window.IrohaMessages = {
     "ui.laughTranslation": "啊，我不玩鬼兜虫相扑了！从今天起，改玩萤火虫相扑！",
     "ui.cryTranslation": "还没有……结束……",
     "ui.pageTitle": "怎么做出 Iroha 的七种控制 · Iroha Blog",
-    "ui.pageDescription": "Iroha 的七项语音控制：试听样本、数据与训练方法、评测结果和失败经验。"
+    "ui.pageDescription": "Iroha 的七项语音控制：试听样本、数据与训练方法、评测结果和失败经验。",
+    "label.89": "主观听力测试 MOS（日语）",
+    "copy.p43": "\n<p>我们挑了 15 组 × 5 种情感 = 75 句，每人听 75 句。</p>\n<div aria-label=\"可横向滚动的数据表\" class=\"table-scroll\" role=\"region\" tabindex=\"0\"><table>\n<thead>\n<tr>\n<th scope=\"col\">模型</th>\n<th scope=\"col\">自然度 ↑</th>\n<th scope=\"col\">情感匹配 ↑</th>\n<th scope=\"col\">音色相似度 ↑</th>\n<th scope=\"col\">综合分 ↑</th>\n<th scope=\"col\">胜出占比 ↑</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Ours</td>\n<td>3.84</td>\n<td><strong>4.20</strong></td>\n<td>3.52</td>\n<td><strong>3.85</strong></td>\n<td><strong>31.7%</strong></td>\n</tr>\n<tr>\n<td>Fish Audio Drama 3</td>\n<td><strong>3.97</strong></td>\n<td>3.64</td>\n<td>3.45</td>\n<td>3.69</td>\n<td>23.2%</td>\n</tr>\n<tr>\n<td>Irodori-TTS v4 large · 文字描述</td>\n<td>3.61</td>\n<td>3.95</td>\n<td>3.32</td>\n<td>3.63</td>\n<td>28.1%</td>\n</tr>\n<tr>\n<td>Fish S2 Pro 原版</td>\n<td>3.75</td>\n<td>2.93</td>\n<td><strong>3.72</strong></td>\n<td>3.47</td>\n<td>12.1%</td>\n</tr>\n<tr>\n<td>IndexTTS-2.5</td>\n<td>2.35</td>\n<td>3.49</td>\n<td>2.81</td>\n<td>2.88</td>\n<td>4.9%</td>\n</tr>\n</tbody>\n</table></div>\n<p><small>三个维度都是人工五分制打分（MOS），综合分是三项的不加权平均。胜出占比：对每个「听者-句子」组合比较五个模型，并列第一时平分。</small></p>\n<h4>两两胜率</h4>\n<p>Ours 的两两胜率，按综合评分计算，打平算半场胜：</p>\n<div aria-label=\"可横向滚动的数据表\" class=\"table-scroll\" role=\"region\" tabindex=\"0\"><table>\n<thead>\n<tr>\n<th scope=\"col\">对比</th>\n<th scope=\"col\">Ours 胜率 ↑</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>vs. Fish S2 Pro 原版</td>\n<td><strong>69.3%</strong></td>\n</tr>\n<tr>\n<td>vs. Fish Audio Drama 3</td>\n<td><strong>58.0%</strong></td>\n</tr>\n<tr>\n<td>vs. Irodori-TTS v4 large · 文字描述</td>\n<td><strong>58.7%</strong></td>\n</tr>\n<tr>\n<td>vs. IndexTTS-2.5</td>\n<td><strong>82.7%</strong></td>\n</tr>\n</tbody>\n</table></div>\n"
   },
   "en": {
     "copy.p01": "Keep the text and <button class=\"term\" data-term=\"reference\">reference audio</button> fixed. A <button class=\"term\" data-term=\"teacher\">teacher model</button> generates happy, angry, sad and surprised versions. Retain candidates with the requested emotion, correct words, consistent voice and acceptable quality.",
@@ -236,7 +236,6 @@ window.IrohaMessages = {
     "copy.p40": "Chatterbox is reported only without tags, outside the emotion-accuracy table: CER 6.5%, SIM 0.675, UTMOS 3.34. Iroha’s 120 untagged release requests scored CER 5.0%, SIM 0.685 and UTMOS 3.63.",
     "copy.p41": "Release evaluation detected sighing in 56/60 clips and crying in 16/60. Laughter scored 26/60 under the local check and 44/59 under an external check, indicating a need to examine the evaluation criteria.",
     "copy.p42": "On 60 matched whisper requests, guidance raised detections from 4 to 32, while SIM fell from 0.587 to 0.494 and UTMOS from 2.80 to 1.78. Intensity steering shows similar voice trade-offs.",
-    "copy.p43": "The 2026-10-30 snapshot contains 5 listeners and 75 clips. Iroha scored 4.20 for emotion fit, 3.84 for naturalness and 3.52 for speaker similarity (1–5). See the <a href=\"/blog/en/#human-evaluation\">release article</a> for the full table and paired intervals.",
     "copy.p44": "Scaling unpaired data early on brought limited emotion gains. Paired examples made the relationship between condition and sound clearer by fixing content and voice. Other conditions changed between runs, so the full improvement cannot be attributed to one factor.",
     "copy.p45": "Changing intensity labels while reusing the same audio provides no acoustic distinction. Hidden-state steering showed better trends, but no positive setting passed every quality gate in a strict sweep of 880 outputs.",
     "copy.p46": "Emotion rewards can favor easily recognized shortcuts. One inspection found unrequested laughter in 11.7% of happy samples. A higher reward does not necessarily mean a delivery that better matches the request.",
@@ -329,7 +328,6 @@ window.IrohaMessages = {
     "label.86": "Predicted quality",
     "label.87": "Untagged evaluation <span aria-hidden=\"true\">+</span>",
     "label.88": "Whisper guidance",
-    "label.89": "Japanese listening study",
     "label.90": "Limited gains from more unpaired data",
     "label.91": "Intensity labels need acoustic differences",
     "label.92": "Emotion rewards induced extra laughter",
@@ -392,7 +390,9 @@ window.IrohaMessages = {
     "ui.laughTranslation": "Ah, I’m done with beetle sumo! From today on, it’s firefly sumo!",
     "ui.cryTranslation": "It’s not… over yet…",
     "ui.pageTitle": "How we built Iroha’s seven controls · Iroha Blog",
-    "ui.pageDescription": "Seven speech controls in Iroha: audio samples, data and training methods, evaluation and failed approaches."
+    "ui.pageDescription": "Seven speech controls in Iroha: audio samples, data and training methods, evaluation and failed approaches.",
+    "label.89": "Subjective listening test: MOS (Japanese)",
+    "copy.p43": "\n<p>We selected 15 groups × 5 emotions = 75 lines. Each listener heard all 75 lines.</p>\n<div aria-label=\"Horizontally scrollable data table\" class=\"table-scroll\" role=\"region\" tabindex=\"0\"><table>\n<thead>\n<tr>\n<th scope=\"col\">Model</th>\n<th scope=\"col\">Naturalness ↑</th>\n<th scope=\"col\">Emotion match ↑</th>\n<th scope=\"col\">Voice similarity ↑</th>\n<th scope=\"col\">Overall score ↑</th>\n<th scope=\"col\">Win share ↑</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Ours</td>\n<td>3.84</td>\n<td><strong>4.20</strong></td>\n<td>3.52</td>\n<td><strong>3.85</strong></td>\n<td><strong>31.7%</strong></td>\n</tr>\n<tr>\n<td>Fish Audio Drama 3</td>\n<td><strong>3.97</strong></td>\n<td>3.64</td>\n<td>3.45</td>\n<td>3.69</td>\n<td>23.2%</td>\n</tr>\n<tr>\n<td>Irodori-TTS v4 large · Text description</td>\n<td>3.61</td>\n<td>3.95</td>\n<td>3.32</td>\n<td>3.63</td>\n<td>28.1%</td>\n</tr>\n<tr>\n<td>Fish S2 Pro Original</td>\n<td>3.75</td>\n<td>2.93</td>\n<td><strong>3.72</strong></td>\n<td>3.47</td>\n<td>12.1%</td>\n</tr>\n<tr>\n<td>IndexTTS-2.5</td>\n<td>2.35</td>\n<td>3.49</td>\n<td>2.81</td>\n<td>2.88</td>\n<td>4.9%</td>\n</tr>\n</tbody>\n</table></div>\n<p><small>All three dimensions use human ratings on a five-point scale (MOS). The overall score is their unweighted mean. Win share compares the five models for each listener–line pair, splitting credit equally when models tie for first.</small></p>\n<h4>Pairwise win rates</h4>\n<p>Ours’ pairwise win rates, based on the overall score, with ties counted as half a win:</p>\n<div aria-label=\"Horizontally scrollable data table\" class=\"table-scroll\" role=\"region\" tabindex=\"0\"><table>\n<thead>\n<tr>\n<th scope=\"col\">Comparison</th>\n<th scope=\"col\">Ours win rate ↑</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>vs. Fish S2 Pro Original</td>\n<td><strong>69.3%</strong></td>\n</tr>\n<tr>\n<td>vs. Fish Audio Drama 3</td>\n<td><strong>58.0%</strong></td>\n</tr>\n<tr>\n<td>vs. Irodori-TTS v4 large · Text description</td>\n<td><strong>58.7%</strong></td>\n</tr>\n<tr>\n<td>vs. IndexTTS-2.5</td>\n<td><strong>82.7%</strong></td>\n</tr>\n</tbody>\n</table></div>\n"
   },
   "ja": {
     "copy.p01": "同じセリフと<button class=\"term\" data-term=\"reference\">参照音声</button>を固定し、<button class=\"term\" data-term=\"teacher\">教師モデル</button>で喜び・怒り・悲しみ・驚きの音声を生成します。感情、読み上げ内容、声質、品質の条件を満たす候補を残します。",
@@ -433,7 +433,6 @@ window.IrohaMessages = {
     "copy.p40": "Chatterbox はタグなしの結果のみを示し、感情認識精度の表とは分けます：CER 6.5%、SIM 0.675、UTMOS 3.34。Iroha のタグなしリリース評価120件は CER 5.0%、SIM 0.685、UTMOS 3.63 でした。",
     "copy.p41": "リリース評価では、ため息は56/60件、泣き声は16/60件で検出されました。笑い声はローカル判定で26/60件、外部判定で44/59件。判定基準の違い自体も検証が必要です。",
     "copy.p42": "同条件のささやき60要求で、guidance により検出数は4件から32件へ増加。一方、SIM は 0.587 から 0.494、UTMOS は 2.80 から 1.78 に低下しました。強度制御にも同様の声質とのトレードオフがあります。",
-    "copy.p43": "2026-10-30 時点で、5人が75クリップを評価しました。Iroha は感情適合度 4.20、自然さ 3.84、話者一致度 3.52（5段階）。全結果と対応のある比較の区間は<a href=\"/blog/ja/#human-evaluation\">リリース記事</a>に掲載しています。",
     "copy.p44": "初期の非ペアデータ拡大では、感情認識精度の改善は限定的でした。内容と声質を固定したペアデータにより、条件と音声の対応が明確になりました。ただし実験間で他の条件も変わっており、改善すべてを1要因には帰属できません。",
     "copy.p45": "同じ音声に強弱ラベルだけを付け直しても、音響的な違いはありません。隠れ状態による制御の傾向は改善しましたが、880出力の厳密な検証では、正方向の設定で全品質基準を満たすものはありませんでした。",
     "copy.p46": "感情報酬の最適化では、認識されやすい表現に偏ることがあります。ある検査では、喜びのサンプルの 11.7% に要求していない笑い声が含まれていました。報酬の上昇は、要求に合った演技の改善とは限りません。",
@@ -526,7 +525,6 @@ window.IrohaMessages = {
     "label.86": "予測品質",
     "label.87": "タグなし評価 <span aria-hidden=\"true\">+</span>",
     "label.88": "ささやき guidance",
-    "label.89": "日本語話者による聴取評価",
     "label.90": "非ペアデータの拡大効果は限定的",
     "label.91": "強弱ラベルには音響的な差が必要",
     "label.92": "感情報酬による余計な笑い声",
@@ -589,7 +587,9 @@ window.IrohaMessages = {
     "ui.laughTranslation": "ああ、オニカブトムシ相撲をやめる！今日から、ホタル相撲をやるぜ！",
     "ui.cryTranslation": "まだ、終焉じゃ……",
     "ui.pageTitle": "Iroha の7つの制御をどう実装したか · Iroha Blog",
-    "ui.pageDescription": "Iroha の7つの音声制御。音声サンプル、データと学習方法、評価結果、失敗からの知見を紹介します。"
+    "ui.pageDescription": "Iroha の7つの音声制御。音声サンプル、データと学習方法、評価結果、失敗からの知見を紹介します。",
+    "label.89": "主観聴取テスト MOS（日本語）",
+    "copy.p43": "\n<p>15組 × 5種類の感情 = 75文を選び、各参加者が75文すべてを聴きました。</p>\n<div aria-label=\"横にスクロールできるデータ表\" class=\"table-scroll\" role=\"region\" tabindex=\"0\"><table>\n<thead>\n<tr>\n<th scope=\"col\">モデル</th>\n<th scope=\"col\">自然さ ↑</th>\n<th scope=\"col\">感情の一致度 ↑</th>\n<th scope=\"col\">声質の類似度 ↑</th>\n<th scope=\"col\">総合点 ↑</th>\n<th scope=\"col\">首位獲得率 ↑</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Ours</td>\n<td>3.84</td>\n<td><strong>4.20</strong></td>\n<td>3.52</td>\n<td><strong>3.85</strong></td>\n<td><strong>31.7%</strong></td>\n</tr>\n<tr>\n<td>Fish Audio Drama 3</td>\n<td><strong>3.97</strong></td>\n<td>3.64</td>\n<td>3.45</td>\n<td>3.69</td>\n<td>23.2%</td>\n</tr>\n<tr>\n<td>Irodori-TTS v4 large · テキスト記述</td>\n<td>3.61</td>\n<td>3.95</td>\n<td>3.32</td>\n<td>3.63</td>\n<td>28.1%</td>\n</tr>\n<tr>\n<td>Fish S2 Pro オリジナル</td>\n<td>3.75</td>\n<td>2.93</td>\n<td><strong>3.72</strong></td>\n<td>3.47</td>\n<td>12.1%</td>\n</tr>\n<tr>\n<td>IndexTTS-2.5</td>\n<td>2.35</td>\n<td>3.49</td>\n<td>2.81</td>\n<td>2.88</td>\n<td>4.9%</td>\n</tr>\n</tbody>\n</table></div>\n<p><small>3項目はいずれも人による5段階評価（MOS）で、総合点は3項目の単純平均です。首位獲得率は「参加者・文」の組み合わせごとに5モデルを比較し、同点首位の場合は均等に配分します。</small></p>\n<h4>ペアごとの勝率</h4>\n<p>総合点で比較した Ours の勝率です。同点は0.5勝として数えます。</p>\n<div aria-label=\"横にスクロールできるデータ表\" class=\"table-scroll\" role=\"region\" tabindex=\"0\"><table>\n<thead>\n<tr>\n<th scope=\"col\">比較</th>\n<th scope=\"col\">Ours の勝率 ↑</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>vs. Fish S2 Pro オリジナル</td>\n<td><strong>69.3%</strong></td>\n</tr>\n<tr>\n<td>vs. Fish Audio Drama 3</td>\n<td><strong>58.0%</strong></td>\n</tr>\n<tr>\n<td>vs. Irodori-TTS v4 large · テキスト記述</td>\n<td><strong>58.7%</strong></td>\n</tr>\n<tr>\n<td>vs. IndexTTS-2.5</td>\n<td><strong>82.7%</strong></td>\n</tr>\n</tbody>\n</table></div>\n"
   }
 };
 window.IrohaGlossary = {
